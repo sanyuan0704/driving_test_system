@@ -14,10 +14,10 @@ import com.whut.driving_test_system.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class InspectFragment extends Fragment {
+public class VerifyFragment extends Fragment {
 
 
-    public InspectFragment() {
+    public VerifyFragment() {
         // Required empty public constructor
     }
 
@@ -26,7 +26,7 @@ public class InspectFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_inspect, container, false);
+        return inflater.inflate(R.layout.fragment_verify, container, false);
     }
 
 }
