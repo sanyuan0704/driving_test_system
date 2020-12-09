@@ -10,7 +10,9 @@ import com.whut.driving_test_system.R;
 import androidx.fragment.app.Fragment;
 
 /**
- * A simple {@link Fragment} subclass.
+ * 实现功能：
+ * 1. 考试指令下发
+ * 2. 自动评分（包括车辆行驶过程中的评分和指令操作的评分）
  */
 public class ExamFragment extends Fragment {
     public ExamFragment() {

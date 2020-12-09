@@ -12,7 +12,10 @@ import android.view.ViewGroup;
 import com.whut.driving_test_system.R;
 
 /**
- * A simple {@link Fragment} subclass.
+ * 实现功能：
+ * 1. 考生基本确认
+ * 2. 展示以往考试记录
+ * 3. 拍照对比证件照并确认
  */
 public class VerifyFragment extends Fragment {
 

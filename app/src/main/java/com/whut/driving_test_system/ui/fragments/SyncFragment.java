@@ -10,7 +10,9 @@ import com.whut.driving_test_system.R;
 import androidx.fragment.app.Fragment;
 
 /**
- * A simple {@link Fragment} subclass.
+ * 实现功能：
+ * 1. 上传 / 导入考试信息（包括考官，考生等）
+ * 2. 上传 / 导出考试成绩
  */
 public class SyncFragment extends Fragment {
 

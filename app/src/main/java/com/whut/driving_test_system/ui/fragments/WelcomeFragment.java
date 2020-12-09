@@ -13,7 +13,8 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 /**
- * A simple {@link Fragment} subclass.
+ * 基本功能：
+ * 1. 跳转到登录页面
  */
 public class WelcomeFragment extends Fragment {
     private ImageButton enterButton;

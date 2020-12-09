@@ -10,7 +10,11 @@ import com.whut.driving_test_system.R;
 import androidx.fragment.app.Fragment;
 
 /**
- * A simple {@link Fragment} subclass.
+ * 实现功能：
+ * 1. 设置考试规则
+ *  1.1 规则阈值设置
+ *  1.2 规则别名设置
+ * 2. 用户登出
  */
 public class SettingsFragment extends Fragment {
     public SettingsFragment() {

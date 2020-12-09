@@ -18,10 +18,10 @@ import com.whut.driving_test_system.R;
 import com.whut.driving_test_system.databinding.FragmentLoginBinding;
 
 /**
- * A simple {@link Fragment} subclass.
+ * 实现功能：
+ * 1. 考官 / 管理员登录
  */
 public class LoginFragment extends Fragment {
-
 
     public LoginFragment() {
         // Required empty public constructor

@@ -12,7 +12,9 @@ import android.view.ViewGroup;
 import com.whut.driving_test_system.R;
 
 /**
- * A simple {@link Fragment} subclass.
+ * 实现功能：
+ * 1. 打印成绩单
+ * 2. 修改扣分项
  */
 public class JudgeFragment extends Fragment {
 

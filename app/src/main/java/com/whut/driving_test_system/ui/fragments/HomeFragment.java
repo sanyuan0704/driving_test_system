@@ -15,6 +15,7 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.core.view.GravityCompat;
 import androidx.databinding.DataBindingUtil;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -22,7 +23,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 /**
- * A simple {@link Fragment} subclass.
+ * 实现功能：
+ * 1. 考生情况列表
+ * 2，跳转到考生验证界面
  */
 public class HomeFragment extends Fragment {
     private FragmentHomeBinding binding;
@@ -56,6 +59,7 @@ public class HomeFragment extends Fragment {
                 controller.navigate(R.id.action_homeFragment_to_verifyFragment);
             }
         });
+        binding.drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
 
         return binding.getRoot();
     }
