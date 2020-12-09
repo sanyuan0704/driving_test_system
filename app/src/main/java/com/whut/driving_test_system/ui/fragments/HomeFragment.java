@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.google.android.material.navigation.NavigationView;
 import com.whut.driving_test_system.R;
 import com.whut.driving_test_system.databinding.FragmentHomeBinding;
 import com.whut.driving_test_system.models.eneities.Examinee;
