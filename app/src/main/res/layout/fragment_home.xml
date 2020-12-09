@@ -14,12 +14,20 @@
         android:fitsSystemWindows="true"
         tools:openDrawer="start">
 
+        <include
+            android:id="@+id/icl_home_content"
+            layout="@layout/fragment_home_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
         <com.google.android.material.navigation.NavigationView
             android:id="@+id/nav_view"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="end"
-            android:fitsSystemWindows="true">
+            android:clickable="true"
+            android:fitsSystemWindows="true"
+            android:focusable="true">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -214,10 +222,5 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
         </com.google.android.material.navigation.NavigationView>
 
-        <include
-            android:id="@+id/icl_home_content"
-            layout="@layout/fragment_home_content"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
     </androidx.drawerlayout.widget.DrawerLayout>
 </layout>
