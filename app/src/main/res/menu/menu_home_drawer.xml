@@ -1,4 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="准考证号">
+        <menu>
+            <item
+                android:id="@+id/it_examnumber"
+                android:title="11223344" />
+        </menu>
+    </item>
 
+    <item android:title="身份证号">
+        <menu>
+            <item
+                android:id="@+id/it_idnumber"
+                android:title="11223344" />
+        </menu>
+    </item>
+
+    <item android:title="驾校">
+        <menu>
+            <item
+                android:id="@+id/it_school"
+                android:title="xx驾校" />
+        </menu>
+    </item>
+
+    <item android:title="报考车型">
+        <menu>
+            <item
+                android:id="@+id/it_examtype"
+                android:title="C1" />
+        </menu>
+    </item>
 </menu>
