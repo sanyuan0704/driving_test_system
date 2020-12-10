@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.whut.driving_test_system.R;
 import com.whut.driving_test_system.databinding.FragmentHomeBinding;
@@ -46,7 +48,7 @@ public class HomeFragment extends Fragment {
         rcv.setLayoutManager(new LinearLayoutManager(getContext()));
         List<Examinee> examinees = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
-            examinees.add(new Examinee("121321", "45345345", "xxx", "school", i, "C1", "wait"));
+            examinees.add(new Examinee("121321", "45345345", "xxx", "school", i, "C1", "wait", 90));
         }
         ExamineeAdapter examineeAdapter = new ExamineeAdapter(examinees);
         rcv.setAdapter(examineeAdapter);
@@ -80,10 +82,27 @@ public class HomeFragment extends Fragment {
 
         @Override
         public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
+            final Examinee examinee = examinees.get(position);
+            holder.tv_name.setText(examinee.getName());
+            holder.tv_school.setText(examinee.getSchool());
+            holder.tv_examnumber.setText(examinee.getExamNumber());
+            holder.tv_idnumber.setText(examinee.getIdNumber());
+            holder.tv_status.setText(examinee.getExamStatus());
+            // TODO: set image
+
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     binding.drawerLayout.openDrawer(GravityCompat.END);
+                    ((TextView) binding.navView.findViewById(R.id.tv_name)).setText(examinee.getName());
+                    ((TextView) binding.navView.findViewById(R.id.tv_school)).setText(examinee.getSchool());
+                    ((TextView) binding.navView.findViewById(R.id.tv_examnumber)).setText(examinee.getExamNumber());
+                    ((TextView) binding.navView.findViewById(R.id.tv_idnumber)).setText(examinee.getIdNumber());
+                    ((TextView) binding.navView.findViewById(R.id.tv_examtype)).setText(examinee.getExamType());
+                    ((TextView) binding.navView.findViewById(R.id.tv_grade)).setText(String.valueOf(examinee.getGrade()));
+
+                    // TODO: set image
+                    // TODO: set fbtn
                 }
             });
         }
@@ -94,9 +113,18 @@ public class HomeFragment extends Fragment {
         }
 
         class ViewHolder extends RecyclerView.ViewHolder {
+            ImageView img_header, img_status;
+            TextView tv_name, tv_school, tv_examnumber, tv_idnumber, tv_status;
 
             public ViewHolder(@NonNull View itemView) {
                 super(itemView);
+                this.img_header = itemView.findViewById(R.id.img_header);
+                this.img_status = itemView.findViewById(R.id.img_status);
+                this.tv_name = itemView.findViewById(R.id.tv_name);
+                this.tv_school = itemView.findViewById(R.id.tv_school);
+                this.tv_examnumber = itemView.findViewById(R.id.tv_examnumber);
+                this.tv_idnumber = itemView.findViewById(R.id.tv_idnumber);
+                this.tv_status = itemView.findViewById(R.id.tv_status);
             }
         }
 

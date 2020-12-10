@@ -5,6 +5,7 @@ import androidx.room.PrimaryKey;
 
 @Entity
 public class Examinee {
+
     @PrimaryKey
     private String examNumber;
     private String idNumber;
@@ -13,8 +14,9 @@ public class Examinee {
     private int examCount;
     private String examType;
     private String examStatus;
+    private int grade;
 
-    public Examinee(String examNumber, String idNumber, String name, String school, int examCount, String examType, String examStatus) {
+    public Examinee(String examNumber, String idNumber, String name, String school, int examCount, String examType, String examStatus, int grade) {
         this.examNumber = examNumber;
         this.idNumber = idNumber;
         this.name = name;
@@ -22,6 +24,7 @@ public class Examinee {
         this.examCount = examCount;
         this.examType = examType;
         this.examStatus = examStatus;
+        this.grade = grade;
     }
 
     public String getExamNumber() {
@@ -78,5 +81,13 @@ public class Examinee {
 
     public void setExamStatus(String examStatus) {
         this.examStatus = examStatus;
+    }
+
+    public int getGrade() {
+        return grade;
+    }
+
+    public void setGrade(int grade) {
+        this.grade = grade;
     }
 }
