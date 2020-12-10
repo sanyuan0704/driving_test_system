@@ -15,7 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.whut.driving_test_system.R;
-import com.whut.driving_test_system.databinding.FragmentLoginBinding;
+import com.whut.driving_test_system.databinding.FragmentHomeBinding;
 
 /**
  * 实现功能：
@@ -31,7 +31,7 @@ public class LoginFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        FragmentLoginBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_login, container, false);
+        FragmentLogin binding = DataBindingUtil.inflate(inflater, R.layout.fragment_login, container, false);
         binding.setLifecycleOwner(getActivity());
         binding.btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
