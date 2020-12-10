@@ -48,7 +48,7 @@ public class HomeFragment extends Fragment {
         rcv.setLayoutManager(new LinearLayoutManager(getContext()));
         List<Examinee> examinees = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
-            examinees.add(new Examinee("121321", "45345345", "xxx", "school", i, "C1", "wait", 90));
+            examinees.add(new Examinee("121321", "45345345", "xxx", "school", i, "C1", "wait", 90, null));
         }
         ExamineeAdapter examineeAdapter = new ExamineeAdapter(examinees);
         rcv.setAdapter(examineeAdapter);
@@ -83,23 +83,23 @@ public class HomeFragment extends Fragment {
         @Override
         public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
             final Examinee examinee = examinees.get(position);
-            holder.tv_name.setText(examinee.getName());
-            holder.tv_school.setText(examinee.getSchool());
-            holder.tv_examnumber.setText(examinee.getExamNumber());
-            holder.tv_idnumber.setText(examinee.getIdNumber());
-            holder.tv_status.setText(examinee.getExamStatus());
+            holder.tv_name.setText(examinee.name);
+            holder.tv_school.setText(examinee.school);
+            holder.tv_examnumber.setText(examinee.examNumber);
+            holder.tv_idnumber.setText(examinee.idNumber);
+            holder.tv_status.setText(examinee.examStatus);
             // TODO: set image
 
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     binding.drawerLayout.openDrawer(GravityCompat.END);
-                    ((TextView) binding.navView.findViewById(R.id.tv_name)).setText(examinee.getName());
-                    ((TextView) binding.navView.findViewById(R.id.tv_school)).setText(examinee.getSchool());
-                    ((TextView) binding.navView.findViewById(R.id.tv_examnumber)).setText(examinee.getExamNumber());
-                    ((TextView) binding.navView.findViewById(R.id.tv_idnumber)).setText(examinee.getIdNumber());
-                    ((TextView) binding.navView.findViewById(R.id.tv_examtype)).setText(examinee.getExamType());
-                    ((TextView) binding.navView.findViewById(R.id.tv_grade)).setText(String.valueOf(examinee.getGrade()));
+                    ((TextView) binding.navView.findViewById(R.id.tv_name)).setText(examinee.name);
+                    ((TextView) binding.navView.findViewById(R.id.tv_school)).setText(examinee.school);
+                    ((TextView) binding.navView.findViewById(R.id.tv_examnumber)).setText(examinee.examNumber);
+                    ((TextView) binding.navView.findViewById(R.id.tv_idnumber)).setText(examinee.idNumber);
+                    ((TextView) binding.navView.findViewById(R.id.tv_examtype)).setText(examinee.examType);
+                    ((TextView) binding.navView.findViewById(R.id.tv_grade)).setText(String.valueOf(examinee.grade));
 
                     // TODO: set image
                     // TODO: set fbtn
