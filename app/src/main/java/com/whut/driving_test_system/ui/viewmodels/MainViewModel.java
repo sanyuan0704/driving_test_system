@@ -5,6 +5,14 @@ import com.whut.driving_test_system.models.eneities.User;
 import androidx.lifecycle.ViewModel;
 
 public class LoginViewModel extends ViewModel {
-    User user;
+    public User user;
 
+    public boolean login(User user) {
+        // TODO: login process
+        return true;
+    }
+
+    public boolean isLogin(){
+        return user != null;
+    }
 }
