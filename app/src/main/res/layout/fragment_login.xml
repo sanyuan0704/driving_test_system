@@ -23,10 +23,10 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/guideline2"
-            app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+            app:layout_constraintTop_toBottomOf="@+id/rg_usertype" />
 
         <EditText
-            android:id="@+id/editText2"
+            android:id="@+id/et_password"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -36,13 +36,13 @@
             app:layout_constraintStart_toStartOf="@+id/guideline2" />
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/et_username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="32dp"
             android:ems="10"
             android:inputType="textPersonName"
-            app:layout_constraintBottom_toTopOf="@+id/editText2"
+            app:layout_constraintBottom_toTopOf="@+id/et_password"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/guideline2" />
 
@@ -58,7 +58,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <RadioGroup
-            android:id="@+id/radioGroup"
+            android:id="@+id/rg_usertype"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -66,17 +66,18 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="@+id/guideline2"
-            app:layout_constraintTop_toBottomOf="@+id/editText2">
+            app:layout_constraintTop_toBottomOf="@+id/et_password">
 
             <RadioButton
-                android:id="@+id/radioButton2"
+                android:id="@+id/rbtn_examiner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:checked="true"
                 android:padding="8dp"
                 android:text="考官" />
 
             <RadioButton
-                android:id="@+id/radioButton3"
+                android:id="@+id/rbtn_admin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="8dp"
@@ -90,9 +91,9 @@
             android:layout_marginEnd="8dp"
             android:text="用户名"
             android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="@+id/editText"
-            app:layout_constraintEnd_toStartOf="@+id/editText"
-            app:layout_constraintTop_toTopOf="@+id/editText" />
+            app:layout_constraintBottom_toBottomOf="@+id/et_username"
+            app:layout_constraintEnd_toStartOf="@+id/et_username"
+            app:layout_constraintTop_toTopOf="@+id/et_username" />
 
         <TextView
             android:id="@+id/textView3"
@@ -102,8 +103,8 @@
             android:text="密码"
             android:textSize="18sp"
             app:layout_constraintBottom_toTopOf="@+id/guideline3"
-            app:layout_constraintEnd_toStartOf="@+id/editText2"
-            app:layout_constraintTop_toTopOf="@+id/editText2" />
+            app:layout_constraintEnd_toStartOf="@+id/et_password"
+            app:layout_constraintTop_toTopOf="@+id/et_password" />
 
         <TextView
             android:id="@+id/textView"
