@@ -4,14 +4,134 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/frameLayout3"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="584dp"
         tools:context=".ui.fragments.RuleSettingFragment">
+
+        <TextView
+            android:id="@+id/rule_id2"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:maxLength="2"
+            android:text="编号"
+            android:textColor="#03A9F4"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/rule_nickname"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/rule_nickname" />
+
+        <TextView
+            android:id="@+id/rule_value2"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="扣分"
+            android:textColor="#03A9F4"
+            app:layout_constraintBottom_toBottomOf="@+id/rule_first_threshold_key"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.307"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/rule_first_threshold_key" />
+
+        <TextView
+            android:id="@+id/rule_first_threshold_key2"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:text="第一阈值"
+            android:textColor="#03A9F4"
+            app:layout_constraintBottom_toBottomOf="@+id/rule_first_threshold_value"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.398"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/rule_first_threshold_value" />
+
+        <TextView
+            android:id="@+id/rule_first_threshold_value2"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:text="第一阈值量"
+            android:textColor="#2196F3"
+            app:layout_constraintBottom_toBottomOf="@+id/rule_second_threshold_key"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/rule_second_threshold_key" />
+
+        <TextView
+            android:id="@+id/rule_second_threshold_key2"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:text="第二阈值"
+            android:textColor="#2196F3"
+            app:layout_constraintBottom_toBottomOf="@+id/rule_second_threshold_value"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.63"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/rule_second_threshold_value" />
+
+        <TextView
+            android:id="@+id/rule_second_threshold_value2"
+            android:layout_width="76dp"
+            android:layout_height="30dp"
+            android:text="第二阈值量"
+            android:textColor="#2196F3"
+            app:layout_constraintBottom_toBottomOf="@+id/is_auto"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.727"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/is_auto" />
+
+        <TextView
+            android:id="@+id/is_auto2"
+            android:layout_width="54dp"
+            android:layout_height="49dp"
+            android:text="是否自动评判"
+            android:textColor="#03A9F4"
+            app:layout_constraintBottom_toBottomOf="@+id/is_select"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.822"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/is_select" />
+
+        <TextView
+            android:id="@+id/is_select2"
+            android:layout_width="32dp"
+            android:layout_height="64dp"
+            android:text="是否选中"
+            android:textColor="#03A9F4"
+            app:layout_constraintBottom_toBottomOf="@+id/rule_edit_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.875"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/rule_edit_button" />
+
+        <TextView
+            android:id="@+id/rule_nickname2"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="别名"
+            android:textColor="#03A9F4"
+            app:layout_constraintBottom_toBottomOf="@+id/rule_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.073"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/rule_content" />
+
+        <TextView
+            android:id="@+id/rule_content2"
+            android:layout_width="102dp"
+            android:layout_height="wrap_content"
+            android:text="内容"
+            android:textColor="#03A9F4"
+            app:layout_constraintBottom_toBottomOf="@+id/rule_value"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.177"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/rule_value" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rule_list"
@@ -22,16 +142,9 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.112" />
+            app:layout_constraintVertical_bias="0.264">
 
-        <TextView
-            android:id="@+id/textView5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginBottom="5dp"
-            android:text="表头"
-            app:layout_constraintBottom_toTopOf="@+id/rule_list"
-            app:layout_constraintStart_toStartOf="parent" />
+        </androidx.recyclerview.widget.RecyclerView>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

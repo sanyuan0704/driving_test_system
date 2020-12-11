@@ -17,6 +17,14 @@ import java.util.List;
  * @param <T>
  */
 public abstract class UnifyAdapter<T> extends RecyclerView.Adapter<UnifyAdapter.ViewHolder> {
+    public List<T> getList() {
+        return list;
+    }
+
+    public void setList(List<T> list) {
+        this.list = list;
+    }
+
     private List<T> list;
     private int layoutId;
     private int variableId;

@@ -1,5 +1,6 @@
 package com.whut.driving_test_system.models.eneities;
 
+import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
@@ -7,6 +8,7 @@ import androidx.room.PrimaryKey;
 public class Examinee {
 
     @PrimaryKey
+    @NonNull
     public String examNumber;
     public String idNumber;
     public String name;
