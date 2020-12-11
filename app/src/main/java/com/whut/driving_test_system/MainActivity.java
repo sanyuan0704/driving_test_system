@@ -5,21 +5,18 @@ import androidx.navigation.Navigation;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
-import com.whut.driving_test_system.ui.fragments.SettingsFragment;
-import com.whut.driving_test_system.ui.viewmodels.MainViewModel;
+import com.whut.driving_test_system.ui.viewmodels.LoginViewModel;
 
 public class MainActivity extends AppCompatActivity {
-    public MainViewModel mainViewModel;
     private ImageButton settingButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mainViewModel = new MainViewModel();
         settingButton = findViewById(R.id.setting_button);
 
         settingButton.setOnClickListener(new View.OnClickListener() {
