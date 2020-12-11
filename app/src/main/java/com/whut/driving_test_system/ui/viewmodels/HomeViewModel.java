@@ -12,14 +12,20 @@ import androidx.navigation.Navigation;
 
 public class HomeViewModel extends ViewModel {
     public MutableLiveData<Examinee> choisedExaminee;
+    public MutableLiveData<Boolean> isCn;
 
     public HomeViewModel() {
         this.choisedExaminee = new MutableLiveData<>();
+        this.isCn = new MutableLiveData<>(true);
     }
 
 
     public void onStartExam(View v) {
         NavController controller = Navigation.findNavController(v);
-        controller.navigate(R.id.action_homeFragment_to_verifyFragment);
+        controller.navigate(R.id.action_homeFragment_to_examFragment);
+    }
+
+    public void onChangeLanguage(View v) {
+        isCn.setValue(!isCn.getValue());
     }
 }

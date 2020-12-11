@@ -4,6 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <variable
+            name="homeViewModel"
+            type="com.whut.driving_test_system.ui.viewmodels.HomeViewModel" />
     </data>
 
     <androidx.drawerlayout.widget.DrawerLayout
@@ -31,6 +34,32 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
+
+                <Switch
+                    android:id="@+id/sw_cn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="@{homeViewModel.isCn}"
+                    android:onClick="@{homeViewModel::onChangeLanguage}"
+                    android:text="普通话"
+                    app:layout_constraintBottom_toTopOf="@+id/guideline17"
+                    app:layout_constraintEnd_toStartOf="@+id/sw_en"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/guideline16" />
+
+                <Switch
+                    android:id="@+id/sw_en"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="@{!homeViewModel.isCn}"
+                    android:onClick="@{homeViewModel::onChangeLanguage}"
+                    android:text="English"
+                    app:layout_constraintBottom_toTopOf="@+id/guideline17"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/sw_cn"
+                    app:layout_constraintTop_toTopOf="@+id/guideline16" />
 
                 <TextView
                     android:id="@+id/textView17"
@@ -87,7 +116,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:text="TextView"
+                    android:text="@{homeViewModel.choisedExaminee.examNumber}"
                     app:layout_constraintBottom_toBottomOf="@+id/textView17"
                     app:layout_constraintStart_toEndOf="@+id/textView17"
                     app:layout_constraintTop_toTopOf="@+id/textView17" />
@@ -97,7 +126,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:text="TextView"
+                    android:text="@{homeViewModel.choisedExaminee.idNumber}"
                     app:layout_constraintBottom_toBottomOf="@+id/textView18"
                     app:layout_constraintStart_toEndOf="@+id/textView18"
                     app:layout_constraintTop_toTopOf="@+id/textView18" />
@@ -107,7 +136,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:text="TextView"
+                    android:text="@{homeViewModel.choisedExaminee.school}"
                     app:layout_constraintBottom_toBottomOf="@+id/textView19"
                     app:layout_constraintStart_toEndOf="@+id/textView19"
                     app:layout_constraintTop_toTopOf="@+id/textView19" />
@@ -117,7 +146,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:text="TextView"
+                    android:text="@{homeViewModel.choisedExaminee.examType}"
                     app:layout_constraintBottom_toBottomOf="@+id/textView20"
                     app:layout_constraintStart_toEndOf="@+id/textView20"
                     app:layout_constraintTop_toTopOf="@+id/textView20" />
@@ -127,10 +156,20 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:text="TextView"
+                    android:text="@{String.valueOf(homeViewModel.choisedExaminee.grade)}"
                     app:layout_constraintBottom_toBottomOf="@+id/textView21"
                     app:layout_constraintStart_toEndOf="@+id/textView21"
                     app:layout_constraintTop_toTopOf="@+id/textView21" />
+
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="语言"
+                    app:layout_constraintBottom_toTopOf="@+id/guideline16"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/guideline11" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="0dp"
@@ -161,7 +200,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
-                        android:text="姓名"
+                        android:text="@{homeViewModel.choisedExaminee.name}"
                         android:textColor="@android:color/background_light"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/img_header"
@@ -210,16 +249,32 @@
                     android:orientation="horizontal"
                     app:layout_constraintGuide_percent="0.8" />
 
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline16"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.84" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline17"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.9" />
+
                 <com.google.android.material.floatingactionbutton.FloatingActionButton
                     android:id="@+id/fbtn_start"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="24dp"
                     android:clickable="true"
+                    android:onClick="@{homeViewModel::onStartExam}"
                     android:src="@drawable/ic_arrow_forward_black_24dp"
                     app:layout_constraintBottom_toTopOf="@+id/guideline5"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/guideline5" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
         </com.google.android.material.navigation.NavigationView>
 
