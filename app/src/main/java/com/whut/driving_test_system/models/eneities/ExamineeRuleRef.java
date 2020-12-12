@@ -2,8 +2,8 @@ package com.whut.driving_test_system.models.eneities;
 
 import androidx.room.Entity;
 
-@Entity(primaryKeys = {"ruleId", "userId"})
-public class UserRuleRef {
+@Entity(primaryKeys = {"examNumber", "ruleId"})
+public class ExamineeRuleRef {
+    public String examNumber;
     public String ruleId;
-    public String userId;
 }

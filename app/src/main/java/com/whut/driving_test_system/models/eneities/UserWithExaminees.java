@@ -9,8 +9,8 @@ import androidx.room.Relation;
 public class UserWithExaminees {
     @Embedded public User user;
     @Relation(
-            parentColumn = "ID",
-            entityColumn = "examinerID"
+            parentColumn = "userId",
+            entityColumn = "examNumber"
     )
     public List<Examinee> examinees;
 }
