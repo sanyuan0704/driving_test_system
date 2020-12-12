@@ -57,4 +57,28 @@ public class RuleRepository {
             }
         }.execute();
     }
+
+    @SuppressLint("StaticFieldLeak")
+    public void updateRules(Rule... rules) {
+        new AsyncTask<Rule, Void, Void>() {
+
+            @Override
+            protected Void doInBackground(Rule... rules) {
+                database.getRuleDao().updateRules(rules);
+                return null;
+            }
+        }.execute(rules);
+    }
+
+    @SuppressLint("StaticFieldLeak")
+    public void deleteRules(Rule... rules) {
+        new AsyncTask<Rule,Void,Void>(){
+
+            @Override
+            protected Void doInBackground(Rule... rules) {
+                database.getRuleDao().deleteRules(rules);
+                return null;
+            }
+        }.execute(rules);
+    }
 }
