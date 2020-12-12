@@ -2,15 +2,24 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-
-    <data>
-    </data>
-
+    <data></data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/frameLayout3"
         android:layout_width="match_parent"
         android:layout_height="584dp"
         tools:context=".ui.fragments.RuleSettingFragment">
+
+        <TextView
+            android:id="@+id/is_select2"
+            android:layout_width="32dp"
+            android:layout_height="64dp"
+            android:text="是否选中"
+            android:textColor="#03A9F4"
+            app:layout_constraintBottom_toBottomOf="@+id/rule_edit_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.904"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/rule_edit_button" />
 
         <TextView
             android:id="@+id/rule_id2"
@@ -22,7 +31,7 @@
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="@+id/rule_nickname"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="0.017"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/rule_nickname" />
 
@@ -34,7 +43,7 @@
             android:textColor="#03A9F4"
             app:layout_constraintBottom_toBottomOf="@+id/rule_first_threshold_key"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.307"
+            app:layout_constraintHorizontal_bias="0.295"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/rule_first_threshold_key" />
 
@@ -46,7 +55,7 @@
             android:textColor="#03A9F4"
             app:layout_constraintBottom_toBottomOf="@+id/rule_first_threshold_value"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.398"
+            app:layout_constraintHorizontal_bias="0.409"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/rule_first_threshold_value" />
 
@@ -58,6 +67,7 @@
             android:textColor="#2196F3"
             app:layout_constraintBottom_toBottomOf="@+id/rule_second_threshold_key"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.531"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/rule_second_threshold_key" />
 
@@ -69,7 +79,7 @@
             android:textColor="#2196F3"
             app:layout_constraintBottom_toBottomOf="@+id/rule_second_threshold_value"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.63"
+            app:layout_constraintHorizontal_bias="0.64"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/rule_second_threshold_value" />
 
@@ -81,7 +91,7 @@
             android:textColor="#2196F3"
             app:layout_constraintBottom_toBottomOf="@+id/is_auto"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.727"
+            app:layout_constraintHorizontal_bias="0.748"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/is_auto" />
 
@@ -93,21 +103,9 @@
             android:textColor="#03A9F4"
             app:layout_constraintBottom_toBottomOf="@+id/is_select"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.822"
+            app:layout_constraintHorizontal_bias="0.845"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/is_select" />
-
-        <TextView
-            android:id="@+id/is_select2"
-            android:layout_width="32dp"
-            android:layout_height="64dp"
-            android:text="是否选中"
-            android:textColor="#03A9F4"
-            app:layout_constraintBottom_toBottomOf="@+id/rule_edit_button"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.875"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/rule_edit_button" />
 
         <TextView
             android:id="@+id/rule_nickname2"
@@ -117,7 +115,7 @@
             android:textColor="#03A9F4"
             app:layout_constraintBottom_toBottomOf="@+id/rule_content"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.073"
+            app:layout_constraintHorizontal_bias="0.075"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/rule_content" />
 
@@ -129,7 +127,7 @@
             android:textColor="#03A9F4"
             app:layout_constraintBottom_toBottomOf="@+id/rule_value"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.177"
+            app:layout_constraintHorizontal_bias="0.184"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/rule_value" />
 
@@ -139,10 +137,10 @@
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.264">
+            app:layout_constraintVertical_bias="0.18">
 
         </androidx.recyclerview.widget.RecyclerView>
 

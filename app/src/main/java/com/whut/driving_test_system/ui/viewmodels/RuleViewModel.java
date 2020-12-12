@@ -34,4 +34,8 @@ public class RuleViewModel extends AndroidViewModel {
 
         ruleRepository.insertRule();
     }
+
+    public void updateRule(Rule... rules) {
+        ruleRepository.updateRule(rules);
+    }
 }

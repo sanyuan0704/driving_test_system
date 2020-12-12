@@ -31,6 +31,10 @@ public class RuleRepository {
         new InsertAsyncTask(ruleDao).execute(rules);
     }
 
+    public void updateRule(Rule... rules) {
+        new UpdateAsyncTask(ruleDao).execute(rules);
+    }
+
     static class InsertAsyncTask extends AsyncTask<Rule, Void, Void> {
         private RuleDao ruleDao;
 
@@ -41,6 +45,20 @@ public class RuleRepository {
         @Override
         protected Void doInBackground(Rule... rules) {
             ruleDao.insertRules(rules);
+            return null;
+        }
+    }
+
+    static class UpdateAsyncTask extends AsyncTask<Rule, Void, Void> {
+        private RuleDao ruleDao;
+
+        public UpdateAsyncTask(RuleDao ruleDao) {
+            this.ruleDao = ruleDao;
+        }
+
+        @Override
+        protected Void doInBackground(Rule... rules) {
+            ruleDao.updateRules(rules);
             return null;
         }
     }

@@ -11,7 +11,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="wrap_content"
         android:minHeight="50dp"
         android:orientation="vertical"
         android:paddingLeft="10dp"
@@ -28,124 +28,162 @@
             android:id="@+id/rule_id"
             android:layout_width="30dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="8dp"
             android:maxLength="2"
             android:text="@{rule.ruleId}"
             android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="@+id/rule_nickname"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/rule_nickname"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/rule_nickname" />
-
-        <TextView
-            android:id="@+id/rule_value"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:text="@{rule.value}"
-            app:layout_constraintBottom_toBottomOf="@+id/rule_first_threshold_key"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.302"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/rule_first_threshold_key" />
-
-        <TextView
-            android:id="@+id/rule_first_threshold_key"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:text="@{rule.firstThresholdKey}"
-            app:layout_constraintBottom_toBottomOf="@+id/rule_first_threshold_value"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.4"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/rule_first_threshold_value" />
-
-        <TextView
-            android:id="@+id/rule_first_threshold_value"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:text="@{rule.firstThresholdValue}"
-            app:layout_constraintBottom_toBottomOf="@+id/rule_second_threshold_key"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/rule_second_threshold_key" />
-
-        <TextView
-            android:id="@+id/rule_second_threshold_key"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:text="@{rule.secondThresholdKey ?? @string/none }"
-            app:layout_constraintBottom_toBottomOf="@+id/rule_second_threshold_value"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.63"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/rule_second_threshold_value" />
-
-        <TextView
-            android:id="@+id/rule_second_threshold_value"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:text="@{rule.secondThresholdValue ?? @string/none}"
-            app:layout_constraintBottom_toBottomOf="@+id/is_auto"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.746"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/is_auto" />
-
-        <TextView
-            android:id="@+id/is_auto"
-            android:layout_width="24dp"
-            android:layout_height="wrap_content"
-            android:text="@{rule.isAuto ? @string/yes : @string/no}"
-            app:layout_constraintBottom_toBottomOf="@+id/is_select"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.822"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/is_select" />
-
-        <TextView
-            android:id="@+id/is_select"
-            android:layout_width="20dp"
-            android:layout_height="wrap_content"
-            android:text="@{rule.isSelected ? @string/yes : @string/no}"
-            app:layout_constraintBottom_toBottomOf="@+id/rule_edit_button"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.875"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/rule_edit_button" />
-
-        <TextView
-            android:id="@+id/rule_nickname"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:text="@{rule.nickname}"
-            app:layout_constraintBottom_toBottomOf="@+id/rule_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.044"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/rule_content" />
 
         <Button
             android:id="@+id/rule_edit_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/edit_rule"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/is_select"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.981"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.044" />
+            app:layout_constraintTop_toTopOf="@+id/is_select"
+            app:layout_constraintVertical_bias="0.0" />
 
-        <TextView
-            android:id="@+id/rule_content"
-            android:layout_width="102dp"
+        <EditText
+            android:id="@+id/rule_nickname"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="6dp"
+            android:ems="10"
+            android:inputType="textLongMessage|textPersonName"
+            android:selectAllOnFocus="false"
+            android:singleLine="false"
+            android:text="@{rule.nickname}"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/rule_content"
+            app:layout_constraintEnd_toStartOf="@+id/rule_content"
+            app:layout_constraintStart_toEndOf="@+id/rule_id"
+            app:layout_constraintTop_toTopOf="@+id/rule_content" />
+
+        <EditText
+            android:id="@+id/rule_content"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="25dp"
+            android:editable="true"
+            android:ellipsize="start"
+            android:ems="10"
+            android:inputType="textLongMessage|textMultiLine|textPersonName|textImeMultiLine"
             android:text="@{rule.content}"
+            android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="@+id/rule_value"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.168"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/rule_value"
+            app:layout_constraintStart_toEndOf="@+id/rule_nickname"
             app:layout_constraintTop_toTopOf="@+id/rule_value" />
+
+        <EditText
+            android:id="@+id/rule_value"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="@{rule.value}"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/rule_first_threshold_key"
+            app:layout_constraintEnd_toStartOf="@+id/rule_first_threshold_key"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/rule_content"
+            app:layout_constraintTop_toTopOf="@+id/rule_first_threshold_key" />
+
+        <EditText
+            android:id="@+id/rule_first_threshold_key"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="51dp"
+            android:layout_marginEnd="18dp"
+            android:ems="10"
+            android:inputType="textMultiLine|textPersonName|textImeMultiLine"
+            android:text="@{rule.firstThresholdKey}"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/rule_first_threshold_value"
+            app:layout_constraintEnd_toStartOf="@+id/rule_first_threshold_value"
+            app:layout_constraintStart_toEndOf="@+id/rule_value"
+            app:layout_constraintTop_toTopOf="@+id/rule_first_threshold_value"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <EditText
+            android:id="@+id/rule_first_threshold_value"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="19dp"
+            android:ems="10"
+            android:inputType="textMultiLine|textPersonName|textImeMultiLine"
+            android:text="@{rule.firstThresholdValue}"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/rule_second_threshold_key"
+            app:layout_constraintEnd_toStartOf="@+id/rule_second_threshold_key"
+            app:layout_constraintStart_toEndOf="@+id/rule_first_threshold_key"
+            app:layout_constraintTop_toTopOf="@+id/rule_second_threshold_key" />
+
+        <EditText
+            android:id="@+id/rule_second_threshold_key"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="2dp"
+            android:ems="10"
+            android:inputType="textLongMessage|textMultiLine|textPersonName"
+            android:text="@{rule.secondThresholdKey}"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/rule_second_threshold_value"
+            app:layout_constraintEnd_toStartOf="@+id/rule_second_threshold_value"
+            app:layout_constraintStart_toEndOf="@+id/rule_first_threshold_value"
+            app:layout_constraintTop_toTopOf="@+id/rule_second_threshold_value" />
+
+        <EditText
+            android:id="@+id/rule_second_threshold_value"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="10dp"
+            android:ems="10"
+            android:inputType="textMultiLine|textPersonName"
+            android:text="@{rule.secondThresholdValue}"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/is_auto"
+            app:layout_constraintEnd_toStartOf="@+id/is_auto"
+            app:layout_constraintStart_toEndOf="@+id/rule_second_threshold_key"
+            app:layout_constraintTop_toTopOf="@+id/is_auto" />
+
+        <Switch
+            android:id="@+id/is_auto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="17dp"
+            android:checked="@{rule.isAuto}"
+            app:layout_constraintBottom_toBottomOf="@+id/is_select"
+            app:layout_constraintEnd_toStartOf="@+id/is_select"
+            app:layout_constraintStart_toEndOf="@+id/rule_second_threshold_value"
+            app:layout_constraintTop_toTopOf="@+id/is_select" />
+
+        <Switch
+            android:id="@+id/is_select"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="125dp"
+            android:checked="@{rule.isSelected}"
+            app:layout_constraintBottom_toBottomOf="@+id/rule_edit_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/is_auto"
+            app:layout_constraintTop_toTopOf="@+id/rule_edit_button" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
