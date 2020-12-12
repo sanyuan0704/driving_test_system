@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.whut.driving_test_system.R;
 import com.whut.driving_test_system.databinding.FragmentHomeBinding;
 import com.whut.driving_test_system.models.eneities.Examinee;
+import com.whut.driving_test_system.ui.viewmodels.HomeViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,8 +20,7 @@ import androidx.core.view.GravityCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -30,6 +30,7 @@ import androidx.recyclerview.widget.RecyclerView;
  * 2，跳转到考生验证界面
  */
 public class HomeFragment extends Fragment {
+    private HomeViewModel homeViewModel;
     private FragmentHomeBinding binding;
 
     public HomeFragment() {
@@ -39,28 +40,26 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, final ViewGroup container,
                              Bundle savedInstanceState) {
+        // viewModel
+        homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
+
         // binding
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false);
-        binding.setLifecycleOwner(getActivity());
+        binding.setHomeViewModel(homeViewModel);
+        binding.setLifecycleOwner(this);
 
         // 考生列表
         RecyclerView rcv = binding.iclHomeContent.findViewById(R.id.rcv_examinees);
         rcv.setLayoutManager(new LinearLayoutManager(getContext()));
         List<Examinee> examinees = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
-            examinees.add(new Examinee("121321", "45345345", "xxx", "school", i, "C1", "wait", 90, null));
+            examinees.add(new Examinee("121321", "45345345", "xxx", "school", i, "C1", Examinee.ExamStatus.WAIT.ordinal(), 90, null));
         }
         ExamineeAdapter examineeAdapter = new ExamineeAdapter(examinees);
         rcv.setAdapter(examineeAdapter);
 
-        // 侧边栏导航按钮
-        binding.navView.findViewById(R.id.fbtn_start).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                NavController controller = Navigation.findNavController(v);
-                controller.navigate(R.id.action_homeFragment_to_verifyFragment);
-            }
-        });
+
+        // 侧边栏不允许拖出来
         binding.drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
 
         return binding.getRoot();
@@ -87,20 +86,14 @@ public class HomeFragment extends Fragment {
             holder.tv_school.setText(examinee.school);
             holder.tv_examnumber.setText(examinee.examNumber);
             holder.tv_idnumber.setText(examinee.idNumber);
-            holder.tv_status.setText(examinee.examStatus);
+            holder.tv_status.setText(examinee.examStatus + "");
             // TODO: set image
 
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     binding.drawerLayout.openDrawer(GravityCompat.END);
-                    ((TextView) binding.navView.findViewById(R.id.tv_name)).setText(examinee.name);
-                    ((TextView) binding.navView.findViewById(R.id.tv_school)).setText(examinee.school);
-                    ((TextView) binding.navView.findViewById(R.id.tv_examnumber)).setText(examinee.examNumber);
-                    ((TextView) binding.navView.findViewById(R.id.tv_idnumber)).setText(examinee.idNumber);
-                    ((TextView) binding.navView.findViewById(R.id.tv_examtype)).setText(examinee.examType);
-                    ((TextView) binding.navView.findViewById(R.id.tv_grade)).setText(String.valueOf(examinee.grade));
-
+                    homeViewModel.choisedExaminee.setValue(examinee);
                     // TODO: set image
                     // TODO: set fbtn
                 }

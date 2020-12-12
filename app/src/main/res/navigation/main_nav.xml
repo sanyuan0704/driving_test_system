@@ -34,8 +34,8 @@
             android:id="@+id/action_homeFragment_to_settingsFragment"
             app:destination="@id/settingsFragment" />
         <action
-            android:id="@+id/action_homeFragment_to_verifyFragment"
-            app:destination="@id/verifyFragment" />
+            android:id="@+id/action_homeFragment_to_examFragment"
+            app:destination="@id/examFragment" />
     </fragment>
     <fragment
         android:id="@+id/examFragment"
@@ -67,15 +67,6 @@
         android:label="fragment_sync"
         tools:layout="@layout/fragment_sync" />
     <fragment
-        android:id="@+id/verifyFragment"
-        android:name="com.whut.driving_test_system.ui.fragments.VerifyFragment"
-        android:label="fragment_inspect"
-        tools:layout="@layout/fragment_verify" >
-        <action
-            android:id="@+id/action_inspectFragment_to_examFragment"
-            app:destination="@id/examFragment" />
-    </fragment>
-    <fragment
         android:id="@+id/judgeFragment"
         android:name="com.whut.driving_test_system.ui.fragments.JudgeFragment"
         android:label="fragment_judge"
@@ -84,11 +75,6 @@
             android:id="@+id/action_judgeFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
     </fragment>
-    <activity
-        android:id="@+id/mainActivity"
-        android:name="com.whut.driving_test_system.MainActivity"
-        android:label="fragment_welcome"
-        tools:layout="@layout/fragment_welcome" />
     <fragment
         android:id="@+id/ruleSettingFragment"
         android:name="com.whut.driving_test_system.ui.fragments.RuleSettingFragment"

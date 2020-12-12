@@ -15,12 +15,14 @@ public class Examinee {
     public String school;
     public int examCount;
     public String examType;
-    public String examStatus;
+    public int examStatus;
     public int grade;
     // TODO: image
     public String examinerID;
 
-    public Examinee(String examNumber, String idNumber, String name, String school, int examCount, String examType, String examStatus, int grade, String examinerID) {
+    public static enum ExamStatus {WAIT, PASSED, FAILED}
+
+    public Examinee(@NonNull String examNumber, String idNumber, String name, String school, int examCount, String examType, int examStatus, int grade, String examinerID) {
         this.examNumber = examNumber;
         this.idNumber = idNumber;
         this.name = name;

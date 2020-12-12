@@ -6,13 +6,13 @@ import androidx.room.Embedded;
 import androidx.room.Junction;
 import androidx.room.Relation;
 
-public class RuleWithUsers {
+public class RuleWithExamniees {
     @Embedded
     public Rule rule;
     @Relation(
             parentColumn = "ruleId",
-            entityColumn = "userId",
-            associateBy = @Junction(UserRuleRef.class)
+            entityColumn = "examNumber",
+            associateBy = @Junction(ExamineeRuleRef.class)
     )
-    public List<User> users;
+    public List<Examinee> examinees;
 }
