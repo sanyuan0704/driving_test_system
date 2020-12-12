@@ -1,29 +1,29 @@
 package com.whut.driving_test_system.models.repository;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.AsyncTask;
 
 import androidx.lifecycle.LiveData;
-import androidx.room.Database;
 
-import com.whut.driving_test_system.models.TestDatabase;
+import com.whut.driving_test_system.models.Database;
 import com.whut.driving_test_system.models.dao.RuleDao;
 import com.whut.driving_test_system.models.eneities.Rule;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class RuleRepository {
     private LiveData<List<Rule>> allLiveRules;
-    private TestDatabase testDatabase;
+    private Database database;
     private RuleDao ruleDao;
+
     public LiveData<List<Rule>> getAllLiveRules() {
         return allLiveRules;
     }
 
     public RuleRepository(Context context) {
-        testDatabase = TestDatabase.getDatabase(context.getApplicationContext());
-        ruleDao = testDatabase.getRuleDao();
+        database = Database.getDatabase(context.getApplicationContext());
+        ruleDao = database.getRuleDao();
         allLiveRules = ruleDao.getAllRules();
     }
 
@@ -43,5 +43,18 @@ public class RuleRepository {
             ruleDao.insertRules(rules);
             return null;
         }
+    }
+
+
+    @SuppressLint("StaticFieldLeak")
+    public void deleteAllRules() {
+        new AsyncTask<Void, Void, Void>() {
+
+            @Override
+            protected Void doInBackground(Void... voids) {
+                database.getRuleDao().deleteAllRules();
+                return null;
+            }
+        }.execute();
     }
 }

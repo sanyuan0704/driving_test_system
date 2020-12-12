@@ -16,4 +16,12 @@ public class User {
 
 
     public static enum UserTypes {EXAMINER, ADMIN}
+
+    public User(@NonNull String userId, String name, String username, String password, int usertype) {
+        this.userId = userId;
+        this.name = name;
+        this.username = username;
+        this.password = password;
+        this.usertype = usertype;
+    }
 }

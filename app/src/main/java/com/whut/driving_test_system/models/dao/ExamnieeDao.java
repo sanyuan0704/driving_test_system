@@ -22,6 +22,9 @@ public interface ExamnieeDao {
     @Delete
     void deleteExaminees(Examinee... examinees);
 
+    @Query("DELETE FROM examinee")
+    void deleteAllExamniee();
+
     @Query("SELECT * FROM Examinee")
     LiveData<List<Examinee>> getAllExaminees();
 }

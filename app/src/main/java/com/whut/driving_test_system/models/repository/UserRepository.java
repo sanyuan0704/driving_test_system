@@ -56,6 +56,18 @@ public class UserRepository {
         }.execute(users);
     }
 
+    @SuppressLint("StaticFieldLeak")
+    public void deleteAllUsers(){
+        new AsyncTask<Void,Void,Void>(){
+
+            @Override
+            protected Void doInBackground(Void... voids) {
+                database.getUserDao().deleteAllUsers();
+                return null;
+            }
+        }.execute();
+    }
+
     public LiveData<List<User>> getAllUsers() {
         return database.getUserDao().getAllUsers();
     }

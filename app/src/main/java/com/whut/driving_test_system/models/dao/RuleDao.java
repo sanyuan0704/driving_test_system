@@ -22,6 +22,9 @@ public interface RuleDao {
     @Delete
     void deleteRules(Rule... rule);
 
+    @Query("DELETE FROM Rule")
+    void deleteAllRules();
+
     @Query("SELECT * FROM Rule ORDER BY ruleId")
     LiveData<List<Rule>> getAllRules();
 }

@@ -6,8 +6,6 @@ import android.os.AsyncTask;
 
 import com.whut.driving_test_system.models.Database;
 import com.whut.driving_test_system.models.eneities.Examinee;
-import com.whut.driving_test_system.models.eneities.User;
-import com.whut.driving_test_system.models.eneities.UserWithExaminees;
 
 import java.util.List;
 
@@ -54,6 +52,18 @@ public class ExamnieeRespository {
                 return null;
             }
         }.execute(examinees);
+    }
+
+    @SuppressLint("StaticFieldLeak")
+    public void deleteAllExamniee(){
+        new AsyncTask<Void,Void,Void>(){
+
+            @Override
+            protected Void doInBackground(Void... voids) {
+                database.getExamnieeDao().deleteAllExamniee();
+                return null;
+            }
+        }.execute();
     }
 
     public LiveData<List<Examinee>> getAllExaminees() {
