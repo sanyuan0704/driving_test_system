@@ -2,7 +2,6 @@ package com.whut.driving_test_system.ui.fragments;
 
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,9 +45,9 @@ public class LoginFragment extends Fragment {
                 user.username = binding.etUsername.getText().toString();
                 user.password = binding.etPassword.getText().toString();
                 if (binding.rgUsertype.getCheckedRadioButtonId() == R.id.rbtn_examiner) {
-                    user.usertype = User.UserTypes.Examiner.ordinal();
+                    user.usertype = User.UserTypes.EXAMINER.ordinal();
                 } else if (binding.rgUsertype.getCheckedRadioButtonId() == R.id.rbtn_admin) {
-                    user.usertype = User.UserTypes.Admin.ordinal();
+                    user.usertype = User.UserTypes.ADMIN.ordinal();
                 }
 
                 if (!loginViewModel.login(user)) {

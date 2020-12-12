@@ -18,7 +18,6 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.core.view.GravityCompat;
 import androidx.databinding.DataBindingUtil;
-import androidx.databinding.ViewDataBinding;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
@@ -54,7 +53,7 @@ public class HomeFragment extends Fragment {
         rcv.setLayoutManager(new LinearLayoutManager(getContext()));
         List<Examinee> examinees = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
-            examinees.add(new Examinee("121321", "45345345", "xxx", "school", i, "C1", "wait", 90, null));
+            examinees.add(new Examinee("121321", "45345345", "xxx", "school", i, "C1", Examinee.ExamStatus.WAIT.ordinal(), 90, null));
         }
         ExamineeAdapter examineeAdapter = new ExamineeAdapter(examinees);
         rcv.setAdapter(examineeAdapter);
@@ -87,7 +86,7 @@ public class HomeFragment extends Fragment {
             holder.tv_school.setText(examinee.school);
             holder.tv_examnumber.setText(examinee.examNumber);
             holder.tv_idnumber.setText(examinee.idNumber);
-            holder.tv_status.setText(examinee.examStatus);
+            holder.tv_status.setText(examinee.examStatus + "");
             // TODO: set image
 
             holder.itemView.setOnClickListener(new View.OnClickListener() {
