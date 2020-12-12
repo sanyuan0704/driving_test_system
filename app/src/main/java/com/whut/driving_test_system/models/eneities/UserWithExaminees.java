@@ -10,7 +10,7 @@ public class UserWithExaminees {
     @Embedded public User user;
     @Relation(
             parentColumn = "userId",
-            entityColumn = "examNumber"
+            entityColumn = "examinerID"
     )
     public List<Examinee> examinees;
 }
