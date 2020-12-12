@@ -28,6 +28,6 @@ public interface UserDao {
     LiveData<List<User>> getAllUsers();
 
     @Transaction
-    @Query("SELECT * FROM user WHERE userId = :id")
-    LiveData<UserWithExaminees> getUserWithExamineesById(String id);
+    @Query("SELECT * FROM user WHERE userId = :userId")
+    LiveData<UserWithExaminees> getUserWithExamineesById(String userId);
 }

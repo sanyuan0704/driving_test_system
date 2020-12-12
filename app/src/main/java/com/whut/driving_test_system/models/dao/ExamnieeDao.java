@@ -14,13 +14,13 @@ import androidx.room.Update;
 @Dao
 public interface ExamnieeDao {
     @Insert
-    void insertExaminees(Examinee... examinee);
+    void insertExaminees(Examinee... examinees);
 
     @Update
-    void updateExaminees(Examinee... examinee);
+    void updateExaminees(Examinee... examinees);
 
     @Delete
-    void deleteExaminees(Examinee... examinee);
+    void deleteExaminees(Examinee... examinees);
 
     @Query("SELECT * FROM Examinee")
     LiveData<List<Examinee>> getAllExaminees();

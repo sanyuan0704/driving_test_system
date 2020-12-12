@@ -15,5 +15,5 @@ public class User {
     public int usertype;
 
 
-    public static enum UserTypes {Examiner, Admin}
+    public static enum UserTypes {EXAMINER, ADMIN}
 }

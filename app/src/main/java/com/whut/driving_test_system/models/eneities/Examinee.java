@@ -20,6 +20,8 @@ public class Examinee {
     // TODO: image
     public String examinerID;
 
+    public static enum ExamStatus {WAIT, PASSED, FAILED}
+
     public Examinee(String examNumber, String idNumber, String name, String school, int examCount, String examType, String examStatus, int grade, String examinerID) {
         this.examNumber = examNumber;
         this.idNumber = idNumber;
