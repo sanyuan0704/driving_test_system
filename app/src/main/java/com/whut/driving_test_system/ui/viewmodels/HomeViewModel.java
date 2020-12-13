@@ -18,7 +18,7 @@ public class HomeViewModel extends ViewModel {
     public MutableLiveData<Boolean> isCn;
 
     public HomeViewModel() {
-        this.choisedExaminee = new MutableLiveData<>();
+        this.choisedExaminee = new MutableLiveData<>(new Examinee());
         this.isCn = new MutableLiveData<>(true);
     }
 

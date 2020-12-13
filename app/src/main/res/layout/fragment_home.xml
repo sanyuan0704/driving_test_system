@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <import type="android.view.View"/>
         <variable
             name="homeViewModel"
             type="com.whut.driving_test_system.ui.viewmodels.HomeViewModel" />
@@ -41,6 +42,7 @@
                     android:layout_height="wrap_content"
                     android:checked="@{homeViewModel.isCn}"
                     android:onClick="@{homeViewModel::onChangeLanguage}"
+                    android:visibility="@{homeViewModel.choisedExaminee.examStatus == 0? View.VISIBLE:View.GONE}"
                     android:text="普通话"
                     app:layout_constraintBottom_toTopOf="@+id/guideline17"
                     app:layout_constraintEnd_toStartOf="@+id/sw_en"
@@ -54,6 +56,7 @@
                     android:layout_height="wrap_content"
                     android:checked="@{!homeViewModel.isCn}"
                     android:onClick="@{homeViewModel::onChangeLanguage}"
+                    android:visibility="@{homeViewModel.choisedExaminee.examStatus == 0? View.VISIBLE:View.GONE}"
                     android:text="English"
                     app:layout_constraintBottom_toTopOf="@+id/guideline17"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -167,6 +170,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:text="语言"
+                    android:visibility="@{homeViewModel.choisedExaminee.examStatus == 0? View.VISIBLE:View.GONE}"
                     app:layout_constraintBottom_toTopOf="@+id/guideline16"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/guideline11" />
@@ -269,6 +273,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="24dp"
                     android:clickable="true"
+                    android:visibility="@{homeViewModel.choisedExaminee.examStatus == 0? View.VISIBLE:View.GONE}"
                     android:onClick="@{homeViewModel::onStartExam}"
                     android:src="@drawable/ic_arrow_forward_black_24dp"
                     app:layout_constraintBottom_toTopOf="@+id/guideline5"

@@ -2,6 +2,7 @@ package com.whut.driving_test_system.models.eneities;
 
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 @Entity
@@ -21,6 +22,9 @@ public class Examinee {
     public String examinerID;
 
     public static enum ExamStatus {WAIT, PASSED, FAILED}
+
+    @Ignore
+    public Examinee() {}
 
     public Examinee(@NonNull String examNumber, String idNumber, String name, String school, int examCount, String examType, int examStatus, int grade, String examinerID) {
         this.examNumber = examNumber;
