@@ -1,6 +1,7 @@
 package com.whut.driving_test_system.ui.fragments;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import com.whut.driving_test_system.R;
 import com.whut.driving_test_system.databinding.FragmentHomeBinding;
 import com.whut.driving_test_system.models.eneities.Examinee;
+import com.whut.driving_test_system.models.eneities.UserWithExaminees;
 import com.whut.driving_test_system.models.repository.UserRepository;
 import com.whut.driving_test_system.ui.viewmodels.HomeViewModel;
 
@@ -21,6 +23,7 @@ import androidx.core.view.GravityCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -50,17 +53,20 @@ public class HomeFragment extends Fragment {
         binding.setLifecycleOwner(this);
 
         // 考生列表
-        UserRepository userRepository = new UserRepository(getContext());
-
         RecyclerView rcv = binding.iclHomeContent.findViewById(R.id.rcv_examinees);
         rcv.setLayoutManager(new LinearLayoutManager(getContext()));
-        List<Examinee> examinees = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            examinees.add(new Examinee("121321", "45345345", "xxx", "school", i, "C1", Examinee.ExamStatus.WAIT.ordinal(), 90, null));
-        }
-        ExamineeAdapter examineeAdapter = new ExamineeAdapter(examinees);
+        final ExamineeAdapter examineeAdapter = new ExamineeAdapter(new ArrayList<Examinee>());
         rcv.setAdapter(examineeAdapter);
 
+        UserRepository userRepository = new UserRepository(getContext());
+        String userId = getArguments().getString("userId", null);
+        homeViewModel.userWithExaminees = userRepository.getUserWithExamineesById(userId);
+        homeViewModel.userWithExaminees.observe(getViewLifecycleOwner(), new Observer<UserWithExaminees>() {
+            @Override
+            public void onChanged(UserWithExaminees userWithExaminees) {
+                examineeAdapter.setExaminees(userWithExaminees.examinees);
+            }
+        });
 
         // 侧边栏不允许拖出来
         binding.drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
@@ -73,6 +79,11 @@ public class HomeFragment extends Fragment {
 
         public ExamineeAdapter(List<Examinee> examinees) {
             this.examinees = examinees;
+        }
+
+        public void setExaminees(List<Examinee> examinees) {
+            this.examinees = examinees;
+            this.notifyDataSetChanged();
         }
 
         @NonNull
@@ -89,8 +100,16 @@ public class HomeFragment extends Fragment {
             holder.tv_school.setText(examinee.school);
             holder.tv_examnumber.setText(examinee.examNumber);
             holder.tv_idnumber.setText(examinee.idNumber);
-            holder.tv_status.setText(examinee.examStatus + "");
-            // TODO: set image
+            if (examinee.examStatus == Examinee.ExamStatus.WAIT.ordinal()) {
+                holder.tv_status.setText("等待中");
+                holder.img_status.setImageResource(R.drawable.ic_watch_later_black_24dp);
+            } else if (examinee.examStatus == Examinee.ExamStatus.PASSED.ordinal()) {
+                holder.tv_status.setText("已通过");
+                holder.img_status.setImageResource(R.drawable.ic_check_circle_black_24dp);
+            } else if (examinee.examStatus == Examinee.ExamStatus.FAILED.ordinal()) {
+                holder.tv_status.setText("未通过");
+                holder.img_status.setImageResource(R.drawable.ic_cancel_black_24dp);
+            }
 
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

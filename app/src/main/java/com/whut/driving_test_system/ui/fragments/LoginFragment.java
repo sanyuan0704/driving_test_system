@@ -58,8 +58,9 @@ public class LoginFragment extends Fragment {
                             return;
                         }
                         Toast.makeText(getContext(), "登录成功", Toast.LENGTH_SHORT).show();
-                        NavController controller = Navigation.findNavController(v);
-                        controller.navigate(R.id.action_loginFragment_to_homeFragment);
+                        Bundle bundle = new Bundle();
+                        bundle.putString("userId", user.userId);
+                        Navigation.findNavController(v).navigate(R.id.action_loginFragment_to_homeFragment, bundle);
                     }
                 });
             }
