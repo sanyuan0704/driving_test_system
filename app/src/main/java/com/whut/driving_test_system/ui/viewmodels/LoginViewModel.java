@@ -1,5 +1,6 @@
 package com.whut.driving_test_system.ui.viewmodels;
 
+import android.util.Log;
 import android.view.View;
 
 import com.whut.driving_test_system.models.eneities.User;

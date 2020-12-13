@@ -57,6 +57,7 @@ public class LoginFragment extends Fragment {
                             Toast.makeText(getContext(), "用户名或密码错误", Toast.LENGTH_SHORT).show();
                             return;
                         }
+
                         Toast.makeText(getContext(), "登录成功", Toast.LENGTH_SHORT).show();
                         Bundle bundle = new Bundle();
                         bundle.putString("userId", user.userId);
