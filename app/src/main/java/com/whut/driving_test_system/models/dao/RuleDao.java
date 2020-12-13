@@ -14,13 +14,13 @@ import java.util.List;
 @Dao
 public interface RuleDao {
     @Insert
-    void insertRules(Rule... rule);
+    void insertRules(Rule... rules);
 
     @Update
-    void updateRules(Rule... rule);
+    void updateRules(Rule... rules);
 
     @Delete
-    void deleteRules(Rule... rule);
+    void deleteRules(Rule... rules);
 
     @Query("DELETE FROM Rule")
     void deleteAllRules();

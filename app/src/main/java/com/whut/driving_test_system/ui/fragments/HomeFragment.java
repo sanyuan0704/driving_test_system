@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.whut.driving_test_system.R;
 import com.whut.driving_test_system.databinding.FragmentHomeBinding;
 import com.whut.driving_test_system.models.eneities.Examinee;
+import com.whut.driving_test_system.models.repository.UserRepository;
 import com.whut.driving_test_system.ui.viewmodels.HomeViewModel;
 
 import java.util.ArrayList;
@@ -49,6 +50,8 @@ public class HomeFragment extends Fragment {
         binding.setLifecycleOwner(this);
 
         // 考生列表
+        UserRepository userRepository = new UserRepository(getContext());
+
         RecyclerView rcv = binding.iclHomeContent.findViewById(R.id.rcv_examinees);
         rcv.setLayoutManager(new LinearLayoutManager(getContext()));
         List<Examinee> examinees = new ArrayList<>();

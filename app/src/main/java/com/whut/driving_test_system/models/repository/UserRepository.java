@@ -57,8 +57,8 @@ public class UserRepository {
     }
 
     @SuppressLint("StaticFieldLeak")
-    public void deleteAllUsers(){
-        new AsyncTask<Void,Void,Void>(){
+    public void deleteAllUsers() {
+        new AsyncTask<Void, Void, Void>() {
 
             @Override
             protected Void doInBackground(Void... voids) {
@@ -72,7 +72,11 @@ public class UserRepository {
         return database.getUserDao().getAllUsers();
     }
 
-    public LiveData<UserWithExaminees> getUserWithExamineesById(String userId){
+    public LiveData<UserWithExaminees> getUserWithExamineesById(String userId) {
         return database.getUserDao().getUserWithExamineesById(userId);
+    }
+
+    public LiveData<User> getUserByUsernameAndPassword(String username, String password) {
+        return database.getUserDao().getUserByUsernameAndPassword(username, password);
     }
 }

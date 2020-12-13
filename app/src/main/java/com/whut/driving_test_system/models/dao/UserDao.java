@@ -33,4 +33,7 @@ public interface UserDao {
     @Transaction
     @Query("SELECT * FROM user WHERE userId = :userId")
     LiveData<UserWithExaminees> getUserWithExamineesById(String userId);
+
+    @Query("SELECT * FROM user WHERE username = :username AND password = :password")
+    LiveData<User> getUserByUsernameAndPassword(String username, String password);
 }
