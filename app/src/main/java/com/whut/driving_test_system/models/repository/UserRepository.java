@@ -68,6 +68,10 @@ public class UserRepository {
         }.execute();
     }
 
+    public LiveData<User> getUserById(String userId) {
+        return database.getUserDao().getUserById(userId);
+    }
+
     public LiveData<List<User>> getAllUsers() {
         return database.getUserDao().getAllUsers();
     }
