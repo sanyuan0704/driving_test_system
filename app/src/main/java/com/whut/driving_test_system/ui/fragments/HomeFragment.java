@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.whut.driving_test_system.R;
 import com.whut.driving_test_system.databinding.FragmentHomeBinding;
 import com.whut.driving_test_system.models.eneities.Examinee;
+import com.whut.driving_test_system.models.eneities.User;
 import com.whut.driving_test_system.models.eneities.UserWithExaminees;
 import com.whut.driving_test_system.models.repository.UserRepository;
 import com.whut.driving_test_system.ui.viewmodels.HomeViewModel;
@@ -36,6 +37,10 @@ import androidx.recyclerview.widget.RecyclerView;
 public class HomeFragment extends Fragment {
     private HomeViewModel homeViewModel;
     private FragmentHomeBinding binding;
+    private UserRepository userRepository;
+    private RecyclerView rcv;
+    private ExamineeAdapter examineeAdapter;
+    private String userId;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -44,6 +49,9 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, final ViewGroup container,
                              Bundle savedInstanceState) {
+        // 登录的UserID
+        userId = getArguments().getString("userId", null);
+
         // viewModel
         homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
 
@@ -53,25 +61,63 @@ public class HomeFragment extends Fragment {
         binding.setLifecycleOwner(this);
 
         // 考生列表
-        RecyclerView rcv = binding.iclHomeContent.findViewById(R.id.rcv_examinees);
+        rcv = binding.iclHomeContent.rcvExaminees;
         rcv.setLayoutManager(new LinearLayoutManager(getContext()));
-        final ExamineeAdapter examineeAdapter = new ExamineeAdapter(new ArrayList<Examinee>());
+        examineeAdapter = new ExamineeAdapter(new ArrayList<Examinee>());
         rcv.setAdapter(examineeAdapter);
 
-        UserRepository userRepository = new UserRepository(getContext());
-        String userId = getArguments().getString("userId", null);
+        userRepository = new UserRepository(getContext());
         homeViewModel.userWithExaminees = userRepository.getUserWithExamineesById(userId);
         homeViewModel.userWithExaminees.observe(getViewLifecycleOwner(), new Observer<UserWithExaminees>() {
             @Override
             public void onChanged(UserWithExaminees userWithExaminees) {
-                examineeAdapter.setExaminees(userWithExaminees.examinees);
+                updateDataset(-1);
             }
         });
+        binding.iclHomeContent.crdWait.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                updateDataset(Examinee.ExamStatus.WAIT.ordinal());
+            }
+        });
+        binding.iclHomeContent.crdFailed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                updateDataset(Examinee.ExamStatus.FAILED.ordinal());
+            }
+        });
+        binding.iclHomeContent.crdPassed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                updateDataset(Examinee.ExamStatus.PASSED.ordinal());
+            }
+        });
+        binding.iclHomeContent.crdAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                updateDataset(-1);
+            }
+        });
+
 
         // 侧边栏不允许拖出来
         binding.drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
 
         return binding.getRoot();
+    }
+
+    private void updateDataset(int examStatus) {
+        if (examStatus == -1) {
+            examineeAdapter.setExaminees(homeViewModel.userWithExaminees.getValue().examinees);
+        } else {
+            List<Examinee> newExaminees = new ArrayList<>();
+            for (Examinee examinee : homeViewModel.userWithExaminees.getValue().examinees) {
+                if (examinee.examStatus == examStatus) {
+                    newExaminees.add(examinee);
+                }
+            }
+            examineeAdapter.setExaminees(newExaminees);
+        }
     }
 
     class ExamineeAdapter extends RecyclerView.Adapter<ExamineeAdapter.ViewHolder> {
