@@ -9,7 +9,7 @@ import androidx.lifecycle.ViewModel;
 
 public class LoginViewModel extends ViewModel {
     public MutableLiveData<User> user;
-    private boolean isLogin;
+    public boolean isLogin;
 
     public LoginViewModel() {
         this.user = new MutableLiveData<>(new User("","","","",0));

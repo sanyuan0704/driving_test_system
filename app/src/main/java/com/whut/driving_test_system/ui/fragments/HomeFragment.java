@@ -1,7 +1,6 @@
 package com.whut.driving_test_system.ui.fragments;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +10,6 @@ import android.widget.TextView;
 import com.whut.driving_test_system.R;
 import com.whut.driving_test_system.databinding.FragmentHomeBinding;
 import com.whut.driving_test_system.models.eneities.Examinee;
-import com.whut.driving_test_system.models.eneities.User;
 import com.whut.driving_test_system.models.eneities.UserWithExaminees;
 import com.whut.driving_test_system.models.repository.UserRepository;
 import com.whut.driving_test_system.ui.viewmodels.HomeViewModel;
