@@ -1,14 +1,7 @@
 package com.whut.driving_test_system.ui.fragments;
 
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,12 +14,13 @@ import android.widget.Toast;
 
 import com.whut.driving_test_system.R;
 import com.whut.driving_test_system.models.eneities.User;
-import com.whut.driving_test_system.models.repository.UserRepository;
 import com.whut.driving_test_system.ui.viewmodels.ExamerViewModel;
-import com.whut.driving_test_system.ui.viewmodels.LoginViewModel;
 
-import java.util.ArrayList;
 import java.util.List;
+
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 /**
  * 实现功能：
@@ -170,6 +164,7 @@ public class ExaminerSettingFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (addUser.getText() == "增添") {
+                    sp.setVisibility(View.GONE);
                     deleteUser.setEnabled(false);
                     deleteUser.setTextColor(Color.GRAY);
                     changeUser.setEnabled(false);
@@ -190,6 +185,7 @@ public class ExaminerSettingFragment extends Fragment {
                     etId.setText("");
                     addUser.setText("确定");
                 } else {
+                    sp.setVisibility(View.VISIBLE);
                     deleteUser.setEnabled(true);
                     deleteUser.setTextColor(Color.WHITE);
                     changeUser.setEnabled(true);
