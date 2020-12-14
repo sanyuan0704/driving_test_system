@@ -146,12 +146,16 @@ public class ExaminerSettingFragment extends Fragment {
                 //开放输入权限，换背景色提醒
                 if (changeUser.getText() == "修改") {
                     deleteUser.setEnabled(false);
+                    deleteUser.setTextColor(Color.GRAY);
                     addUser.setEnabled(false);
+                    addUser.setTextColor(Color.GRAY);
                     edAble();
                     changeUser.setText("保存");
                 } else {
                     deleteUser.setEnabled(true);
+                    deleteUser.setTextColor(Color.WHITE);
                     addUser.setEnabled(true);
+                    addUser.setTextColor(Color.WHITE);
                     examerViewModel.changeAUsers(etName.getText().toString(), etPassName.getText().toString()
                             , etPassWord.getText().toString());
                     edinAble();
@@ -167,13 +171,29 @@ public class ExaminerSettingFragment extends Fragment {
             public void onClick(View view) {
                 if (addUser.getText() == "增添") {
                     deleteUser.setEnabled(false);
+                    deleteUser.setTextColor(Color.GRAY);
                     changeUser.setEnabled(false);
-                    edAble();
+                    changeUser.setTextColor(Color.GRAY);
+                    etName.setFocusableInTouchMode(true);
+                    etName.setFocusable(true);
+                    etName.setBackgroundColor(Color.WHITE);
+                    etName.setText("");
+                    etPassName.setFocusableInTouchMode(true);
+                    etPassName.setFocusable(true);
+                    etPassName.setBackgroundColor(Color.WHITE);
+                    etPassName.setText("");
+                    etPassWord.setFocusableInTouchMode(true);
+                    etPassWord.setFocusable(true);
+                    etPassWord.setBackgroundColor(Color.WHITE);
+                    etPassWord.setText("");
                     etId.setVisibility(View.VISIBLE);
+                    etId.setText("");
                     addUser.setText("确定");
                 } else {
                     deleteUser.setEnabled(true);
+                    deleteUser.setTextColor(Color.WHITE);
                     changeUser.setEnabled(true);
+                    changeUser.setTextColor(Color.WHITE);
                     Boolean flag = examerViewModel.addAUsers(etId.getText().toString(), etName.getText().toString(),
                             etPassName.getText().toString(), etPassWord.getText().toString());
                     if (flag) {

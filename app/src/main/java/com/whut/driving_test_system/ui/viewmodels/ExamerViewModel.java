@@ -20,6 +20,7 @@ public class ExamerViewModel extends ViewModel {
     public MutableLiveData<List<String>> my_list;//下拉列表
     public UserRepository my_UserRepository;
     public LifecycleOwner lifecycleOwner;
+    private List name_list;
     //public Context context;
 
     public ExamerViewModel() {
@@ -29,6 +30,7 @@ public class ExamerViewModel extends ViewModel {
 
     public void setContext(Context context) {
         //this.context=context;
+        name_list = new ArrayList();
         my_UserRepository = new UserRepository(context);
     }
 
@@ -41,9 +43,11 @@ public class ExamerViewModel extends ViewModel {
             @Override
             public void onChanged(List<User> users) {
                 List<String> a_list = new ArrayList<String>();
+                name_list.clear();
                 for (int i = 0; i < users.size(); i++) {
                     if (users.get(i).usertype == User.UserTypes.EXAMINER.ordinal()) {
                         a_list.add(users.get(i).userId);
+                        name_list.add(users.get(i).username);
                     }
                 }
                 my_list.setValue(a_list);
@@ -80,7 +84,8 @@ public class ExamerViewModel extends ViewModel {
 
     public Boolean addAUsers(String id, String name, String username, String password) {
         //不能重复ID
-        if (!my_list.getValue().contains(id) && !id.equals("")) {
+        if (!my_list.getValue().contains(id) && !id.equals("") && !name_list.contains(username)
+                && !name.equals("")&& !username.equals("")&& !password.equals("")) {
             my_user.getValue().userId = id;
             my_user.getValue().name = name;
             my_user.getValue().username = username;
@@ -89,6 +94,7 @@ public class ExamerViewModel extends ViewModel {
             getAllUsers();
             return true;
         } else {
+            getAllUsers();
             return false;
         }
     }
