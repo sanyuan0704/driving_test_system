@@ -124,14 +124,14 @@
                 android:layout_marginEnd="16dp"
                 android:text="等待考试"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toTopOf="@+id/textView15"
+                app:layout_constraintBottom_toTopOf="@+id/tv_waitn"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/textView15"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/tv_waitn"
+                android:layout_width="0dp"
+                android:layout_height="14dp"
                 android:layout_marginEnd="16dp"
                 android:text="@{String.valueOf(homeViewModel.waitNumber) + `人`}"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -181,12 +181,12 @@
                 android:layout_marginEnd="16dp"
                 android:text="考试未通过"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toTopOf="@+id/textView28"
+                app:layout_constraintBottom_toTopOf="@+id/tv_failedn"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/textView28"
+                android:id="@+id/tv_failedn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
@@ -238,12 +238,12 @@
                     android:layout_marginEnd="16dp"
                     android:text="考试通过"
                     android:textSize="18sp"
-                    app:layout_constraintBottom_toTopOf="@+id/textView30"
+                    app:layout_constraintBottom_toTopOf="@+id/tv_passedn"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/textView30"
+                    android:id="@+id/tv_passedn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
@@ -295,12 +295,12 @@
                     android:layout_marginEnd="16dp"
                     android:text="全部考生"
                     android:textSize="18sp"
-                    app:layout_constraintBottom_toTopOf="@+id/textView32"
+                    app:layout_constraintBottom_toTopOf="@+id/tv_alln"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/textView32"
+                    android:id="@+id/tv_alln"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"

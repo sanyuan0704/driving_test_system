@@ -25,10 +25,10 @@ public class HomeViewModel extends ViewModel {
         this.userWithExaminees = new MutableLiveData<>();
         this.choisedExaminee = new MutableLiveData<>(new Examinee());
         this.isCn = new MutableLiveData<>(true);
-        this.waitNumber = new MutableLiveData<>();
-        this.passedNumber = new MutableLiveData<>();
-        this.failedNumber = new MutableLiveData<>();
-        this.allNumber = new MutableLiveData<>();
+        this.waitNumber = new MutableLiveData<>(1);
+        this.passedNumber = new MutableLiveData<>(0);
+        this.failedNumber = new MutableLiveData<>(0);
+        this.allNumber = new MutableLiveData<>(0);
     }
 
     public void onStartExam(View v) {

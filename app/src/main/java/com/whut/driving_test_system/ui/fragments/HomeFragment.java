@@ -72,6 +72,31 @@ public class HomeFragment extends Fragment {
             @Override
             public void onChanged(UserWithExaminees userWithExaminees) {
                 updateDataset(-1);
+                int[] cnt = new int[4];
+                for (Examinee examinee : userWithExaminees.examinees) {
+                    if(examinee.examStatus == Examinee.ExamStatus.WAIT.ordinal()){
+                        cnt[1]++;
+                    }else if(examinee.examStatus == Examinee.ExamStatus.FAILED.ordinal()){
+                        cnt[2]++;
+                    }else if(examinee.examStatus == Examinee.ExamStatus.PASSED.ordinal()){
+                        cnt[3]++;
+                    }
+                    cnt[0]++;
+                }
+                binding.iclHomeContent.tvAlln.setText(String.valueOf(cnt[0]) + "人");
+                binding.iclHomeContent.tvWaitn.setText(String.valueOf(cnt[1]) + "人");
+                binding.iclHomeContent.tvFailedn.setText(String.valueOf(cnt[2]) + "人");
+                binding.iclHomeContent.tvPassedn.setText(String.valueOf(cnt[3]) + "人");
+                for (Examinee examinee : userWithExaminees.examinees) {
+                    if(examinee.examStatus == Examinee.ExamStatus.WAIT.ordinal()){
+                        homeViewModel.waitNumber.setValue(homeViewModel.waitNumber.getValue() + 1);
+                    }else if(examinee.examStatus == Examinee.ExamStatus.FAILED.ordinal()){
+                        homeViewModel.failedNumber.setValue(homeViewModel.failedNumber.getValue() + 1);
+                    }else if(examinee.examStatus == Examinee.ExamStatus.PASSED.ordinal()){
+                        homeViewModel.passedNumber.setValue(homeViewModel.passedNumber.getValue() + 1);
+                    }
+                    homeViewModel.allNumber.setValue(homeViewModel.allNumber.getValue() + 1);
+                }
             }
         });
         binding.iclHomeContent.crdWait.setOnClickListener(new View.OnClickListener() {
