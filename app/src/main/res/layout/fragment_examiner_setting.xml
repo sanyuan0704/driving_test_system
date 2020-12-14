@@ -91,15 +91,13 @@
         app:layout_constraintGuide_percent="0.45" />
 
     <ImageView
-        android:id="@+id/examer_bg"
+        android:id="@+id/imageView6"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:scaleType="fitXY"
-        android:src="@mipmap/bground_examer"
-        android:visibility="visible"
+        android:src="@drawable/bground_examer"
         app:layout_constraintBottom_toTopOf="@+id/guideline32"
         app:layout_constraintEnd_toStartOf="@+id/guideline26"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline25"
         app:layout_constraintTop_toTopOf="@+id/guideline27"
         app:layout_constraintVertical_bias="1.0" />
@@ -205,8 +203,8 @@
 
     <Button
         android:id="@+id/examer_insert"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="200dp"
+        android:layout_height="85dp"
         android:background="@color/colorPrimary"
         android:text="增添"
         android:textColor="@color/cardview_light_background"
@@ -218,8 +216,8 @@
 
     <Button
         android:id="@+id/examer_dellet"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="200dp"
+        android:layout_height="85dp"
         android:background="@color/colorPrimary"
         android:text="删除"
         android:textColor="@color/cardview_light_background"
@@ -231,8 +229,8 @@
 
     <Button
         android:id="@+id/examer_updata"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="200dp"
+        android:layout_height="85dp"
         android:background="@color/colorPrimary"
         android:text="修改"
         android:textColor="@color/cardview_light_background"
