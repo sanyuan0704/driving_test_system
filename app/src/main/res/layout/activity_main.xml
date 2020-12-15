@@ -42,25 +42,25 @@
                     android:background="@android:color/transparent"
                     android:foreground="?attr/selectableItemBackground"
                     android:src="@drawable/ic_home_gery_56dp"
-                    app:layout_constraintBottom_toTopOf="@+id/imageButton3"
+                    app:layout_constraintBottom_toTopOf="@+id/ibtn_exam"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageButton
-                    android:id="@+id/imageButton3"
+                    android:id="@+id/ibtn_exam"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@android:color/transparent"
                     android:foreground="?attr/selectableItemBackground"
-                    app:layout_constraintBottom_toTopOf="@+id/imageButton4"
+                    app:layout_constraintBottom_toTopOf="@+id/ibtn_sync"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/imageButton2"
                     app:srcCompat="@drawable/ic_assessment_gery_56dp" />
 
                 <ImageButton
-                    android:id="@+id/imageButton4"
+                    android:id="@+id/ibtn_sync"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@android:color/transparent"
@@ -68,7 +68,7 @@
                     app:layout_constraintBottom_toTopOf="@+id/guideline8"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageButton3"
+                    app:layout_constraintTop_toBottomOf="@+id/ibtn_exam"
                     app:srcCompat="@drawable/ic_save_gery_56dp" />
 
                 <ImageButton
