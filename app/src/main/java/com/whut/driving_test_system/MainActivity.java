@@ -53,7 +53,6 @@ public class MainActivity extends AppCompatActivity {
         MediaPlayer player = MediaPlayer.create(this,R.raw.test);
         player.setAudioStreamType(AudioManager.STREAM_MUSIC);
         player.start();
-
     }
 
 
