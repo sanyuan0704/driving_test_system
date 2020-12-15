@@ -1,312 +1,320 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/drawer_layout"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fitsSystemWindows="true">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <include
-        android:id="@+id/icl_exam_content"
-        layout="@layout/fragment_exam_content"
+    <data>
+        <variable
+            name="examViewModel"
+            type="com.whut.driving_test_system.ui.viewmodels.ExamViewModel" />
+    </data>
+
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/nav_view"
-        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_gravity="end">
-<!--        android:layout_gravity="start"-->
+        android:fitsSystemWindows="true">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <include
+            android:id="@+id/icl_exam_content"
+            layout="@layout/fragment_exam_content"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent" />
 
-            <EditText
-                android:id="@+id/editText2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:text="0"
-                app:layout_constraintBottom_toTopOf="@+id/guideline45"
-                app:layout_constraintStart_toEndOf="@+id/textView35"
-                app:layout_constraintTop_toBottomOf="@+id/guideline44" />
-
-            <EditText
-                android:id="@+id/editText3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:text="0"
-                app:layout_constraintBottom_toTopOf="@+id/guideline46"
-                app:layout_constraintStart_toEndOf="@+id/textView36"
-                app:layout_constraintTop_toBottomOf="@+id/guideline45" />
-
-            <EditText
-                android:id="@+id/editText6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:text="25"
-                app:layout_constraintBottom_toTopOf="@+id/guideline47"
-                app:layout_constraintStart_toEndOf="@+id/textView37"
-                app:layout_constraintTop_toBottomOf="@+id/guideline46" />
-
-            <EditText
-                android:id="@+id/editText7"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:text="0"
-                app:layout_constraintBottom_toTopOf="@+id/guideline48"
-                app:layout_constraintStart_toEndOf="@+id/textView38"
-                app:layout_constraintTop_toBottomOf="@+id/guideline47" />
-
-            <EditText
-                android:id="@+id/editText8"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:text="3000"
-                app:layout_constraintBottom_toTopOf="@+id/guideline49"
-                app:layout_constraintStart_toEndOf="@+id/textView39"
-                app:layout_constraintTop_toBottomOf="@+id/guideline48" />
-
-            <EditText
-                android:id="@+id/editText9"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:text="1"
-                app:layout_constraintBottom_toTopOf="@+id/guideline50"
-                app:layout_constraintStart_toEndOf="@+id/textView40"
-                app:layout_constraintTop_toBottomOf="@+id/guideline49" />
-
-            <EditText
-                android:id="@+id/editText10"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:text="10"
-                app:layout_constraintBottom_toTopOf="@+id/guideline51"
-                app:layout_constraintStart_toEndOf="@+id/textView41"
-                app:layout_constraintTop_toBottomOf="@+id/guideline50" />
-
-            <Spinner
-                android:id="@+id/spinner"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/textView42"
-                app:layout_constraintTop_toBottomOf="@+id/guideline51" />
-
-            <TextView
-                android:id="@+id/textView35"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:text="与道路右边线间距(CM):"
-                app:layout_constraintBottom_toTopOf="@+id/guideline45"
-                app:layout_constraintEnd_toStartOf="@+id/editText2"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/guideline44" />
-
-            <TextView
-                android:id="@+id/textView36"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:text="与道路中心线间距(CM):"
-                app:layout_constraintBottom_toTopOf="@+id/guideline46"
-                app:layout_constraintEnd_toStartOf="@+id/editText3"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/guideline45" />
-
-            <TextView
-                android:id="@+id/textView37"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:text="车速(KM/h):"
-                app:layout_constraintBottom_toTopOf="@+id/guideline47"
-                app:layout_constraintEnd_toStartOf="@+id/editText6"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/guideline46" />
-
-            <TextView
-                android:id="@+id/textView38"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:text="方向盘转角:"
-                app:layout_constraintBottom_toTopOf="@+id/guideline48"
-                app:layout_constraintEnd_toStartOf="@+id/editText7"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/guideline47" />
-
-            <TextView
-                android:id="@+id/textView39"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:text="发动机转速(转/s):"
-                app:layout_constraintBottom_toTopOf="@+id/guideline49"
-                app:layout_constraintEnd_toStartOf="@+id/editText8"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/guideline48" />
-
-            <TextView
-                android:id="@+id/textView40"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:text="车辆行驶里程(KM):"
-                app:layout_constraintBottom_toTopOf="@+id/guideline50"
-                app:layout_constraintEnd_toStartOf="@+id/editText9"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/guideline49" />
-
-            <TextView
-                android:id="@+id/textView41"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:text="制动踏板状态(%):"
-                app:layout_constraintBottom_toTopOf="@+id/guideline51"
-                app:layout_constraintEnd_toStartOf="@+id/editText10"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/guideline50" />
-
-            <TextView
-                android:id="@+id/textView42"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:text="车辆行驶区域:"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/spinner"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/guideline51" />
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/nav_view"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="end">
+            <!--        android:layout_gravity="start"-->
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:background="@drawable/side_nav_bar"
-                app:layout_constraintBottom_toTopOf="@+id/guideline44"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="1.0">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-                <TextView
-                    android:id="@+id/textView33"
+                <EditText
+                    android:id="@+id/editText2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="模拟数据输入"
-                    android:textColor="@android:color/background_light"
-                    android:textSize="24sp"
+                    android:layout_marginStart="16dp"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:text="0"
+                    app:layout_constraintBottom_toTopOf="@+id/guideline45"
+                    app:layout_constraintStart_toEndOf="@+id/textView35"
+                    app:layout_constraintTop_toBottomOf="@+id/guideline44" />
+
+                <EditText
+                    android:id="@+id/editText3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:text="0"
+                    app:layout_constraintBottom_toTopOf="@+id/guideline46"
+                    app:layout_constraintStart_toEndOf="@+id/textView36"
+                    app:layout_constraintTop_toBottomOf="@+id/guideline45" />
+
+                <EditText
+                    android:id="@+id/editText6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:text="25"
+                    app:layout_constraintBottom_toTopOf="@+id/guideline47"
+                    app:layout_constraintStart_toEndOf="@+id/textView37"
+                    app:layout_constraintTop_toBottomOf="@+id/guideline46" />
+
+                <EditText
+                    android:id="@+id/editText7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:text="0"
+                    app:layout_constraintBottom_toTopOf="@+id/guideline48"
+                    app:layout_constraintStart_toEndOf="@+id/textView38"
+                    app:layout_constraintTop_toBottomOf="@+id/guideline47" />
+
+                <EditText
+                    android:id="@+id/editText8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:text="3000"
+                    app:layout_constraintBottom_toTopOf="@+id/guideline49"
+                    app:layout_constraintStart_toEndOf="@+id/textView39"
+                    app:layout_constraintTop_toBottomOf="@+id/guideline48" />
+
+                <EditText
+                    android:id="@+id/editText9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:text="1"
+                    app:layout_constraintBottom_toTopOf="@+id/guideline50"
+                    app:layout_constraintStart_toEndOf="@+id/textView40"
+                    app:layout_constraintTop_toBottomOf="@+id/guideline49" />
+
+                <EditText
+                    android:id="@+id/editText10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:text="10"
+                    app:layout_constraintBottom_toTopOf="@+id/guideline51"
+                    app:layout_constraintStart_toEndOf="@+id/textView41"
+                    app:layout_constraintTop_toBottomOf="@+id/guideline50" />
+
+                <Spinner
+                    android:id="@+id/spinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/textView42"
+                    app:layout_constraintTop_toBottomOf="@+id/guideline51" />
+
+                <TextView
+                    android:id="@+id/textView35"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:text="与道路右边线间距(CM):"
+                    app:layout_constraintBottom_toTopOf="@+id/guideline45"
+                    app:layout_constraintEnd_toStartOf="@+id/editText2"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toBottomOf="@+id/guideline44" />
 
+                <TextView
+                    android:id="@+id/textView36"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="与道路中心线间距(CM):"
+                    app:layout_constraintBottom_toTopOf="@+id/guideline46"
+                    app:layout_constraintEnd_toStartOf="@+id/editText3"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/guideline45" />
+
+                <TextView
+                    android:id="@+id/textView37"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="车速(KM/h):"
+                    app:layout_constraintBottom_toTopOf="@+id/guideline47"
+                    app:layout_constraintEnd_toStartOf="@+id/editText6"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/guideline46" />
+
+                <TextView
+                    android:id="@+id/textView38"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="方向盘转角:"
+                    app:layout_constraintBottom_toTopOf="@+id/guideline48"
+                    app:layout_constraintEnd_toStartOf="@+id/editText7"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/guideline47" />
+
+                <TextView
+                    android:id="@+id/textView39"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="发动机转速(转/s):"
+                    app:layout_constraintBottom_toTopOf="@+id/guideline49"
+                    app:layout_constraintEnd_toStartOf="@+id/editText8"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/guideline48" />
+
+                <TextView
+                    android:id="@+id/textView40"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="车辆行驶里程(KM):"
+                    app:layout_constraintBottom_toTopOf="@+id/guideline50"
+                    app:layout_constraintEnd_toStartOf="@+id/editText9"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/guideline49" />
+
+                <TextView
+                    android:id="@+id/textView41"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="制动踏板状态(%):"
+                    app:layout_constraintBottom_toTopOf="@+id/guideline51"
+                    app:layout_constraintEnd_toStartOf="@+id/editText10"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/guideline50" />
+
+                <TextView
+                    android:id="@+id/textView42"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="车辆行驶区域:"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/spinner"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/guideline51" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:background="@drawable/side_nav_bar"
+                    app:layout_constraintBottom_toTopOf="@+id/guideline44"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="1.0">
+
+                    <TextView
+                        android:id="@+id/textView33"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="模拟数据输入"
+                        android:textColor="@android:color/background_light"
+                        android:textSize="24sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline44"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.15" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline45"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.3" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline46"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.4" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline47"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.5" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline48"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.6" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline49"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.7" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline50"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.8" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline51"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.9" />
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/floatingActionButton3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="24dp"
+                    android:clickable="true"
+                    android:src="@drawable/ic_arrow_forward_black_24dp"
+                    app:layout_constraintBottom_toTopOf="@+id/guideline44"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/guideline44" />
             </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.navigation.NavigationView>
 
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline44"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.15" />
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline45"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.3" />
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline46"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.4" />
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline47"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.5" />
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline48"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.6" />
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline49"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.7" />
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline50"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.8" />
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline51"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.9" />
-
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/floatingActionButton3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="24dp"
-                android:clickable="true"
-                android:src="@drawable/ic_arrow_forward_black_24dp"
-                app:layout_constraintBottom_toTopOf="@+id/guideline44"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/guideline44" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </com.google.android.material.navigation.NavigationView>
-
-</androidx.drawerlayout.widget.DrawerLayout>
+    </androidx.drawerlayout.widget.DrawerLayout>
+</layout>
