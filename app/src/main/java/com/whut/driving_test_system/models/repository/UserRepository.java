@@ -20,6 +20,10 @@ public class UserRepository {
         this.database = Database.getDatabase(context);
     }
 
+    public UserRepository() {
+
+    }
+
     @SuppressLint("StaticFieldLeak")
     public void insertUsers(User... users) {
         new AsyncTask<User, Void, Void>() {

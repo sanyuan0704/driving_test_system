@@ -1,6 +1,8 @@
 package com.whut.driving_test_system;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
+import androidx.databinding.ViewDataBinding;
 import androidx.lifecycle.LiveData;
 import androidx.navigation.Navigation;
 
@@ -9,6 +11,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.whut.driving_test_system.databinding.ActivityMainBinding;
 import com.whut.driving_test_system.models.Database;
 import com.whut.driving_test_system.models.eneities.Examinee;
 import com.whut.driving_test_system.models.eneities.Rule;
@@ -17,19 +20,24 @@ import com.whut.driving_test_system.models.repository.ExamnieeRespository;
 import com.whut.driving_test_system.models.repository.RuleRepository;
 import com.whut.driving_test_system.models.repository.UserRepository;
 import com.whut.driving_test_system.ui.viewmodels.LoginViewModel;
+import com.whut.driving_test_system.ui.viewmodels.MainViewModel;
 
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    private ImageButton settingButton;
+    private MainViewModel mainViewModel;
+    private ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        settingButton = findViewById(R.id.setting_button);
 
-        settingButton.setOnClickListener(new View.OnClickListener() {
+        mainViewModel = new MainViewModel();
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        binding.setMainViewModel(mainViewModel);
+        binding.setLifecycleOwner(this);
+
+        binding.settingButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Navigation.findNavController(findViewById(R.id.fragment)).navigate(R.id.settingsFragment);
