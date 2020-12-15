@@ -6,6 +6,9 @@ import androidx.databinding.ViewDataBinding;
 import androidx.lifecycle.LiveData;
 import androidx.navigation.Navigation;
 
+import android.media.AudioManager;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -45,6 +48,12 @@ public class MainActivity extends AppCompatActivity {
         });
 
         initDB();
+
+
+        MediaPlayer player = MediaPlayer.create(this,R.raw.test);
+        player.setAudioStreamType(AudioManager.STREAM_MUSIC);
+        player.start();
+
     }
 
 
