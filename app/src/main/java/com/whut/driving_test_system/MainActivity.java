@@ -50,10 +50,6 @@ public class MainActivity extends AppCompatActivity {
         initDB();
 
 
-        MediaPlayer player = MediaPlayer.create(this,R.raw.test);
-        player.setAudioStreamType(AudioManager.STREAM_MUSIC);
-        player.start();
-
     }
 
 
@@ -80,10 +76,35 @@ public class MainActivity extends AppCompatActivity {
         );
 
         ruleRepository.insertRule(
-                new Rule("r1", "车辆行驶中骑轧车道边沿实线", "压边线", "100", true, true, "考试车辆距离道路右侧边缘线值", "0CM", null, null),
-                new Rule("r2", "车辆行驶中骑轧车道中心实线", "压中心线", "100", true, true, "考试车辆距离道路中心(双黄线、单黄线、白实线)实线值", "0CM", null, null),
-                new Rule("r3", "车速超过限速规定", "超速", "10", true, true, "考车辆行驶速度状态", "80KM/H", null, null),
-                new Rule("r4", "开转向灯小于3秒即转向", "提前转向", "10", true, true, "车辆行驶状态", "起步前，超车前，变更到快车道，变更到慢车道前，左转前，右转前，调头前，靠边停车前", "灯光开关时间", "3S")
+                new Rule("er1", "不能正确观察交通情况选择掉头时机", "掉头", "100",false, true, null, null, null, null),
+                new Rule("er2", "掉头地点选择不当", "掉头", "100",false, true, null, null, null, null),
+                new Rule("er3", "掉头时，妨碍正常形式的其他车辆和行人通过", "掉头", "10",false, true, null, null, null, null),
+                new Rule("er4", "超车时，为回头观察被超越车辆动态", "超车", "100",false, true, null, null, null, null),
+                new Rule("er5", "超车时未与被超越车辆保持安全距离", "超车", "100",false, true, null, null, null, null),
+                new Rule("er6", "在没有中心线或同方向只有一条车道的道路上从右侧超车", "超车", "100",false, true, null, null, null, null),
+                new Rule("er7", "超车时机选择不合理，影响其他车辆正常行驶", "超车", "100",false, true, null, null, null, null),
+                new Rule("er8", "不按规定减速或停车观望", "拐弯", "100",false, true, null, null, null, null),
+                new Rule("er9", "不主动避让优先通行的车辆、行人、非机动车", "拐弯", "100",false, true, null, null, null, null),
+                new Rule("er10", "遇到路口交通堵塞时进入路口，将车辆停在路口内等待", "拐弯", "100",false, true, null, null, null, null),
+                new Rule("er11", "制动气压不足起步", "起步", "100",false, true, null, null, null, null),
+                new Rule("er12", "道路交通情况复杂时起步不能合理使用喇叭", "起步", "5",false, true, null, null, null, null),
+                new Rule("er13", "启动发动机前，不检查调整驾驶座椅、后视镜、检查仪表", "起步", "5",false, true, null, null, null, null),
+                new Rule("er14", "变更车道前，未通过内、外后视镜观察，并向变更车道方向回头观察后方道路交通情况", "变更车道", "100",false, true, null, null, null, null),
+                new Rule("er15", "变更车道时，判断车辆安全距离不合理，妨碍其他车辆正常行驶", "变更车道", "100",false, true, null, null, null, null),
+                new Rule("er16", "变更车道时，控制行驶速度不合理，妨碍其他车辆正常行驶", "变更车道", "100",false, true, null, null, null, null),
+                new Rule("er17", "未能在规定的距离内停车", "靠边停车", "100",false, true, null, null, null, null),
+                new Rule("er18", "停车后，打开车门前不回头观察左后方交通情况", "靠边停车", "100",false, true, null, null, null, null),
+                new Rule("er19", "停车后，车身距离道路右侧边缘线或者人行道边缘超过50CM", "靠边停车", "100",false, true, null, null, null, null),
+                new Rule("er20", "停车后，车身距离道路右侧边缘线或者人行道边缘超过30CM，未超过50CM", "靠边停车", "10",false, true, null, null, null, null),
+                new Rule("er21", "停车后，未拉紧驻车制动器", "靠边停车", "10",false, true, null, null, null, null),
+
+                new Rule("r1", "车辆行驶中骑轧车道边沿实线", "压边线", "100", true, true, "考试车辆距离道路右侧边缘线值", "0", null, null),
+                new Rule("r2", "车辆行驶中骑轧车道中心实线", "压中心线", "100", true, true, "考试车辆距离道路中心(双黄线、单黄线、白实线)实线值", "0", null, null),
+                new Rule("r3", "车速超过限速规定", "超速", "10", true, true, "考试车辆行驶速度状态", "40", null, null),
+                new Rule("r5", "因操作不当发动机熄火一次", "熄火", "10", true, true, "考试车辆发动机转速状态", "0", null, null),
+                new Rule("r6", "考试里程小于最小里程", "里程不足", "100", true, true, "考试车辆行驶里程", "3", null, null),
+                new Rule("r7", "通过路口前未减速慢行", "通过路口不减速", "100", true, true, "考试车辆形式或停放区域", "路口", "考试车辆制动踏板状态", "30"),
+                new Rule("r4", "开转向灯小于3秒即转向", "提前转向", "10", true, true, "考试车辆方向盘转角", "30", "灯光开关时间", "3")
         );
 
     }
