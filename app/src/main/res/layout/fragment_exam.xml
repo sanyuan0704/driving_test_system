@@ -92,18 +92,6 @@
                     app:layout_constraintTop_toBottomOf="@+id/guideline48" />
 
                 <EditText
-                    android:id="@+id/editText9"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:ems="10"
-                    android:inputType="textPersonName"
-                    android:text="1"
-                    app:layout_constraintBottom_toTopOf="@+id/guideline50"
-                    app:layout_constraintStart_toEndOf="@+id/textView40"
-                    app:layout_constraintTop_toBottomOf="@+id/guideline49" />
-
-                <EditText
                     android:id="@+id/editText10"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -115,8 +103,20 @@
                     app:layout_constraintStart_toEndOf="@+id/textView41"
                     app:layout_constraintTop_toBottomOf="@+id/guideline50" />
 
+                <EditText
+                    android:id="@+id/editText9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:text="1"
+                    app:layout_constraintBottom_toTopOf="@+id/guideline50"
+                    app:layout_constraintStart_toEndOf="@+id/textView40"
+                    app:layout_constraintTop_toBottomOf="@+id/guideline49" />
+
                 <Spinner
-                    android:id="@+id/spinner"
+                    android:id="@+id/spinner_road"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
@@ -216,7 +216,7 @@
                     android:layout_marginStart="16dp"
                     android:text="车辆行驶区域:"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/spinner"
+                    app:layout_constraintEnd_toStartOf="@+id/spinner_road"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/guideline51" />
