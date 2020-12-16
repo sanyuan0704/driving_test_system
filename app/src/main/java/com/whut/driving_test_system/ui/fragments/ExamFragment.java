@@ -40,6 +40,7 @@ public class ExamFragment extends Fragment {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater,R.layout.fragment_exam, container, false);
         binding.setExamViewModel(examViewModel);
+        binding.iclExamContent.setExamViewModel(examViewModel);
         binding.setLifecycleOwner(this);
         //获取控件
         List<String> a_list = new ArrayList<String>();
