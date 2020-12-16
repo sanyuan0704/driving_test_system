@@ -6,6 +6,9 @@ import android.os.AsyncTask;
 
 import com.whut.driving_test_system.models.Database;
 import com.whut.driving_test_system.models.eneities.Examinee;
+import com.whut.driving_test_system.models.eneities.ExamineeRuleRef;
+import com.whut.driving_test_system.models.eneities.ExamnieeWithRules;
+import com.whut.driving_test_system.models.eneities.Rule;
 
 import java.util.List;
 
@@ -55,8 +58,8 @@ public class ExamnieeRespository {
     }
 
     @SuppressLint("StaticFieldLeak")
-    public void deleteAllExamniee(){
-        new AsyncTask<Void,Void,Void>(){
+    public void deleteAllExamniee() {
+        new AsyncTask<Void, Void, Void>() {
 
             @Override
             protected Void doInBackground(Void... voids) {
@@ -68,5 +71,39 @@ public class ExamnieeRespository {
 
     public LiveData<List<Examinee>> getAllExaminees() {
         return database.getExamnieeDao().getAllExaminees();
+    }
+
+    @SuppressLint("StaticFieldLeak")
+    public void insertExamnieeRuleRef(final Examinee examinee, final Rule rule) {
+        new AsyncTask<ExamineeRuleRef, Void, Void>() {
+
+            @Override
+            protected Void doInBackground(ExamineeRuleRef... examineeRuleRefs) {
+                ExamineeRuleRef examineeRuleRef = new ExamineeRuleRef();
+                examineeRuleRef.examNumber = examinee.examNumber;
+                examineeRuleRef.ruleId = rule.ruleId;
+                database.getExamnieeRuleRefDao().insertExamnieeRuleRef(examineeRuleRef);
+                return null;
+            }
+        }.execute();
+    }
+
+    @SuppressLint("StaticFieldLeak")
+    public void deleteExamnieeRuleRef(final Examinee examinee, final Rule rule) {
+        new AsyncTask<ExamineeRuleRef, Void, Void>() {
+
+            @Override
+            protected Void doInBackground(ExamineeRuleRef... examineeRuleRefs) {
+                ExamineeRuleRef examineeRuleRef = new ExamineeRuleRef();
+                examineeRuleRef.examNumber = examinee.examNumber;
+                examineeRuleRef.ruleId = rule.ruleId;
+                database.getExamnieeRuleRefDao().deleteExamnieeRuleRef(examineeRuleRef);
+                return null;
+            }
+        }.execute();
+    }
+
+    public LiveData<ExamnieeWithRules> getExamnieeWithRulesByExamnumber(String examNumber){
+        return database.getExamnieeDao().getExamnieeWithRulesByExamnumber(examNumber);
     }
 }

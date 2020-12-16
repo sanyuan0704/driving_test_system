@@ -1,6 +1,7 @@
 package com.whut.driving_test_system.models.dao;
 
 import com.whut.driving_test_system.models.eneities.Examinee;
+import com.whut.driving_test_system.models.eneities.ExamnieeWithRules;
 
 import java.util.List;
 
@@ -27,4 +28,7 @@ public interface ExamnieeDao {
 
     @Query("SELECT * FROM Examinee")
     LiveData<List<Examinee>> getAllExaminees();
+
+    @Query("SELECT * FROM Examinee WHERE examNumber=:examNumber")
+    LiveData<ExamnieeWithRules> getExamnieeWithRulesByExamnumber(String examNumber);
 }

@@ -9,8 +9,6 @@ import com.whut.driving_test_system.R;
 import androidx.lifecycle.ViewModel;
 
 public class ExamViewModel extends ViewModel {
-
-
     /**
      * 起步按钮函数
      * @param v

@@ -3,6 +3,7 @@ package com.whut.driving_test_system.models;
 import android.content.Context;
 
 import com.whut.driving_test_system.models.dao.ExamnieeDao;
+import com.whut.driving_test_system.models.dao.ExamnieeRuleRefDao;
 import com.whut.driving_test_system.models.dao.RuleDao;
 import com.whut.driving_test_system.models.dao.UserDao;
 import com.whut.driving_test_system.models.eneities.Examinee;
@@ -33,4 +34,6 @@ public abstract class Database extends RoomDatabase {
     public abstract ExamnieeDao getExamnieeDao();
 
     public abstract RuleDao getRuleDao();
+
+    public abstract ExamnieeRuleRefDao getExamnieeRuleRefDao();
 }
