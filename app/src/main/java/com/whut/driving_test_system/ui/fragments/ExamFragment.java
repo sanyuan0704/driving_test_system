@@ -34,6 +34,7 @@ public class ExamFragment extends Fragment {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater,R.layout.fragment_exam, container, false);
         binding.setExamViewModel(examViewModel);
+        binding.iclExamContent.setExamViewModel(examViewModel);
         binding.setLifecycleOwner(this);
 
         return binding.getRoot();
