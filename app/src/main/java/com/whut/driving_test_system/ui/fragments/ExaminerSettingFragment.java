@@ -35,6 +35,8 @@ public class ExaminerSettingFragment extends Fragment {
     private ExamerViewModel examerViewModel;
     private ArrayAdapter<String> adapter;//下拉列表内容
 
+    //private MediaPlayer mp;
+
     //输入框可输入
     public void edAble() {
         etName.setFocusableInTouchMode(true);
@@ -83,6 +85,12 @@ public class ExaminerSettingFragment extends Fragment {
         sp = (Spinner) view.findViewById(R.id.SP_examer);//编号下拉列表
         examerViewModel = new ViewModelProvider(this).get(ExamerViewModel.class);
 
+        //测试
+        //MediaPlayer mp=new MediaPlayer();
+
+        //final MediaPlayer player = MediaPlayer.create(this.getContext(),R.raw.test);
+        //player.setAudioStreamType(AudioManager.STREAM_MUSIC);
+
         //设置输入框不可编辑
         etName.setFocusable(false);
         etPassName.setFocusable(false);
@@ -127,8 +135,10 @@ public class ExaminerSettingFragment extends Fragment {
         deleteUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //player.start();
                 examerViewModel.deleteAUsers();
                 Toast.makeText(getContext(), "删除成功", Toast.LENGTH_SHORT).show();
+                //player.start();
             }
         });
 
@@ -138,7 +148,7 @@ public class ExaminerSettingFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 //开放输入权限，换背景色提醒
-                if (changeUser.getText() == "修改") {
+                if (changeUser.getText() .equals("修改")) {
                     deleteUser.setEnabled(false);
                     deleteUser.setTextColor(Color.GRAY);
                     addUser.setEnabled(false);
@@ -163,7 +173,7 @@ public class ExaminerSettingFragment extends Fragment {
         addUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (addUser.getText() == "增添") {
+                if (addUser.getText() .equals("增添")) {
                     sp.setVisibility(View.GONE);
                     deleteUser.setEnabled(false);
                     deleteUser.setTextColor(Color.GRAY);

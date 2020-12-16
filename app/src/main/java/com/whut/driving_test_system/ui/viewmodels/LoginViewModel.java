@@ -9,15 +9,9 @@ import androidx.lifecycle.ViewModel;
 
 public class LoginViewModel extends ViewModel {
     public MutableLiveData<User> user;
-    public boolean isLogin;
 
     public LoginViewModel() {
         this.user = new MutableLiveData<>(new User("","","","",0));
-        this.isLogin = false;
-    }
-
-    public boolean isLogin() {
-        return this.isLogin;
     }
 
     public void onChangeUserType(View v) {

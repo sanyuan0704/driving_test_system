@@ -13,6 +13,7 @@ import com.whut.driving_test_system.databinding.FragmentLoginBinding;
 import com.whut.driving_test_system.models.eneities.User;
 import com.whut.driving_test_system.models.repository.UserRepository;
 import com.whut.driving_test_system.ui.viewmodels.LoginViewModel;
+import com.whut.driving_test_system.ui.viewmodels.MainViewModel;
 
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
@@ -26,6 +27,7 @@ import androidx.navigation.Navigation;
  * 1. 考官 / 管理员登录
  */
 public class LoginFragment extends Fragment {
+    private MainViewModel mainViewModel;
     private LoginViewModel loginViewModel;
 
     public LoginFragment() {
@@ -36,6 +38,7 @@ public class LoginFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        mainViewModel = new ViewModelProvider(requireActivity()).get(MainViewModel.class);
         loginViewModel = new ViewModelProvider(this).get(LoginViewModel.class);
 
         final FragmentLoginBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_login, container, false);
@@ -59,24 +62,13 @@ public class LoginFragment extends Fragment {
                         }
 
                         Toast.makeText(getContext(), "登录成功", Toast.LENGTH_SHORT).show();
-                        Bundle bundle = new Bundle();
-                        bundle.putString("userId", user.userId);
-                        Navigation.findNavController(v).navigate(R.id.action_loginFragment_to_homeFragment, bundle);
+                        mainViewModel.loginedUser.setValue(user);
+                        Navigation.findNavController(v).navigate(R.id.action_loginFragment_to_homeFragment);
                     }
                 });
             }
         });
 
         return binding.getRoot();
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        // 已经登录过了就不用再登录了
-        if (loginViewModel.isLogin()) {
-            NavController controller = Navigation.findNavController(getView());
-            controller.navigate(R.id.action_loginFragment_to_homeFragment);
-        }
     }
 }
