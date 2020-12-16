@@ -7,7 +7,7 @@ import androidx.room.Delete;
 import androidx.room.Insert;
 
 @Dao
-public interface ExamnieeRuleRefDao {
+public interface ExamineeRuleRefDao {
     @Insert
     void insertExamnieeRuleRef(ExamineeRuleRef... examineeRuleRefs);
 

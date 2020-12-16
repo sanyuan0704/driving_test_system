@@ -5,10 +5,18 @@ import android.media.MediaPlayer;
 import android.view.View;
 
 import com.whut.driving_test_system.R;
+import com.whut.driving_test_system.models.eneities.Examinee;
 
+import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 public class ExamViewModel extends ViewModel {
+    public MutableLiveData<Examinee> examinee;
+
+    public ExamViewModel() {
+        this.examinee = new MutableLiveData<>();
+    }
+
     /**
      * 起步按钮函数
      * @param v

@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.whut.driving_test_system.R;
 import com.whut.driving_test_system.databinding.FragmentHomeBinding;
@@ -13,6 +14,7 @@ import com.whut.driving_test_system.models.eneities.Examinee;
 import com.whut.driving_test_system.models.eneities.UserWithExaminees;
 import com.whut.driving_test_system.models.repository.UserRepository;
 import com.whut.driving_test_system.ui.viewmodels.HomeViewModel;
+import com.whut.driving_test_system.ui.viewmodels.MainViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,12 +35,12 @@ import androidx.recyclerview.widget.RecyclerView;
  * 2，跳转到考生验证界面
  */
 public class HomeFragment extends Fragment {
+    private MainViewModel mainViewModel;
     private HomeViewModel homeViewModel;
     private FragmentHomeBinding binding;
     private UserRepository userRepository;
     private RecyclerView rcv;
     private ExamineeAdapter examineeAdapter;
-    private String userId;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -47,16 +49,20 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, final ViewGroup container,
                              Bundle savedInstanceState) {
-        // 登录的UserID
-        userId = getArguments().getString("userId", null);
-
         // viewModel
+        mainViewModel = new ViewModelProvider(requireActivity()).get(MainViewModel.class);
         homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
 
         // binding
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false);
         binding.setHomeViewModel(homeViewModel);
         binding.setLifecycleOwner(this);
+
+        // 登录判定
+        if (mainViewModel.loginedUser.getValue() == null){
+            Toast.makeText(getContext(),"警告：用户未登录",Toast.LENGTH_SHORT).show();
+            return binding.getRoot();
+        }
 
         // 考生列表
         rcv = binding.iclHomeContent.rcvExaminees;
@@ -65,7 +71,7 @@ public class HomeFragment extends Fragment {
         rcv.setAdapter(examineeAdapter);
 
         userRepository = new UserRepository(getContext());
-        homeViewModel.userWithExaminees = userRepository.getUserWithExamineesById(userId);
+        homeViewModel.userWithExaminees = userRepository.getUserWithExamineesById(mainViewModel.loginedUser.getValue().userId);
         homeViewModel.userWithExaminees.observe(getViewLifecycleOwner(), new Observer<UserWithExaminees>() {
             @Override
             public void onChanged(UserWithExaminees userWithExaminees) {
@@ -185,8 +191,9 @@ public class HomeFragment extends Fragment {
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    binding.drawerLayout.openDrawer(GravityCompat.END);
+                    mainViewModel.selectedExamniee.setValue(examinee);
                     homeViewModel.choisedExaminee.setValue(examinee);
+                    binding.drawerLayout.openDrawer(GravityCompat.END);
                     // TODO: set image
                     // TODO: set fbtn
                 }

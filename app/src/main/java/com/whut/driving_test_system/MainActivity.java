@@ -2,33 +2,19 @@ package com.whut.driving_test_system;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
-import androidx.databinding.ViewDataBinding;
-import androidx.lifecycle.LiveData;
 import androidx.navigation.Navigation;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.media.AudioManager;
-import android.media.MediaPlayer;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageButton;
-import android.widget.Toast;
 
-import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.whut.driving_test_system.databinding.ActivityMainBinding;
-import com.whut.driving_test_system.models.Database;
 import com.whut.driving_test_system.models.eneities.Examinee;
 import com.whut.driving_test_system.models.eneities.Rule;
 import com.whut.driving_test_system.models.eneities.User;
-import com.whut.driving_test_system.models.repository.ExamnieeRespository;
+import com.whut.driving_test_system.models.repository.ExamineeRespository;
 import com.whut.driving_test_system.models.repository.RuleRepository;
 import com.whut.driving_test_system.models.repository.UserRepository;
-import com.whut.driving_test_system.ui.viewmodels.LoginViewModel;
 import com.whut.driving_test_system.ui.viewmodels.MainViewModel;
-
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private MainViewModel mainViewModel;
@@ -62,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void initDB() {
         UserRepository userRepository = new UserRepository(this);
-        ExamnieeRespository examnieeRespository = new ExamnieeRespository(this);
+        ExamineeRespository examnieeRespository = new ExamineeRespository(this);
         RuleRepository ruleRepository = new RuleRepository(this);
 
         userRepository.deleteAllUsers();

@@ -7,17 +7,17 @@ import android.os.AsyncTask;
 import com.whut.driving_test_system.models.Database;
 import com.whut.driving_test_system.models.eneities.Examinee;
 import com.whut.driving_test_system.models.eneities.ExamineeRuleRef;
-import com.whut.driving_test_system.models.eneities.ExamnieeWithRules;
+import com.whut.driving_test_system.models.eneities.ExamineeWithRules;
 import com.whut.driving_test_system.models.eneities.Rule;
 
 import java.util.List;
 
 import androidx.lifecycle.LiveData;
 
-public class ExamnieeRespository {
+public class ExamineeRespository {
     private Database database;
 
-    public ExamnieeRespository(Context context) {
+    public ExamineeRespository(Context context) {
         this.database = Database.getDatabase(context);
     }
 
@@ -103,7 +103,7 @@ public class ExamnieeRespository {
         }.execute();
     }
 
-    public LiveData<ExamnieeWithRules> getExamnieeWithRulesByExamnumber(String examNumber){
+    public LiveData<ExamineeWithRules> getExamnieeWithRulesByExamnumber(String examNumber){
         return database.getExamnieeDao().getExamnieeWithRulesByExamnumber(examNumber);
     }
 }

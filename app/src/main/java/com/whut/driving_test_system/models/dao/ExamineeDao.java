@@ -1,7 +1,7 @@
 package com.whut.driving_test_system.models.dao;
 
 import com.whut.driving_test_system.models.eneities.Examinee;
-import com.whut.driving_test_system.models.eneities.ExamnieeWithRules;
+import com.whut.driving_test_system.models.eneities.ExamineeWithRules;
 
 import java.util.List;
 
@@ -13,7 +13,7 @@ import androidx.room.Query;
 import androidx.room.Update;
 
 @Dao
-public interface ExamnieeDao {
+public interface ExamineeDao {
     @Insert
     void insertExaminees(Examinee... examinees);
 
@@ -30,5 +30,5 @@ public interface ExamnieeDao {
     LiveData<List<Examinee>> getAllExaminees();
 
     @Query("SELECT * FROM Examinee WHERE examNumber=:examNumber")
-    LiveData<ExamnieeWithRules> getExamnieeWithRulesByExamnumber(String examNumber);
+    LiveData<ExamineeWithRules> getExamnieeWithRulesByExamnumber(String examNumber);
 }
