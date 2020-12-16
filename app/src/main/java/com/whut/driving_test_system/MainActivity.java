@@ -6,6 +6,8 @@ import androidx.databinding.ViewDataBinding;
 import androidx.lifecycle.LiveData;
 import androidx.navigation.Navigation;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -14,6 +16,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.whut.driving_test_system.databinding.ActivityMainBinding;
 import com.whut.driving_test_system.models.Database;
 import com.whut.driving_test_system.models.eneities.Examinee;
@@ -46,9 +49,14 @@ public class MainActivity extends AppCompatActivity {
                 Navigation.findNavController(findViewById(R.id.fragment)).navigate(R.id.settingsFragment);
             }
         });
+        binding.ibtnExam.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(findViewById(R.id.fragment)).navigate(R.id.examFragment);
+            }
+        });
 
         initDB();
-
 
     }
 
