@@ -30,11 +30,12 @@ public class ExamViewModel extends ViewModel {
     public RuleRepository my_RuleRepository;//对规则数据库操作
     private AutoExam autoExam;//自动评分类
     public MutableLiveData<Examinee> examinee;
-    public ArrayList<Rule> validRules = new ArrayList<>();//扣分列表
+    public MutableLiveData<List<Rule>> validRules;//扣分列表
 
     public ExamViewModel() {
         this.examinee = new MutableLiveData<>();
         this.my_Rule = new MutableLiveData<List<Rule>>();
+        this.validRules = new MutableLiveData<List<Rule>>();
     }
 
    //获取所有规则列表
@@ -92,8 +93,13 @@ public class ExamViewModel extends ViewModel {
                 .setPositiveButton("确定", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        for (int index = 0; index < isSelect.length; index ++) {
-                            if (isSelect[index]) validRules.add(ruleList.get(index));
+                        for (int index = 0; index < isSelect.length; index++) {
+                            if (isSelect[index]) {
+                                //validRules.observe();
+                                List<Rule> a_rulelist = validRules.getValue();
+                                a_rulelist.add(ruleList.get(index));
+                                validRules.setValue( a_rulelist);
+                            }
                         }
                     }
                 })
