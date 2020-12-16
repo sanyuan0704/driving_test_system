@@ -15,15 +15,18 @@ import androidx.lifecycle.ViewModel;
 
 import java.util.List;
 
-//import util.AutoExam;
+import util.AutoExam;
 
 
 public class ExamViewModel extends ViewModel {
 
-    //private AutoExam autoExam;
+    private AutoExam autoExam;
 
 
-    public void autoExamFunction(Context context, LifecycleOwner lifecycleOwner, List<String> my_list){
+    public void autoExamFunction(Context context, LifecycleOwner lifecycleOwner, List<String> my_list,Examinee my_Examinee){
+        autoExam = new  AutoExam(lifecycleOwner,context,my_Examinee);
+        //autoExam.
+
 
 
 
