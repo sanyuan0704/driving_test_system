@@ -9,10 +9,12 @@ import com.whut.driving_test_system.R;
 import com.whut.driving_test_system.databinding.FragmentExamBinding;
 import com.whut.driving_test_system.models.eneities.Examinee;
 import com.whut.driving_test_system.models.eneities.Rule;
+import com.whut.driving_test_system.models.repository.RuleRepository;
 
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.MutableLiveData;
 
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModel;
 
 import java.util.List;
@@ -21,26 +23,40 @@ import util.AutoExam;
 
 
 public class ExamViewModel extends ViewModel {
+    public MutableLiveData<List<Rule>> my_Rule;//所有的规则 拿下来
+    public RuleRepository my_RuleRepository;//对规则数据库操作
+    private AutoExam autoExam;//自动评分类
+    public MutableLiveData<Examinee> examinee;
 
-    private AutoExam autoExam;
+    public ExamViewModel() {
+        this.examinee = new MutableLiveData<>();
+        this.my_Rule = new MutableLiveData<List<Rule>>();
+    }
 
 
+    public void getAllRules(LifecycleOwner lifecycleOwner, Context context) {
+        my_RuleRepository = new RuleRepository(context);
+        my_RuleRepository.getAllLiveRules().observe(lifecycleOwner, new Observer<List<Rule>>() {
+            @Override
+            public void onChanged(List<Rule> rules) {
+                my_Rule.setValue(rules);
+            }
+        });
+    }
 
-    public void autoExamFunction(Context context, LifecycleOwner lifecycleOwner, List<String> my_list, FragmentExamBinding binding) {
-        autoExam = new AutoExam(lifecycleOwner, context, examinee.getValue());
+
+    public void autoExamFunction(Context context, List<String> my_list, FragmentExamBinding binding) {
+        autoExam = new AutoExam(context, examinee.getValue(), my_Rule.getValue());
         Rule a_Rule = new Rule();
-        a_Rule=autoExam.R1_autoExamJudge(my_list.get(0));
-        if(!a_Rule.ruleId.equals("")){
+        a_Rule = autoExam.R1_autoExamJudge(my_list.get(0));
+        if (!a_Rule.ruleId.equals("")) {
+            binding.iclExamContent.textView23.setText(a_Rule.content);
+        }
+        a_Rule = autoExam.R2_autoExamJudge(my_list.get(1));
+        if (!a_Rule.ruleId.equals("")) {
             binding.iclExamContent.textView23.setText(a_Rule.content);
         }
     }
-
-
-    public MutableLiveData<Examinee> examinee;
-    public ExamViewModel() {
-        this.examinee = new MutableLiveData<>();
-    }
-
 
     /**
      * 起步按钮函数
