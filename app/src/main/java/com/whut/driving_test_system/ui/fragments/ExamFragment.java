@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Toast;
 
 import com.whut.driving_test_system.R;
 import com.whut.driving_test_system.databinding.FragmentExamBinding;
@@ -114,6 +115,7 @@ public class ExamFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 mainViewModel.isExaming.setValue(false);
+                Toast.makeText(getContext(),"考试结束",Toast.LENGTH_SHORT).show();
             }
         });
 
