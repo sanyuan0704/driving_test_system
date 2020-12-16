@@ -4,25 +4,21 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Spinner;
-
 import android.widget.Toast;
-
 
 import com.whut.driving_test_system.R;
 import com.whut.driving_test_system.databinding.FragmentExamBinding;
 import com.whut.driving_test_system.ui.viewmodels.ExamViewModel;
 import com.whut.driving_test_system.ui.viewmodels.MainViewModel;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * 实现功能：
@@ -53,11 +49,18 @@ public class ExamFragment extends Fragment {
 
         // binding
         binding = DataBindingUtil.inflate(inflater,R.layout.fragment_exam, container, false);
-
         binding.setExamViewModel(examViewModel);
         binding.iclExamContent.setExamViewModel(examViewModel);
         binding.setLifecycleOwner(this);
 
+        // 登录判定
+        if (mainViewModel.loginedUser.getValue() == null){
+            Toast.makeText(getContext(),"警告：用户未登录",Toast.LENGTH_SHORT).show();
+            return binding.getRoot();
+        }
+        examViewModel.examinee.setValue(mainViewModel.selectedExamniee.getValue());
+
+        // TODO: 其他代码写在这条注释以下
 
         //设置路段选项
         List<String> a_list = new ArrayList<String>();//下拉列表
@@ -97,18 +100,6 @@ public class ExamFragment extends Fragment {
                 examViewModel.autoExamFunction(getContext(),getViewLifecycleOwner(),my_list);
             }
         });
-
-        // 登录判定
-        if (mainViewModel.loginedUser.getValue() == null){
-            Toast.makeText(getContext(),"警告：用户未登录",Toast.LENGTH_SHORT).show();
-            return binding.getRoot();
-        }
-        examViewModel.examinee.setValue(mainViewModel.selectedExamniee.getValue());
-
-        // TODO: 其他代码写在这条注释以下
-
-
-
 
         return binding.getRoot();
     }
