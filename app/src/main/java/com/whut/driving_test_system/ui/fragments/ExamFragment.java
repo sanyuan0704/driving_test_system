@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.whut.driving_test_system.R;
@@ -18,11 +19,13 @@ import com.whut.driving_test_system.ui.viewmodels.MainViewModel;
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * 实现功能：
@@ -65,6 +68,8 @@ public class ExamFragment extends Fragment {
         examViewModel.examinee.setValue(mainViewModel.selectedExamniee.getValue());
 
         // TODO: 其他代码写在这条注释以下
+        //设置分数显示的adapter
+
 
         //设置路段选项
         List<String> a_list = new ArrayList<String>();//下拉列表
@@ -113,6 +118,18 @@ public class ExamFragment extends Fragment {
 
             }
         });
+
+
+        //class DeductionAdapter extends RecyclerView.Adapter{
+            //class ViewHolder extends RecyclerView.ViewHolder {
+
+               // public ViewHolder(@NonNull View itemView) {
+                    //super(itemView);
+
+                //}
+            //}
+
+       // }
 
 
         return binding.getRoot();

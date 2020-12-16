@@ -33,7 +33,7 @@ public class ExamViewModel extends ViewModel {
         this.my_Rule = new MutableLiveData<List<Rule>>();
     }
 
-
+   //获取所有规则列表
     public void getAllRules(LifecycleOwner lifecycleOwner, Context context) {
         my_RuleRepository = new RuleRepository(context);
         my_RuleRepository.getAllLiveRules().observe(lifecycleOwner, new Observer<List<Rule>>() {
@@ -44,7 +44,7 @@ public class ExamViewModel extends ViewModel {
         });
     }
 
-
+    //自动评分函数
     public void autoExamFunction(Context context, List<String> my_list, FragmentExamBinding binding) {
         autoExam = new AutoExam(context, examinee.getValue(), my_Rule.getValue());
         Rule a_Rule = new Rule();
