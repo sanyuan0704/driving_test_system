@@ -30,7 +30,7 @@ public class ExamViewModel extends ViewModel {
     public RuleRepository my_RuleRepository;//对规则数据库操作
     private AutoExam autoExam;//自动评分类
     public MutableLiveData<Examinee> examinee;
-    public ArrayList<Rule> validRules = new ArrayList<>();
+    public ArrayList<Rule> validRules = new ArrayList<>();//扣分列表
 
     public ExamViewModel() {
         this.examinee = new MutableLiveData<>();
@@ -52,14 +52,14 @@ public class ExamViewModel extends ViewModel {
     public void autoExamFunction(Context context, List<String> my_list, FragmentExamBinding binding) {
         autoExam = new AutoExam(context, examinee.getValue(), my_Rule.getValue());
         Rule a_Rule = new Rule();
-        a_Rule = autoExam.R1_autoExamJudge(my_list.get(0));
-        if (!a_Rule.ruleId.equals("")) {
-            binding.iclExamContent.textView23.setText(a_Rule.content);
-        }
-        a_Rule = autoExam.R2_autoExamJudge(my_list.get(1));
-        if (!a_Rule.ruleId.equals("")) {
-            binding.iclExamContent.textView23.setText(a_Rule.content);
-        }
+//        a_Rule = autoExam.R1_autoExamJudge(my_list.get(0));
+//        if (!a_Rule.ruleId.equals("")) {
+//            binding.iclExamContent.textView23.setText(a_Rule.content);
+//        }
+//        a_Rule = autoExam.R2_autoExamJudge(my_list.get(1));
+//        if (!a_Rule.ruleId.equals("")) {
+//            binding.iclExamContent.textView23.setText(a_Rule.content);
+//        }
     }
 
     /**
