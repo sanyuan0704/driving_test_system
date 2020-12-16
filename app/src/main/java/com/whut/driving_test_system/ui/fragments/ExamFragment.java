@@ -44,6 +44,7 @@ public class ExamFragment extends Fragment {
         binding.setExamViewModel(examViewModel);
         binding.iclExamContent.setExamViewModel(examViewModel);
         binding.setLifecycleOwner(this);
+
         //设置路段选项
         List<String> a_list = new ArrayList<String>();//下拉列表
         a_list.add("路口");

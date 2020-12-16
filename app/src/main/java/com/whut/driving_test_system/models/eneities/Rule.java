@@ -44,4 +44,5 @@ public class Rule {
         this.secondThresholdKey = rule.secondThresholdKey;
         this.secondThresholdValue = rule.secondThresholdValue;
     }
+
 }
