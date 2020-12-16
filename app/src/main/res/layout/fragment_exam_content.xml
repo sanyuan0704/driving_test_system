@@ -333,14 +333,14 @@
                     android:textColor="@android:color/background_light"
                     android:textSize="18sp"
                     android:onClick="@{examViewModel::onRestart}"
-                    app:layout_constraintBottom_toTopOf="@+id/button22"
+                    app:layout_constraintBottom_toTopOf="@+id/btn_end"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toEndOf="@+id/guideline39"
                     app:layout_constraintTop_toBottomOf="@+id/button20" />
 
                 <Button
-                    android:id="@+id/button22"
+                    android:id="@+id/btn_end"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@color/colorAccent"
@@ -348,7 +348,6 @@
                     android:text="结束考试"
                     android:textColor="@android:color/background_light"
                     android:textSize="18sp"
-                    android:onClick="@{examViewModel::onEnd}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"

@@ -147,13 +147,4 @@ public class ExamViewModel extends ViewModel {
         player.start();
     }
 
-    /**
-     * 结束考试按钮函数
-     *
-     * @param v
-     */
-    public void onEnd(View v) {
-
-    }
-
 }

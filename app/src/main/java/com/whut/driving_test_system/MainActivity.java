@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     switch (item.getItemId()) {
                         case R.id.welcomeFragment:
+                            item.setChecked(true);
                             Navigation.findNavController(MainActivity.this, R.id.fragment).navigate(R.id.welcomeFragment);
                             break;
 
@@ -51,8 +52,8 @@ public class MainActivity extends AppCompatActivity {
                             if (mainViewModel.loginedUser.getValue().usertype != User.UserTypes.EXAMINER.ordinal()) {
                                 Toast.makeText(MainActivity.this, "您不是考官，请重新登陆", Toast.LENGTH_SHORT).show();
                             } else {
-                                Navigation.findNavController(MainActivity.this, R.id.fragment).navigate(R.id.homeFragment);
                                 item.setChecked(true);
+                                Navigation.findNavController(MainActivity.this, R.id.fragment).navigate(R.id.homeFragment);
                             }
                             break;
 
@@ -68,8 +69,8 @@ public class MainActivity extends AppCompatActivity {
                             if (mainViewModel.loginedUser.getValue().usertype != User.UserTypes.EXAMINER.ordinal()) {
                                 Toast.makeText(MainActivity.this, "您不是考官，请重新登陆", Toast.LENGTH_SHORT).show();
                             } else {
-                                Navigation.findNavController(MainActivity.this, R.id.fragment).navigate(R.id.syncFragment);
                                 item.setChecked(true);
+                                Navigation.findNavController(MainActivity.this, R.id.fragment).navigate(R.id.syncFragment);
                             }
                             break;
 
@@ -77,8 +78,8 @@ public class MainActivity extends AppCompatActivity {
                             if (mainViewModel.loginedUser.getValue().usertype != User.UserTypes.ADMIN.ordinal()) {
                                 Toast.makeText(MainActivity.this, "您不是管理员，请重新登陆", Toast.LENGTH_SHORT).show();
                             } else {
-                                Navigation.findNavController(MainActivity.this, R.id.fragment).navigate(R.id.settingsFragment);
                                 item.setChecked(true);
+                                Navigation.findNavController(MainActivity.this, R.id.fragment).navigate(R.id.settingsFragment);
                             }
                             break;
                     }

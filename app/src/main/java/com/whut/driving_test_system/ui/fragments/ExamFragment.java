@@ -1,13 +1,11 @@
 package com.whut.driving_test_system.ui.fragments;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Toast;
 
 import com.whut.driving_test_system.R;
 import com.whut.driving_test_system.databinding.FragmentExamBinding;
@@ -20,7 +18,6 @@ import java.util.List;
 
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -112,6 +109,13 @@ public class ExamFragment extends Fragment {
             }
         });
 
+        // 设置结束考试状态
+        binding.iclExamContent.btnEnd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mainViewModel.isExaming.setValue(false);
+            }
+        });
 
         return binding.getRoot();
     }
