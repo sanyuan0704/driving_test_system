@@ -57,11 +57,9 @@ public class ExamFragment extends Fragment {
         binding.iclExamContent.setExamViewModel(examViewModel);
         binding.setLifecycleOwner(this);
 
-        // 登录判定
-        if (mainViewModel.loginedUser.getValue() == null) {
-            Toast.makeText(getContext(), "警告：用户未登录", Toast.LENGTH_SHORT).show();
-            return binding.getRoot();
-        }
+        // 记录当前页面位置与初始化
+        mainViewModel.isExaming.setValue(true);
+        mainViewModel.anchor.setValue(R.id.examFragment);
         examViewModel.examinee.setValue(mainViewModel.selectedExamniee.getValue());
 
         // TODO: 其他代码写在这条注释以下

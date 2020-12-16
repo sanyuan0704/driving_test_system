@@ -58,11 +58,8 @@ public class HomeFragment extends Fragment {
         binding.setHomeViewModel(homeViewModel);
         binding.setLifecycleOwner(this);
 
-        // 登录判定
-        if (mainViewModel.loginedUser.getValue() == null){
-            Toast.makeText(getContext(),"警告：用户未登录",Toast.LENGTH_SHORT).show();
-            return binding.getRoot();
-        }
+        // 记录当前页面位置
+        mainViewModel.anchor.setValue(R.id.homeFragment);
 
         // 考生列表
         rcv = binding.iclHomeContent.rcvExaminees;

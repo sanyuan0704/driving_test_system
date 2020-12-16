@@ -14,98 +14,29 @@
         android:layout_height="match_parent"
         tools:context=".MainActivity">
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.05" />
-
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottomNavigationView"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/guideline"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/design_default_color_background">
-
-                <ImageButton
-                    android:id="@+id/imageButton2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@android:color/transparent"
-                    android:foreground="?attr/selectableItemBackground"
-                    android:src="@drawable/ic_home_gery_56dp"
-                    app:layout_constraintBottom_toTopOf="@+id/ibtn_exam"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <ImageButton
-                    android:id="@+id/ibtn_exam"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@android:color/transparent"
-                    android:foreground="?attr/selectableItemBackground"
-                    app:layout_constraintBottom_toTopOf="@+id/ibtn_sync"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageButton2"
-                    app:srcCompat="@drawable/ic_assessment_gery_56dp" />
-
-                <ImageButton
-                    android:id="@+id/ibtn_sync"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@android:color/transparent"
-                    android:foreground="?attr/selectableItemBackground"
-                    app:layout_constraintBottom_toTopOf="@+id/guideline8"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/ibtn_exam"
-                    app:srcCompat="@drawable/ic_save_gery_56dp" />
-
-                <ImageButton
-                    android:id="@+id/setting_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="24dp"
-                    android:background="@android:color/transparent"
-                    android:foreground="?attr/selectableItemBackground"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:srcCompat="@drawable/ic_settings_gery_56dp" />
-
-                <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/guideline8"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    app:layout_constraintGuide_percent="0.4" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-        </com.google.android.material.bottomnavigation.BottomNavigationView>
-
         <fragment
             android:id="@+id/fragment"
             android:name="androidx.navigation.fragment.NavHostFragment"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:defaultNavHost="true"
+            app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:navGraph="@navigation/main_nav" />
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomNavigationView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@android:color/background_light"
+            app:itemIconTint="@drawable/selector_nav"
+            app:itemTextColor="@drawable/selector_nav"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/bottomNavigationView"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0"
-            app:navGraph="@navigation/main_nav" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:menu="@menu/menu_nav" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
