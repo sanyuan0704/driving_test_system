@@ -6,8 +6,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.whut.driving_test_system.R;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -34,8 +36,10 @@ public class WelcomeFragment extends Fragment {
             public void onClick(View view) {
                 NavController controller = Navigation.findNavController(view);
                 controller.navigate(R.id.action_welcomeFragment_to_loginFragment);
+
             }
         });
+
         return view;
     }
 }

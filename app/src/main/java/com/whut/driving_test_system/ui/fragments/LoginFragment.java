@@ -1,6 +1,7 @@
 package com.whut.driving_test_system.ui.fragments;
 
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.whut.driving_test_system.R;
 import com.whut.driving_test_system.databinding.FragmentLoginBinding;
 import com.whut.driving_test_system.models.eneities.User;
@@ -15,6 +17,7 @@ import com.whut.driving_test_system.models.repository.UserRepository;
 import com.whut.driving_test_system.ui.viewmodels.LoginViewModel;
 import com.whut.driving_test_system.ui.viewmodels.MainViewModel;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
@@ -47,6 +50,7 @@ public class LoginFragment extends Fragment {
         binding.btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
+
                 User user = loginViewModel.user.getValue();
                 user.username = binding.etUsername.getText().toString();
                 user.password = binding.etPassword.getText().toString();
