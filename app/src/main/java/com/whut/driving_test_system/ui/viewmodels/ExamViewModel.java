@@ -6,18 +6,21 @@ import android.media.MediaPlayer;
 import android.view.View;
 
 import com.whut.driving_test_system.R;
+import com.whut.driving_test_system.models.eneities.Examinee;
 
 import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.MutableLiveData;
+
 import androidx.lifecycle.ViewModel;
 
 import java.util.List;
 
-import util.AutoExam;
+//import util.AutoExam;
 
 
 public class ExamViewModel extends ViewModel {
 
-    private AutoExam autoExam;
+    //private AutoExam autoExam;
 
 
     public void autoExamFunction(Context context, LifecycleOwner lifecycleOwner, List<String> my_list){
@@ -31,6 +34,12 @@ public class ExamViewModel extends ViewModel {
 
 
 
+
+    public MutableLiveData<Examinee> examinee;
+
+    public ExamViewModel() {
+        this.examinee = new MutableLiveData<>();
+    }
 
 
     /**
