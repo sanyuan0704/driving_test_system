@@ -1,6 +1,5 @@
 package com.whut.driving_test_system.ui.fragments;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,7 +21,6 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
@@ -60,11 +58,9 @@ public class ExamFragment extends Fragment {
         binding.iclExamContent.setExamViewModel(examViewModel);
         binding.setLifecycleOwner(this);
 
-        // 登录判定
-        if (mainViewModel.loginedUser.getValue() == null) {
-            Toast.makeText(getContext(), "警告：用户未登录", Toast.LENGTH_SHORT).show();
-            return binding.getRoot();
-        }
+        // 记录当前页面位置与初始化
+        mainViewModel.isExaming.setValue(true);
+        mainViewModel.anchor.setValue(R.id.examFragment);
         examViewModel.examinee.setValue(mainViewModel.selectedExamniee.getValue());
 
         // TODO: 其他代码写在这条注释以下
@@ -119,6 +115,14 @@ public class ExamFragment extends Fragment {
             }
         });
 
+        // 设置结束考试状态
+        binding.iclExamContent.btnEnd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mainViewModel.isExaming.setValue(false);
+                Toast.makeText(getContext(),"考试结束",Toast.LENGTH_SHORT).show();
+            }
+        });
 
         //class DeductionAdapter extends RecyclerView.Adapter{
             //class ViewHolder extends RecyclerView.ViewHolder {

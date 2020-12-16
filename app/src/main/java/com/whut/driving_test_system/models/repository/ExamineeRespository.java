@@ -103,6 +103,18 @@ public class ExamineeRespository {
         }.execute();
     }
 
+    @SuppressLint("StaticFieldLeak")
+    public void deleteAllExamineeRuleRef(){
+        new AsyncTask<Void,Void,Void>(){
+
+            @Override
+            protected Void doInBackground(Void... voids) {
+                database.getExamnieeRuleRefDao().deleteAllExamineeRuleRef();
+                return null;
+            }
+        }.execute();
+    }
+
     public LiveData<ExamineeWithRules> getExamnieeWithRulesByExamnumber(String examNumber){
         return database.getExamnieeDao().getExamnieeWithRulesByExamnumber(examNumber);
     }

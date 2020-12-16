@@ -10,6 +10,7 @@ import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Transaction;
 import androidx.room.Update;
 
 @Dao
@@ -29,6 +30,7 @@ public interface ExamineeDao {
     @Query("SELECT * FROM Examinee")
     LiveData<List<Examinee>> getAllExaminees();
 
+    @Transaction
     @Query("SELECT * FROM Examinee WHERE examNumber=:examNumber")
     LiveData<ExamineeWithRules> getExamnieeWithRulesByExamnumber(String examNumber);
 }

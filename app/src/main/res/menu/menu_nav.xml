@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/welcomeFragment"
+        android:icon="@drawable/ic_directions_car_gary_56dp"
+        android:title="欢迎" />
+    <item
+        android:id="@+id/homeFragment"
+        android:icon="@drawable/ic_home_gery_56dp"
+        android:title="主页" />
+    <item
+        android:id="@+id/examFragment"
+        android:icon="@drawable/ic_assessment_gery_56dp"
+        android:title="考试" />
+    <item
+        android:id="@+id/syncFragment"
+        android:icon="@drawable/ic_save_gery_56dp"
+        android:title="存储" />
+    <item
+        android:id="@+id/settingsFragment"
+        android:icon="@drawable/ic_settings_gery_56dp"
+        android:title="设置" />
+</menu>
