@@ -111,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
                 new Rule("r3", "车速超过限速规定", "超速", "10", true, true, "考试车辆行驶速度状态", "40", null, null),
                 new Rule("r5", "因操作不当发动机熄火一次", "熄火", "10", true, true, "考试车辆发动机转速状态", "0", null, null),
                 new Rule("r6", "考试里程小于最小里程", "里程不足", "100", true, true, "考试车辆行驶里程", "3", null, null),
-                new Rule("r7", "通过路口前未减速慢行", "通过路口不减速", "100", true, true, "考试车辆形式或停放区域", "路口", "考试车辆制动踏板状态", "30"),
+                new Rule("r7", "通过路口前未减速慢行", "通过路口不减速", "100", true, true, "考试车辆形式或停放区域", "普通路段", "考试车辆制动踏板状态", "30"),
                 new Rule("r4", "开转向灯小于3秒即转向", "提前转向", "10", true, true, "考试车辆方向盘转角", "30", "灯光开关时间", "3")
         );
 

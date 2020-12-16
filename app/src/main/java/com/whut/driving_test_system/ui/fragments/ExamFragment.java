@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
@@ -27,6 +28,7 @@ public class ExamFragment extends Fragment {
     private ExamViewModel examViewModel;
     private FragmentExamBinding binding;
     private ArrayAdapter<String> adapter;//下拉列表内容
+    private List<String> my_list;//提交车况内容
 
     public ExamFragment() {
         // Required empty public constructor
@@ -38,12 +40,12 @@ public class ExamFragment extends Fragment {
         examViewModel = new ViewModelProvider(this).get(ExamViewModel.class);
 
         // Inflate the layout for this fragment
-        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_exam, container, false);
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_exam, container, false);
         binding.setExamViewModel(examViewModel);
         binding.iclExamContent.setExamViewModel(examViewModel);
         binding.setLifecycleOwner(this);
-        //获取控件
-        List<String> a_list = new ArrayList<String>();
+        //设置路段选项
+        List<String> a_list = new ArrayList<String>();//下拉列表
         a_list.add("路口");
         a_list.add("人行横道");
         a_list.add("学校路段");
@@ -53,12 +55,33 @@ public class ExamFragment extends Fragment {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         binding.spinnerRoad.setAdapter(adapter);
 
+        //自动评分 点击按钮后
+        my_list = new ArrayList<String>();//提交车况内容
+        binding.floatingActionButton3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                my_list.clear();
+                my_list.add(binding.ET1.getText().toString());
+                my_list.add(binding.ET2.getText().toString());
+                my_list.add(binding.ET3.getText().toString());
+                my_list.add(binding.ET4.getText().toString());
+                my_list.add(binding.ET5.getText().toString());
+                my_list.add(binding.ET6.getText().toString());
+                my_list.add(binding.ET7.getText().toString());
+                binding.spinnerRoad.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    // 选择一个路况
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                        my_list.add(adapter.getItem(position));
+                    }
 
-
-
-
-
-
+                    //没有选中时的处理
+                    public void onNothingSelected(AdapterView<?> parent) {
+                    }
+                });
+                //完成对输入内容的读取，进行自动评判
+                examViewModel.autoExamFunction(getContext(),getViewLifecycleOwner(),my_list);
+            }
+        });
 
 
         return binding.getRoot();

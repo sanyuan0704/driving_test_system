@@ -148,7 +148,7 @@ public class ExaminerSettingFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 //开放输入权限，换背景色提醒
-                if (changeUser.getText() == "修改") {
+                if (changeUser.getText() .equals("修改")) {
                     deleteUser.setEnabled(false);
                     deleteUser.setTextColor(Color.GRAY);
                     addUser.setEnabled(false);
@@ -173,7 +173,7 @@ public class ExaminerSettingFragment extends Fragment {
         addUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (addUser.getText() == "增添") {
+                if (addUser.getText() .equals("增添")) {
                     sp.setVisibility(View.GONE);
                     deleteUser.setEnabled(false);
                     deleteUser.setTextColor(Color.GRAY);

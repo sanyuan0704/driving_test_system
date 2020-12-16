@@ -32,7 +32,7 @@
                 android:layout_height="match_parent">
 
                 <EditText
-                    android:id="@+id/editText2"
+                    android:id="@+id/ET_1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
@@ -44,7 +44,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/guideline44" />
 
                 <EditText
-                    android:id="@+id/editText3"
+                    android:id="@+id/ET_2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
@@ -56,7 +56,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/guideline45" />
 
                 <EditText
-                    android:id="@+id/editText6"
+                    android:id="@+id/ET_3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
@@ -68,7 +68,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/guideline46" />
 
                 <EditText
-                    android:id="@+id/editText7"
+                    android:id="@+id/ET_4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
@@ -80,7 +80,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/guideline47" />
 
                 <EditText
-                    android:id="@+id/editText8"
+                    android:id="@+id/ET_5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
@@ -92,7 +92,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/guideline48" />
 
                 <EditText
-                    android:id="@+id/editText10"
+                    android:id="@+id/ET_6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
@@ -104,7 +104,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/guideline50" />
 
                 <EditText
-                    android:id="@+id/editText9"
+                    android:id="@+id/ET_7"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
@@ -132,7 +132,7 @@
                     android:layout_marginEnd="16dp"
                     android:text="与道路右边线间距(CM):"
                     app:layout_constraintBottom_toTopOf="@+id/guideline45"
-                    app:layout_constraintEnd_toStartOf="@+id/editText2"
+                    app:layout_constraintEnd_toStartOf="@+id/ET_1"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/guideline44" />
@@ -144,7 +144,7 @@
                     android:layout_marginStart="16dp"
                     android:text="与道路中心线间距(CM):"
                     app:layout_constraintBottom_toTopOf="@+id/guideline46"
-                    app:layout_constraintEnd_toStartOf="@+id/editText3"
+                    app:layout_constraintEnd_toStartOf="@+id/ET_2"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/guideline45" />
@@ -156,7 +156,7 @@
                     android:layout_marginStart="16dp"
                     android:text="车速(KM/h):"
                     app:layout_constraintBottom_toTopOf="@+id/guideline47"
-                    app:layout_constraintEnd_toStartOf="@+id/editText6"
+                    app:layout_constraintEnd_toStartOf="@+id/ET_3"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/guideline46" />
@@ -168,7 +168,7 @@
                     android:layout_marginStart="16dp"
                     android:text="方向盘转角:"
                     app:layout_constraintBottom_toTopOf="@+id/guideline48"
-                    app:layout_constraintEnd_toStartOf="@+id/editText7"
+                    app:layout_constraintEnd_toStartOf="@+id/ET_4"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/guideline47" />
@@ -180,7 +180,7 @@
                     android:layout_marginStart="16dp"
                     android:text="发动机转速(转/s):"
                     app:layout_constraintBottom_toTopOf="@+id/guideline49"
-                    app:layout_constraintEnd_toStartOf="@+id/editText8"
+                    app:layout_constraintEnd_toStartOf="@+id/ET_5"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/guideline48" />
@@ -192,7 +192,7 @@
                     android:layout_marginStart="16dp"
                     android:text="车辆行驶里程(KM):"
                     app:layout_constraintBottom_toTopOf="@+id/guideline50"
-                    app:layout_constraintEnd_toStartOf="@+id/editText9"
+                    app:layout_constraintEnd_toStartOf="@+id/ET_7"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/guideline49" />
@@ -204,7 +204,7 @@
                     android:layout_marginStart="16dp"
                     android:text="制动踏板状态(%):"
                     app:layout_constraintBottom_toTopOf="@+id/guideline51"
-                    app:layout_constraintEnd_toStartOf="@+id/editText10"
+                    app:layout_constraintEnd_toStartOf="@+id/ET_6"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/guideline50" />

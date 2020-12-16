@@ -1,14 +1,34 @@
 package com.whut.driving_test_system.ui.viewmodels;
 
+import android.content.Context;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.view.View;
 
 import com.whut.driving_test_system.R;
 
+import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.ViewModel;
 
+import java.util.List;
+
+import util.AutoExam;
+
+
 public class ExamViewModel extends ViewModel {
+    private AutoExam autoExam;
+
+
+    public void autoExamFunction(Context context, LifecycleOwner lifecycleOwner, List<String> my_list){
+
+
+
+
+    }
+
+
+
+
 
 
     /**

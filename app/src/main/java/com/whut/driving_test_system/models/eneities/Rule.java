@@ -31,4 +31,17 @@ public class Rule {
         this.secondThresholdKey = secondThresholdKey;
         this.secondThresholdValue = secondThresholdValue;
     }
+
+    public Rule(Rule rule) {
+        this.ruleId = rule.ruleId;
+        this.content = rule.content;
+        this.nickname = rule.nickname;
+        this.value = rule.value;
+        this.isAuto = rule.isAuto;
+        this.isSelected = rule.isSelected;
+        this.firstThresholdKey = rule.firstThresholdKey;
+        this.firstThresholdValue = rule.firstThresholdValue;
+        this.secondThresholdKey = rule.secondThresholdKey;
+        this.secondThresholdValue = rule.secondThresholdValue;
+    }
 }
