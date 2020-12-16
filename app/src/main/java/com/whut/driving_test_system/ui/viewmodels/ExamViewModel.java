@@ -6,7 +6,9 @@ import android.media.MediaPlayer;
 import android.view.View;
 
 import com.whut.driving_test_system.R;
+import com.whut.driving_test_system.databinding.FragmentExamBinding;
 import com.whut.driving_test_system.models.eneities.Examinee;
+import com.whut.driving_test_system.models.eneities.Rule;
 
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.MutableLiveData;
@@ -23,23 +25,18 @@ public class ExamViewModel extends ViewModel {
     private AutoExam autoExam;
 
 
-    public void autoExamFunction(Context context, LifecycleOwner lifecycleOwner, List<String> my_list,Examinee my_Examinee){
-        autoExam = new  AutoExam(lifecycleOwner,context,my_Examinee);
-        //autoExam.
 
-
-
-
-
+    public void autoExamFunction(Context context, LifecycleOwner lifecycleOwner, List<String> my_list, FragmentExamBinding binding) {
+        autoExam = new AutoExam(lifecycleOwner, context, examinee.getValue());
+        Rule a_Rule = new Rule();
+        a_Rule=autoExam.R1_autoExamJudge(my_list.get(0));
+        if(!a_Rule.ruleId.equals("")){
+            binding.iclExamContent.textView23.setText(a_Rule.content);
+        }
     }
 
 
-
-
-
-
     public MutableLiveData<Examinee> examinee;
-
     public ExamViewModel() {
         this.examinee = new MutableLiveData<>();
     }
@@ -47,9 +44,10 @@ public class ExamViewModel extends ViewModel {
 
     /**
      * 起步按钮函数
+     *
      * @param v
      */
-    public void onStartExam(View v){
+    public void onStartExam(View v) {
         MediaPlayer player = MediaPlayer.create(v.getContext(), R.raw.start);
         player.setAudioStreamType(AudioManager.STREAM_MUSIC);
         player.start();
@@ -58,9 +56,10 @@ public class ExamViewModel extends ViewModel {
 
     /**
      * 左转按钮函数
+     *
      * @param v
      */
-    public void onTurnLeft(View v){
+    public void onTurnLeft(View v) {
         MediaPlayer player = MediaPlayer.create(v.getContext(), R.raw.turn_left);
         player.setAudioStreamType(AudioManager.STREAM_MUSIC);
         player.start();
@@ -68,9 +67,10 @@ public class ExamViewModel extends ViewModel {
 
     /**
      * 右转按钮函数
+     *
      * @param v
      */
-    public void onTurnRight(View v){
+    public void onTurnRight(View v) {
         MediaPlayer player = MediaPlayer.create(v.getContext(), R.raw.turn_right);
         player.setAudioStreamType(AudioManager.STREAM_MUSIC);
         player.start();
@@ -78,9 +78,10 @@ public class ExamViewModel extends ViewModel {
 
     /**
      * 超车按钮函数
+     *
      * @param v
      */
-    public void onOvertaking(View v){
+    public void onOvertaking(View v) {
         MediaPlayer player = MediaPlayer.create(v.getContext(), R.raw.overtaking);
         player.setAudioStreamType(AudioManager.STREAM_MUSIC);
         player.start();
@@ -88,9 +89,10 @@ public class ExamViewModel extends ViewModel {
 
     /**
      * 掉头按钮函数
+     *
      * @param v
      */
-    public void onTurnAround(View v){
+    public void onTurnAround(View v) {
         MediaPlayer player = MediaPlayer.create(v.getContext(), R.raw.turn_around);
         player.setAudioStreamType(AudioManager.STREAM_MUSIC);
         player.start();
@@ -98,9 +100,10 @@ public class ExamViewModel extends ViewModel {
 
     /**
      * 变更车道按钮函数
+     *
      * @param v
      */
-    public void onChangeLane(View v){
+    public void onChangeLane(View v) {
         MediaPlayer player = MediaPlayer.create(v.getContext(), R.raw.change_lane);
         player.setAudioStreamType(AudioManager.STREAM_MUSIC);
         player.start();
@@ -108,9 +111,10 @@ public class ExamViewModel extends ViewModel {
 
     /**
      * 靠边停车按钮函数
+     *
      * @param v
      */
-    public void onStop(View v){
+    public void onStop(View v) {
         MediaPlayer player = MediaPlayer.create(v.getContext(), R.raw.stop);
         player.setAudioStreamType(AudioManager.STREAM_MUSIC);
         player.start();
@@ -118,9 +122,10 @@ public class ExamViewModel extends ViewModel {
 
     /**
      * 重新起步按钮函数
+     *
      * @param v
      */
-    public void onRestart(View v){
+    public void onRestart(View v) {
         MediaPlayer player = MediaPlayer.create(v.getContext(), R.raw.restart);
         player.setAudioStreamType(AudioManager.STREAM_MUSIC);
         player.start();
@@ -128,9 +133,10 @@ public class ExamViewModel extends ViewModel {
 
     /**
      * 结束考试按钮函数
+     *
      * @param v
      */
-    public void onEnd(View v){
+    public void onEnd(View v) {
 
     }
 
