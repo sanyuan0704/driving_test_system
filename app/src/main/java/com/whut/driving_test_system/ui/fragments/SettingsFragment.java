@@ -7,8 +7,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.whut.driving_test_system.R;
+import com.whut.driving_test_system.ui.viewmodels.MainViewModel;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
 /**
@@ -19,6 +21,7 @@ import androidx.navigation.Navigation;
  * 2. 用户登出
  */
 public class SettingsFragment extends Fragment {
+    private MainViewModel mainViewModel;
     private Button ruleButton, examinerButton;
     public SettingsFragment() {
         // Required empty public constructor
@@ -27,6 +30,12 @@ public class SettingsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        // viewmodel
+        mainViewModel = new ViewModelProvider(requireActivity()).get(MainViewModel.class);
+
+        // 初始化页面位置
+        mainViewModel.anchor.setValue(R.id.settingsFragment);
+
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_settings_entrance, container, false);
         ruleButton = view.findViewById(R.id.rules_manage_button);

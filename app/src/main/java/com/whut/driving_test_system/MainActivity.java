@@ -98,6 +98,10 @@ public class MainActivity extends AppCompatActivity {
         initDB();
     }
 
+    @Override
+    public void onBackPressed() {
+        // 返回键阻断
+    }
 
     private void initDB() {
         UserRepository userRepository = new UserRepository(this);

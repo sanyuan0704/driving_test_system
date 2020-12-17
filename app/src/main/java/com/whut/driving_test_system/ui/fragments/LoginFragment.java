@@ -20,6 +20,7 @@ import com.whut.driving_test_system.ui.viewmodels.MainViewModel;
 import androidx.appcompat.app.AlertDialog;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.LifecycleService;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
@@ -47,31 +48,32 @@ public class LoginFragment extends Fragment {
         final FragmentLoginBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_login, container, false);
         binding.setLoginViewModel(loginViewModel);
         binding.setLifecycleOwner(getActivity());
+
         binding.btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
-
-                User user = loginViewModel.user.getValue();
-                user.username = binding.etUsername.getText().toString();
-                user.password = binding.etPassword.getText().toString();
-                Log.d("onLogin", "onClick: " + user.username + ';' + user.password + ';' + user.usertype);
-                UserRepository userRepository = new UserRepository(getContext());
-                userRepository.getUserByUsernameAndPassword(user.username, user.password).observe(getActivity(), new Observer<User>() {
+                String username = binding.etUsername.getText().toString();
+                String password = binding.etPassword.getText().toString();
+                final int usertype = (binding.rgUsertype.getCheckedRadioButtonId() == R.id.rbtn_examiner) ? User.UserTypes.EXAMINER.ordinal() : User.UserTypes.ADMIN.ordinal();
+                new UserRepository(getContext()).getUserByUsernameAndPassword(username, password).observe(getActivity(), new Observer<User>() {
                     @Override
                     public void onChanged(User user) {
-                        Log.d("onLogin", "user: " + user);
-                        if (user == null) {
+                        if (user == null || usertype != user.usertype) {
                             Toast.makeText(getContext(), "用户名或密码错误", Toast.LENGTH_SHORT).show();
                             return;
                         }
-
                         Toast.makeText(getContext(), "登录成功", Toast.LENGTH_SHORT).show();
                         mainViewModel.loginedUser.setValue(user);
-                        Navigation.findNavController(v).navigate(R.id.action_loginFragment_to_homeFragment);
+                        if (usertype == User.UserTypes.EXAMINER.ordinal()){
+                            Navigation.findNavController(v).navigate(R.id.action_loginFragment_to_homeFragment);
+                        }else if (usertype == User.UserTypes.ADMIN.ordinal()){
+                            Navigation.findNavController(v).navigate(R.id.settingsFragment);
+                        }
                     }
                 });
             }
         });
+
 
         return binding.getRoot();
     }

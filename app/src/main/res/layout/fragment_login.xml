@@ -76,7 +76,7 @@
                 android:id="@+id/rbtn_examiner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:checked="@{loginViewModel.user.usertype == 0}"
+                android:checked="true"
                 android:onClick="@{loginViewModel::onChangeUserType}"
                 android:padding="8dp"
                 android:text="考官" />
