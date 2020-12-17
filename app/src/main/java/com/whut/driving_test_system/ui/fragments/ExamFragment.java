@@ -38,6 +38,7 @@ public class ExamFragment extends Fragment {
     private ArrayAdapter<String> adapter;//下拉列表内容
     private List<String> my_list;//提交车况内容
     private DeductionAdapter deductionAdapter;
+    private OrderAdapter orderAdapter;
 
     public ExamFragment() {
         // Required empty public constructor
@@ -72,25 +73,55 @@ public class ExamFragment extends Fragment {
         binding.iclExamContent.RecDeduction.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.iclExamContent.RecDeduction.setAdapter(deductionAdapter);
 
-
+        //设置指令显示的adapter
+        orderAdapter = new OrderAdapter();
+        binding.iclExamContent.reOrder.setLayoutManager(new LinearLayoutManager(getContext()));
+        binding.iclExamContent.reOrder.setAdapter(orderAdapter);
 
 
         examViewModel.getAllRules(getViewLifecycleOwner(), getContext());//获取规则列表
         my_list = new ArrayList<String>();//提交车况内容
 
+        //设置考生信息
+        binding.iclExamContent.textView28.setText(examViewModel.examinee.getValue().name);
+        binding.iclExamContent.textView26.setText(examViewModel.examinee.getValue().idNumber);
 
+        //指令后更新视图
+        List<String> aOrderlist = new ArrayList<>();
+        examViewModel.orderList.setValue(aOrderlist);
+        examViewModel.orderList.observe(getViewLifecycleOwner(), new Observer<List<String>>() {
+            @Override
+            public void onChanged(List<String> strings) {
+                //设置指令显示
+                orderAdapter.setValidOrders(strings);
+                orderAdapter.notifyDataSetChanged();
+            }
+        });
         //扣分后更新视图
         List<Rule> a_rulelist = new ArrayList<>();
         examViewModel.validRules.setValue(a_rulelist);
         examViewModel.validRules.observe(getViewLifecycleOwner(), new Observer<List<Rule>>() {
             @Override
             public void onChanged(List<Rule> rules) {
-                //设置分数显示的adapter
+                //设置分数显示
                 deductionAdapter.setValidRules(rules);
                 deductionAdapter.notifyDataSetChanged();
+                //设置考试总扣分
+                int sum = 0;
+                for (int i = 0; i < rules.size(); i++) {
+                    if (sum <= 100) {
+                        sum += Integer.parseInt(rules.get(i).value.toString());
+                    } else {
+                        break;
+                    }
+                }
+                if (sum <= 100) {
+                    binding.iclExamContent.tvScore.setText(String.valueOf(sum) + "分");
+                } else {
+                    binding.iclExamContent.tvScore.setText("扣分已超过100分");
+                }
             }
         });
-
 
         //设置路段选项
         String roadChose = new String();
@@ -109,6 +140,7 @@ public class ExamFragment extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 examViewModel.roadChose.setValue(adapter.getItem(position).toString());
             }
+
             //没有选中时的处理
             public void onNothingSelected(AdapterView<?> parent) {
             }
@@ -131,9 +163,9 @@ public class ExamFragment extends Fragment {
                         my_list.add(binding.ET7.getText().toString());
                         //完成对输入内容的读取，进行自动评判
                         examViewModel.autoExamFunction(getContext(), my_list, binding);
+                        binding.iclExamContent.tvMileage.setText(binding.ET7.getText().toString() + "KM");//设置形式总里程
                     }
                 });
-
             }
         });
 
@@ -145,8 +177,6 @@ public class ExamFragment extends Fragment {
                 Toast.makeText(getContext(), "考试结束", Toast.LENGTH_SHORT).show();
             }
         });
-
-
         return binding.getRoot();
     }
 
@@ -189,4 +219,40 @@ public class ExamFragment extends Fragment {
         }
 
     }
+}
+
+class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.MYViewHolder> {
+    private List<String> validOrders = new ArrayList<>();
+
+    public void setValidOrders(List<String> validOrders) {
+        this.validOrders = validOrders;
+    }
+
+    @NonNull
+    @Override
+    public MYViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.cell_order, parent, false);
+        return new OrderAdapter.MYViewHolder(view);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull MYViewHolder holder, int position) {
+        String order = validOrders.get(position);
+        holder.orderContext.setText(order);
+    }
+
+    @Override
+    public int getItemCount() {
+        return validOrders.size();
+    }
+
+    class MYViewHolder extends RecyclerView.ViewHolder {
+        TextView orderContext;
+
+        public MYViewHolder(@NonNull View itemView) {
+            super(itemView);
+            orderContext = itemView.findViewById(R.id.tv_order);
+        }
+    }
+
 }

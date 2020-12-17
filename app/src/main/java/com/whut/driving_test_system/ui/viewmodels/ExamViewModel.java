@@ -32,12 +32,14 @@ public class ExamViewModel extends ViewModel {
     public MutableLiveData<Examinee> examinee;
     public MutableLiveData<List<Rule>> validRules;//扣分列表
     public MutableLiveData<String> roadChose;//道路选项
+    public MutableLiveData<List<String>> orderList;//已考指令列表
 
     public ExamViewModel() {
         this.examinee = new MutableLiveData<>();
         this.my_Rule = new MutableLiveData<List<Rule>>();
         this.validRules = new MutableLiveData<List<Rule>>();
         this.roadChose = new MutableLiveData<String>();
+        this.orderList = new MutableLiveData<List<String>>();
     }
 
     /**
@@ -84,7 +86,7 @@ public class ExamViewModel extends ViewModel {
             validRules.setValue( a_rulelist);
         }
         a_Rule = autoExam.R7_autoExamJudge(roadChose.getValue(),my_list.get(5));//路口减速
-        if (a_Rule!=null) {
+        if (a_Rule.ruleId!=null) {
             List<Rule> a_rulelist = validRules.getValue();
             a_rulelist.add(a_Rule);
             validRules.setValue( a_rulelist);
@@ -154,6 +156,9 @@ public class ExamViewModel extends ViewModel {
         player.setAudioStreamType(AudioManager.STREAM_MUSIC);
         player.start();
         showAlertDialogAndSelectRules(v, "起步");
+        List<String> a_rulelist = orderList.getValue();
+        a_rulelist.add("起步");
+        orderList.setValue(a_rulelist);
     }
 
 
@@ -167,6 +172,9 @@ public class ExamViewModel extends ViewModel {
         player.setAudioStreamType(AudioManager.STREAM_MUSIC);
         player.start();
         showAlertDialogAndSelectRules(v, "拐弯");
+        List<String> a_rulelist = orderList.getValue();
+        a_rulelist.add("左拐");
+        orderList.setValue(a_rulelist);
     }
 
     /**
@@ -179,6 +187,9 @@ public class ExamViewModel extends ViewModel {
         player.setAudioStreamType(AudioManager.STREAM_MUSIC);
         player.start();
         showAlertDialogAndSelectRules(v, "拐弯");
+        List<String> a_rulelist = orderList.getValue();
+        a_rulelist.add("右拐");
+        orderList.setValue(a_rulelist);
     }
 
     /**
@@ -191,6 +202,9 @@ public class ExamViewModel extends ViewModel {
         player.setAudioStreamType(AudioManager.STREAM_MUSIC);
         player.start();
         showAlertDialogAndSelectRules(v, "超车");
+        List<String> a_rulelist = orderList.getValue();
+        a_rulelist.add("超车");
+        orderList.setValue(a_rulelist);
     }
 
     /**
@@ -203,6 +217,9 @@ public class ExamViewModel extends ViewModel {
         player.setAudioStreamType(AudioManager.STREAM_MUSIC);
         player.start();
         showAlertDialogAndSelectRules(v, "掉头");
+        List<String> a_rulelist = orderList.getValue();
+        a_rulelist.add("掉头");
+        orderList.setValue(a_rulelist);
     }
 
     /**
@@ -215,6 +232,9 @@ public class ExamViewModel extends ViewModel {
         player.setAudioStreamType(AudioManager.STREAM_MUSIC);
         player.start();
         showAlertDialogAndSelectRules(v, "变更车道");
+        List<String> a_rulelist = orderList.getValue();
+        a_rulelist.add("变更车道");
+        orderList.setValue(a_rulelist);
     }
 
     /**
@@ -227,6 +247,9 @@ public class ExamViewModel extends ViewModel {
         player.setAudioStreamType(AudioManager.STREAM_MUSIC);
         player.start();
         showAlertDialogAndSelectRules(v, "靠边停车");
+        List<String> a_rulelist = orderList.getValue();
+        a_rulelist.add("靠边停车");
+        orderList.setValue(a_rulelist);
     }
 
     /**
@@ -239,6 +262,9 @@ public class ExamViewModel extends ViewModel {
         player.setAudioStreamType(AudioManager.STREAM_MUSIC);
         player.start();
         showAlertDialogAndSelectRules(v, "起步");
+        List<String> a_rulelist = orderList.getValue();
+        a_rulelist.add("重新起步");
+        orderList.setValue(a_rulelist);
     }
 
 }
