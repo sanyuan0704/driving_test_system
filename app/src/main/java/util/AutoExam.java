@@ -61,17 +61,17 @@ public class AutoExam {
 }
 
 
-//抽象自动评分类
+//自动评分父类
 class RuleAuto {
     public String my_rule_id;
     public Rule my_Rule;//存储规则
-    public Examinee my_Examinee;//考试考生
-    public ExamineeRespository my_ExamineeRespository;//对考生数据库操作
+    //public Examinee my_Examinee;//考试考生
+    //public ExamineeRespository my_ExamineeRespository;//对考生数据库操作
 
     public Rule autoExamJudge(String firstThresholdValue) {
         if (my_Rule.isAuto == true && my_Rule.isSelected == true && Integer.parseInt(firstThresholdValue) <= Integer.parseInt(my_Rule.firstThresholdValue)) {
             //写入犯错
-            my_ExamineeRespository.insertExamnieeRuleRef(my_Examinee, my_Rule);
+            //my_ExamineeRespository.insertExamnieeRuleRef(my_Examinee, my_Rule);
             return my_Rule;
         }
         Rule rule = new Rule();
@@ -93,8 +93,8 @@ class R1 extends RuleAuto {
         my_rule_id = "r1";
         my_Rule = new Rule();
         setRule(rules);
-        this.my_Examinee = my_Examinee;
-        my_ExamineeRespository = new ExamineeRespository(context);
+        // this.my_Examinee = my_Examinee;
+        //my_ExamineeRespository = new ExamineeRespository(context);
     }
 }
 
@@ -103,8 +103,8 @@ class R2 extends RuleAuto {
         my_rule_id = "r2";
         my_Rule = new Rule();
         setRule(rules);
-        this.my_Examinee = my_Examinee;
-        my_ExamineeRespository = new ExamineeRespository(context);
+        //this.my_Examinee = my_Examinee;
+        //my_ExamineeRespository = new ExamineeRespository(context);
     }
 }
 
@@ -113,14 +113,14 @@ class R3 extends RuleAuto {
         my_rule_id = "r3";
         my_Rule = new Rule();
         setRule(rules);
-        this.my_Examinee = my_Examinee;
-        my_ExamineeRespository = new ExamineeRespository(context);
+        //this.my_Examinee = my_Examinee;
+        //my_ExamineeRespository = new ExamineeRespository(context);
     }
 
     public Rule autoExamJudge(String firstThresholdValue) {
         if (my_Rule.isAuto == true && my_Rule.isSelected == true && Integer.parseInt(firstThresholdValue) > Integer.parseInt(my_Rule.firstThresholdValue)) {
             //写入犯错
-            my_ExamineeRespository.insertExamnieeRuleRef(my_Examinee, my_Rule);
+            //my_ExamineeRespository.insertExamnieeRuleRef(my_Examinee, my_Rule);
             return my_Rule;
         }
         Rule rule = new Rule();
@@ -133,8 +133,8 @@ class R5 extends RuleAuto {
         my_rule_id = "r5";
         my_Rule = new Rule();
         setRule(rules);
-        this.my_Examinee = my_Examinee;
-        my_ExamineeRespository = new ExamineeRespository(context);
+        //this.my_Examinee = my_Examinee;
+        //my_ExamineeRespository = new ExamineeRespository(context);
     }
 }
 
@@ -143,14 +143,14 @@ class R6 extends RuleAuto {
         my_rule_id = "r6";
         my_Rule = new Rule();
         setRule(rules);
-        this.my_Examinee = my_Examinee;
-        my_ExamineeRespository = new ExamineeRespository(context);
+        //this.my_Examinee = my_Examinee;
+        //my_ExamineeRespository = new ExamineeRespository(context);
     }
 
     public Rule autoExamJudge(String firstThresholdValue) {
         if (my_Rule.isAuto == true && my_Rule.isSelected == true && Integer.parseInt(firstThresholdValue) < Integer.parseInt(my_Rule.firstThresholdValue)) {
             //写入犯错
-            my_ExamineeRespository.insertExamnieeRuleRef(my_Examinee, my_Rule);
+            //my_ExamineeRespository.insertExamnieeRuleRef(my_Examinee, my_Rule);
             return my_Rule;
         }
         Rule rule = new Rule();
@@ -163,14 +163,14 @@ class R7 extends RuleAuto {
         my_rule_id = "r7";
         my_Rule = new Rule();
         setRule(rules);
-        this.my_Examinee = my_Examinee;
-        my_ExamineeRespository = new ExamineeRespository(context);
+        //this.my_Examinee = my_Examinee;
+        //my_ExamineeRespository = new ExamineeRespository(context);
     }
 
     public Rule autoExamJudge(String firstThresholdValue, String secondThresholdValue) {
         if (my_Rule.isAuto == true && my_Rule.isSelected == true && !firstThresholdValue.equals("普通路段") && Integer.parseInt(secondThresholdValue) < Integer.parseInt(my_Rule.secondThresholdValue)) {
             //写入犯错
-            my_ExamineeRespository.insertExamnieeRuleRef(my_Examinee, my_Rule);
+            //my_ExamineeRespository.insertExamnieeRuleRef(my_Examinee, my_Rule);
             return my_Rule;
         }
         Rule rule = new Rule();
@@ -183,14 +183,14 @@ class R4 extends RuleAuto {
         my_rule_id = "r4";
         my_Rule = new Rule();
         setRule(rules);
-        this.my_Examinee = my_Examinee;
-        my_ExamineeRespository = new ExamineeRespository(context);
+        //this.my_Examinee = my_Examinee;
+        //my_ExamineeRespository = new ExamineeRespository(context);
     }
 
     public Rule autoExamJudge(String firstThresholdValue, String secondThresholdValue) {
         if (my_Rule.isAuto == true && my_Rule.isSelected == true && Integer.parseInt(firstThresholdValue) >= Integer.parseInt(my_Rule.firstThresholdValue) && Integer.parseInt(secondThresholdValue) < Integer.parseInt(my_Rule.secondThresholdValue)) {
             //写入犯错
-            my_ExamineeRespository.insertExamnieeRuleRef(my_Examinee, my_Rule);
+           // my_ExamineeRespository.insertExamnieeRuleRef(my_Examinee, my_Rule);
             return my_Rule;
         }
         Rule rule = new Rule();

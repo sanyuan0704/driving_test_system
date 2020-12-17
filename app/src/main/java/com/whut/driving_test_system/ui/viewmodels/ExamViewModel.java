@@ -31,14 +31,18 @@ public class ExamViewModel extends ViewModel {
     private AutoExam autoExam;//自动评分类
     public MutableLiveData<Examinee> examinee;
     public MutableLiveData<List<Rule>> validRules;//扣分列表
+    public MutableLiveData<String> roadChose;//道路选项
 
     public ExamViewModel() {
         this.examinee = new MutableLiveData<>();
         this.my_Rule = new MutableLiveData<List<Rule>>();
         this.validRules = new MutableLiveData<List<Rule>>();
+        this.roadChose = new MutableLiveData<String>();
     }
 
-   //获取所有规则列表
+    /**
+     * 获取所有规则列表
+     */
     public void getAllRules(LifecycleOwner lifecycleOwner, Context context) {
         my_RuleRepository = new RuleRepository(context);
         my_RuleRepository.getAllLiveRules().observe(lifecycleOwner, new Observer<List<Rule>>() {
@@ -49,18 +53,42 @@ public class ExamViewModel extends ViewModel {
         });
     }
 
-    //自动评分函数
+    /**
+     * 自动评分函数
+     */
     public void autoExamFunction(Context context, List<String> my_list, FragmentExamBinding binding) {
         autoExam = new AutoExam(context, examinee.getValue(), my_Rule.getValue());
         Rule a_Rule = new Rule();
-//        a_Rule = autoExam.R1_autoExamJudge(my_list.get(0));
-//        if (!a_Rule.ruleId.equals("")) {
-//            binding.iclExamContent.textView23.setText(a_Rule.content);
-//        }
-//        a_Rule = autoExam.R2_autoExamJudge(my_list.get(1));
-//        if (!a_Rule.ruleId.equals("")) {
-//            binding.iclExamContent.textView23.setText(a_Rule.content);
-//        }
+        a_Rule = autoExam.R1_autoExamJudge(my_list.get(0));//与道路右边线间距(CM):
+        if (a_Rule.ruleId!=null) {
+            List<Rule> a_rulelist = validRules.getValue();
+            a_rulelist.add(a_Rule);
+            validRules.setValue( a_rulelist);
+        }
+        a_Rule = autoExam.R2_autoExamJudge(my_list.get(1));//与道路中心线间距(CM):
+        if (a_Rule.ruleId!=null) {
+            List<Rule> a_rulelist = validRules.getValue();
+            a_rulelist.add(a_Rule);
+            validRules.setValue( a_rulelist);
+        }
+        a_Rule = autoExam.R3_autoExamJudge(my_list.get(2));//车速(KM/h)
+        if (a_Rule.ruleId!=null) {
+            List<Rule> a_rulelist = validRules.getValue();
+            a_rulelist.add(a_Rule);
+            validRules.setValue( a_rulelist);
+        }
+        a_Rule = autoExam.R5_autoExamJudge(my_list.get(4));//发动机转速(转/s):
+        if (a_Rule.ruleId!=null) {
+            List<Rule> a_rulelist = validRules.getValue();
+            a_rulelist.add(a_Rule);
+            validRules.setValue( a_rulelist);
+        }
+        a_Rule = autoExam.R7_autoExamJudge(roadChose.getValue(),my_list.get(5));//路口减速
+        if (a_Rule!=null) {
+            List<Rule> a_rulelist = validRules.getValue();
+            a_rulelist.add(a_Rule);
+            validRules.setValue( a_rulelist);
+        }
     }
 
     /**
