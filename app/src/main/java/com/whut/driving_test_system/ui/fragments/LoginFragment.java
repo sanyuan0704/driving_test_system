@@ -55,7 +55,7 @@ public class LoginFragment extends Fragment {
                 String username = binding.etUsername.getText().toString();
                 String password = binding.etPassword.getText().toString();
                 final int usertype = (binding.rgUsertype.getCheckedRadioButtonId() == R.id.rbtn_examiner) ? User.UserTypes.EXAMINER.ordinal() : User.UserTypes.ADMIN.ordinal();
-                new UserRepository(getContext()).getUserByUsernameAndPassword(username, password).observe(getActivity(), new Observer<User>() {
+                new UserRepository(getContext()).getUserByUsernameAndPassword(username, password).observe(getViewLifecycleOwner(), new Observer<User>() {
                     @Override
                     public void onChanged(User user) {
                         if (user == null || usertype != user.usertype) {
