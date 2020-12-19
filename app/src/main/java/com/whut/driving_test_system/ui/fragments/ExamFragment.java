@@ -23,6 +23,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -50,10 +51,6 @@ public class ExamFragment extends Fragment {
         // viewModel
         mainViewModel = new ViewModelProvider(requireActivity()).get(MainViewModel.class);
         examViewModel = new ViewModelProvider(this).get(ExamViewModel.class);
-
-
-        // Inflate the layout for this fragment
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_exam, container, false);
 
         // binding
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_exam, container, false);
@@ -175,6 +172,7 @@ public class ExamFragment extends Fragment {
             public void onClick(View v) {
                 mainViewModel.isExaming.setValue(false);
                 Toast.makeText(getContext(), "考试结束", Toast.LENGTH_SHORT).show();
+                Navigation.findNavController(v).navigate(R.id.action_examFragment_to_judgeFragment);
             }
         });
         return binding.getRoot();
