@@ -51,11 +51,11 @@ public class LoginFragment extends Fragment {
 
         binding.btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(final View v) {
+            public void onClick(View v) {
                 String username = binding.etUsername.getText().toString();
                 String password = binding.etPassword.getText().toString();
                 final int usertype = (binding.rgUsertype.getCheckedRadioButtonId() == R.id.rbtn_examiner) ? User.UserTypes.EXAMINER.ordinal() : User.UserTypes.ADMIN.ordinal();
-                new UserRepository(getContext()).getUserByUsernameAndPassword(username, password).observe(getActivity(), new Observer<User>() {
+                new UserRepository(getContext()).getUserByUsernameAndPassword(username, password).observe(getViewLifecycleOwner(), new Observer<User>() {
                     @Override
                     public void onChanged(User user) {
                         if (user == null || usertype != user.usertype) {
@@ -65,9 +65,9 @@ public class LoginFragment extends Fragment {
                         Toast.makeText(getContext(), "登录成功", Toast.LENGTH_SHORT).show();
                         mainViewModel.loginedUser.setValue(user);
                         if (usertype == User.UserTypes.EXAMINER.ordinal()){
-                            Navigation.findNavController(v).navigate(R.id.action_loginFragment_to_homeFragment);
+                            Navigation.findNavController(binding.getRoot()).navigate(R.id.action_loginFragment_to_homeFragment);
                         }else if (usertype == User.UserTypes.ADMIN.ordinal()){
-                            Navigation.findNavController(v).navigate(R.id.settingsFragment);
+                            Navigation.findNavController(binding.getRoot()).navigate(R.id.settingsFragment);
                         }
                     }
                 });

@@ -23,6 +23,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -173,8 +174,13 @@ public class ExamFragment extends Fragment {
         binding.iclExamContent.btnEnd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //判断形式里程
+                examViewModel.autoMileageFunction(getContext(),binding.iclExamContent.tvMileage.getText().toString().replace("KM",""), binding);
+                //写入犯错信息
+                examViewModel.setAllRules(getContext());
                 mainViewModel.isExaming.setValue(false);
                 Toast.makeText(getContext(), "考试结束", Toast.LENGTH_SHORT).show();
+                Navigation.findNavController(v).navigate(R.id.action_examFragment_to_judgeFragment);
             }
         });
         return binding.getRoot();

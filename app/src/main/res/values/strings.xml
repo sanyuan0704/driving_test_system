@@ -4,7 +4,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="upload_text">上传考试成绩</string>
-    <string name="download_button">下载考试成绩</string>
+    <string name="download_button">下载考生信息</string>
     <string name="rule_manage">管理考试规则</string>
     <string name="examiner_manage">管理考官信息</string>
     <string name="edit_rule">保存</string>
