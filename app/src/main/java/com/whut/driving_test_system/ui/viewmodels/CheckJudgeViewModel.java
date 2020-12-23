@@ -1,4 +1,7 @@
 package com.whut.driving_test_system.ui.viewmodels;
 
-public class CheckJudgeViewModel {
+import androidx.lifecycle.ViewModel;
+
+public class CheckJudgeViewModel extends ViewModel {
+
 }

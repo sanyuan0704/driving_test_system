@@ -74,6 +74,15 @@
         <action
             android:id="@+id/action_judgeFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_judgeFragment_to_checkJudgeFragment"
+            app:destination="@id/checkJudgeFragment" />
+        <action
+            android:id="@+id/action_judgeFragment_to_printFragment"
+            app:destination="@id/printFragment" />
+        <action
+            android:id="@+id/action_judgeFragment_to_homeFragment2"
+            app:destination="@id/homeFragment" />
     </fragment>
     <fragment
         android:id="@+id/ruleSettingFragment"
@@ -85,4 +94,18 @@
         android:name="com.whut.driving_test_system.ui.fragments.ExaminerSettingFragment"
         android:label="fragment_examiner_setting"
         tools:layout="@layout/fragment_examiner_setting" />
+    <fragment
+        android:id="@+id/checkJudgeFragment"
+        android:name="com.whut.driving_test_system.ui.fragments.CheckJudgeFragment"
+        android:label="fragment_check_judge"
+        tools:layout="@layout/fragment_check_judge" >
+        <action
+            android:id="@+id/action_checkJudgeFragment_to_judgeFragment"
+            app:destination="@id/judgeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/printFragment"
+        android:name="com.whut.driving_test_system.ui.fragments.PrintFragment"
+        android:label="fragment_print"
+        tools:layout="@layout/fragment_print" />
 </navigation>
