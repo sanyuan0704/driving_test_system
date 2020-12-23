@@ -31,6 +31,6 @@ public interface ExamineeDao {
     LiveData<List<Examinee>> getAllExaminees();
 
     @Transaction
-    @Query("SELECT * FROM Examinee WHERE examNumber=:examNumber")
+    @Query("SELECT * FROM examinee WHERE examNumber=:examNumber")
     LiveData<ExamineeWithRules> getExamnieeWithRulesByExamnumber(String examNumber);
 }

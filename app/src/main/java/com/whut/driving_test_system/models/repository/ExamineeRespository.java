@@ -89,23 +89,21 @@ public class ExamineeRespository {
     }
 
     @SuppressLint("StaticFieldLeak")
-    public void deleteExamnieeRuleRef(final Examinee examinee, final Rule rule) {
-        new AsyncTask<ExamineeRuleRef, Void, Void>() {
+    public void deleteExamnieeRuleRef(ExamineeRuleRef... examineeRuleRefs) {
+        new AsyncTask<ExamineeRuleRef,Void,Void>(){
 
             @Override
             protected Void doInBackground(ExamineeRuleRef... examineeRuleRefs) {
-                ExamineeRuleRef examineeRuleRef = new ExamineeRuleRef();
-                examineeRuleRef.examNumber = examinee.examNumber;
-                examineeRuleRef.ruleId = rule.ruleId;
-                database.getExamnieeRuleRefDao().deleteExamnieeRuleRef(examineeRuleRef);
+                database.getExamnieeRuleRefDao().deleteExamnieeRuleRef(examineeRuleRefs);
                 return null;
             }
-        }.execute();
+        }.execute(examineeRuleRefs);
     }
 
+
     @SuppressLint("StaticFieldLeak")
-    public void deleteAllExamineeRuleRef(){
-        new AsyncTask<Void,Void,Void>(){
+    public void deleteAllExamineeRuleRef() {
+        new AsyncTask<Void, Void, Void>() {
 
             @Override
             protected Void doInBackground(Void... voids) {
@@ -115,7 +113,7 @@ public class ExamineeRespository {
         }.execute();
     }
 
-    public LiveData<ExamineeWithRules> getExamnieeWithRulesByExamnumber(String examNumber){
-        return database.getExamnieeDao().getExamnieeWithRulesByExamnumber(examNumber);
+    public LiveData<List<ExamineeRuleRef>> getExamineeRuleRefByExamnumber(String examNumber) {
+        return database.getExamnieeRuleRefDao().getExamineeRuleRefByExamnumber(examNumber);
     }
 }

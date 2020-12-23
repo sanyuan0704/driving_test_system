@@ -52,10 +52,6 @@ public class ExamFragment extends Fragment {
         mainViewModel = new ViewModelProvider(requireActivity()).get(MainViewModel.class);
         examViewModel = new ViewModelProvider(this).get(ExamViewModel.class);
 
-
-        // Inflate the layout for this fragment
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_exam, container, false);
-
         // binding
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_exam, container, false);
         binding.setExamViewModel(examViewModel);
