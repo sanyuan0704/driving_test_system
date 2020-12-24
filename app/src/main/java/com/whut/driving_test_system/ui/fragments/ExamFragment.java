@@ -1,6 +1,7 @@
 package com.whut.driving_test_system.ui.fragments;
 
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -81,7 +82,7 @@ public class ExamFragment extends Fragment {
 
         //设置考生信息
         binding.iclExamContent.textView28.setText(examViewModel.examinee.getValue().name);
-        binding.iclExamContent.textView26.setText(examViewModel.examinee.getValue().idNumber);
+        binding.iclExamContent.textView26.setText(examViewModel.examinee.getValue().examNumber);
 
         //指令后更新视图
         List<String> aOrderlist = new ArrayList<>();
@@ -173,8 +174,11 @@ public class ExamFragment extends Fragment {
                 //判断形式里程
                 examViewModel.autoMileageFunction(getContext(),binding.iclExamContent.tvMileage.getText().toString().replace("KM",""), binding);
                 //写入犯错信息
-                examViewModel.setAllRules(getContext());
-                mainViewModel.isExaming.setValue(false);
+                //examViewModel.setAllRules(getContext());
+                //将错误列表传递给judge
+                List<Rule> rules = examViewModel.validRules.getValue();
+                mainViewModel.validRules.setValue(rules);
+                //mainViewModel.isExaming.setValue(false);
                 Toast.makeText(getContext(), "考试结束", Toast.LENGTH_SHORT).show();
                 Navigation.findNavController(v).navigate(R.id.action_examFragment_to_judgeFragment);
             }
