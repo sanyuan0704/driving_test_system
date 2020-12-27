@@ -119,8 +119,8 @@
 
                 <ImageView
                     android:id="@+id/imageView13"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
                     android:layout_marginStart="16dp"
                     android:scaleType="fitXY"
                     app:layout_constraintBottom_toTopOf="@+id/guideline60"

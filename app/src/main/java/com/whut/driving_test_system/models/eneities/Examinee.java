@@ -18,7 +18,7 @@ public class Examinee {
     public String examType;
     public int examStatus;
     public int grade;
-    // TODO: image
+    public String imageUrl;
     public String examinerID;
 
     public static enum ExamStatus {WAIT, PASSED, FAILED}
@@ -26,7 +26,7 @@ public class Examinee {
     @Ignore
     public Examinee() {}
 
-    public Examinee(@NonNull String examNumber, String idNumber, String name, String school, int examCount, String examType, int examStatus, int grade, String examinerID) {
+    public Examinee(@NonNull String examNumber, String idNumber, String name, String school, int examCount, String examType, int examStatus, int grade, String imageUrl, String examinerID) {
         this.examNumber = examNumber;
         this.idNumber = idNumber;
         this.name = name;
@@ -35,6 +35,7 @@ public class Examinee {
         this.examType = examType;
         this.examStatus = examStatus;
         this.grade = grade;
+        this.imageUrl = imageUrl;
         this.examinerID = examinerID;
     }
 }

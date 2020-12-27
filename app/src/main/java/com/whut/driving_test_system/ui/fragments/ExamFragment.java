@@ -1,7 +1,6 @@
 package com.whut.driving_test_system.ui.fragments;
 
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.whut.driving_test_system.R;
 import com.whut.driving_test_system.databinding.FragmentExamBinding;
 import com.whut.driving_test_system.models.eneities.Rule;
@@ -183,6 +183,8 @@ public class ExamFragment extends Fragment {
                 Navigation.findNavController(v).navigate(R.id.action_examFragment_to_judgeFragment );
             }
         });
+
+        Glide.with(getContext()).load(examViewModel.examinee.getValue().imageUrl).into(binding.iclExamContent.imgHeader);
         return binding.getRoot();
     }
 

@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.whut.driving_test_system.R;
 import com.whut.driving_test_system.databinding.FragmentHomeBinding;
 import com.whut.driving_test_system.models.eneities.Examinee;
@@ -168,7 +169,7 @@ public class HomeFragment extends Fragment {
         }
 
         @Override
-        public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
+        public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
             final Examinee examinee = examinees.get(position);
             holder.tv_name.setText(examinee.name);
             holder.tv_school.setText(examinee.school);
@@ -184,6 +185,7 @@ public class HomeFragment extends Fragment {
                 holder.tv_status.setText("未通过");
                 holder.img_status.setImageResource(R.drawable.ic_cancel_black_24dp);
             }
+            Glide.with(holder.img_header.getContext()).load(examinees.get(position).imageUrl).into(holder.img_header);
 
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -191,8 +193,8 @@ public class HomeFragment extends Fragment {
                     mainViewModel.selectedExamniee.setValue(examinee);
                     homeViewModel.choisedExaminee.setValue(examinee);
                     binding.drawerLayout.openDrawer(GravityCompat.END);
-                    // TODO: set image
-                    // TODO: set fbtn
+
+                    Glide.with(binding.imgHeader.getContext()).load(examinees.get(position).imageUrl).into(binding.imgHeader);
                 }
             });
         }

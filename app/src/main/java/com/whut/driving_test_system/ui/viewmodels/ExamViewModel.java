@@ -35,6 +35,7 @@ public class ExamViewModel extends ViewModel {
     public MutableLiveData<List<Rule>> validRules;//扣分列表
     public MutableLiveData<String> roadChose;//道路选项
     public MutableLiveData<List<String>> orderList;//已考指令列表
+    public MutableLiveData<Boolean> isStart; // 考试是否开始
 
     public ExamViewModel() {
         this.examinee = new MutableLiveData<>();
@@ -42,18 +43,20 @@ public class ExamViewModel extends ViewModel {
         this.validRules = new MutableLiveData<List<Rule>>();
         this.roadChose = new MutableLiveData<String>();
         this.orderList = new MutableLiveData<List<String>>();
+        this.isStart = new MutableLiveData<>(false);
     }
 
     /**
      * 将考生犯错信息插入表
      */
-    public void setAllRules(Context context){
+    public void setAllRules(Context context) {
         my_ExamineeRespository = new ExamineeRespository(context);
         List<Rule> a_rulelist = validRules.getValue();
-        for (int i=0;i<a_rulelist.size();i++) {
-            my_ExamineeRespository.insertExamnieeRuleRef(examinee.getValue(),a_rulelist.get(i));
+        for (int i = 0; i < a_rulelist.size(); i++) {
+            my_ExamineeRespository.insertExamnieeRuleRef(examinee.getValue(), a_rulelist.get(i));
         }
     }
+
     /**
      * 获取所有规则列表
      */
@@ -74,36 +77,37 @@ public class ExamViewModel extends ViewModel {
         autoExam = new AutoExam(context, examinee.getValue(), my_Rule.getValue());
         Rule a_Rule = new Rule();
         a_Rule = autoExam.R1_autoExamJudge(my_list.get(0));//与道路右边线间距(CM):
-        if (a_Rule.ruleId!=null) {
+        if (a_Rule.ruleId != null) {
             List<Rule> a_rulelist = validRules.getValue();
             a_rulelist.add(a_Rule);
-            validRules.setValue( a_rulelist);
+            validRules.setValue(a_rulelist);
         }
         a_Rule = autoExam.R2_autoExamJudge(my_list.get(1));//与道路中心线间距(CM):
-        if (a_Rule.ruleId!=null) {
+        if (a_Rule.ruleId != null) {
             List<Rule> a_rulelist = validRules.getValue();
             a_rulelist.add(a_Rule);
-            validRules.setValue( a_rulelist);
+            validRules.setValue(a_rulelist);
         }
         a_Rule = autoExam.R3_autoExamJudge(my_list.get(2));//车速(KM/h)
-        if (a_Rule.ruleId!=null) {
+        if (a_Rule.ruleId != null) {
             List<Rule> a_rulelist = validRules.getValue();
             a_rulelist.add(a_Rule);
-            validRules.setValue( a_rulelist);
+            validRules.setValue(a_rulelist);
         }
         a_Rule = autoExam.R5_autoExamJudge(my_list.get(4));//发动机转速(转/s):
-        if (a_Rule.ruleId!=null) {
+        if (a_Rule.ruleId != null) {
             List<Rule> a_rulelist = validRules.getValue();
             a_rulelist.add(a_Rule);
-            validRules.setValue( a_rulelist);
+            validRules.setValue(a_rulelist);
         }
-        a_Rule = autoExam.R7_autoExamJudge(roadChose.getValue(),my_list.get(5));//路口减速
-        if (a_Rule.ruleId!=null) {
+        a_Rule = autoExam.R7_autoExamJudge(roadChose.getValue(), my_list.get(5));//路口减速
+        if (a_Rule.ruleId != null) {
             List<Rule> a_rulelist = validRules.getValue();
             a_rulelist.add(a_Rule);
-            validRules.setValue( a_rulelist);
+            validRules.setValue(a_rulelist);
         }
     }
+
     /**
      * 自动评分 判断里程
      */
@@ -112,10 +116,10 @@ public class ExamViewModel extends ViewModel {
         autoExam = new AutoExam(context, examinee.getValue(), my_Rule.getValue());
         Rule a_Rule = new Rule();
         a_Rule = autoExam.R6_autoExamJudge(mileage);//形式里程
-        if (a_Rule.ruleId!=null) {
+        if (a_Rule.ruleId != null) {
             List<Rule> a_rulelist = validRules.getValue();
             a_rulelist.add(a_Rule);
-            validRules.setValue( a_rulelist);
+            validRules.setValue(a_rulelist);
         }
     }
 
@@ -129,7 +133,7 @@ public class ExamViewModel extends ViewModel {
         final List<Rule> ruleList = my_Rule.getValue();
         final List<Rule> currentRules = new ArrayList<>();
         List<String> tips = new ArrayList<>();
-        for (Rule rule: ruleList) {
+        for (Rule rule : ruleList) {
             if (rule.nickname.equals(nickname)) {
                 currentRules.add(rule);
                 tips.add(rule.content);
@@ -155,7 +159,7 @@ public class ExamViewModel extends ViewModel {
                                 //validRules.observe();
                                 List<Rule> a_rulelist = validRules.getValue();
                                 a_rulelist.add(ruleList.get(index));
-                                validRules.setValue( a_rulelist);
+                                validRules.setValue(a_rulelist);
                             }
                         }
                     }
@@ -164,7 +168,7 @@ public class ExamViewModel extends ViewModel {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         // 清空选中数组
-                        for (int index = 0; index < isSelect.length; index ++) {
+                        for (int index = 0; index < isSelect.length; index++) {
                             isSelect[index] = false;
                         }
                     }
@@ -186,6 +190,7 @@ public class ExamViewModel extends ViewModel {
         List<String> a_rulelist = orderList.getValue();
         a_rulelist.add("起步");
         orderList.setValue(a_rulelist);
+        isStart.setValue(true);
     }
 
 

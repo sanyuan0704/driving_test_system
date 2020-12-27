@@ -21,6 +21,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.whut.driving_test_system.R;
 import com.whut.driving_test_system.databinding.FragmentJudgeBinding;
 import com.whut.driving_test_system.models.eneities.Examinee;
@@ -125,10 +126,8 @@ public class JudgeFragment extends Fragment {
             }
         });
 
-
+        Glide.with(getContext()).load(judgeViewModel.examinee.getValue().imageUrl).into(binding.imageView13);
         return binding.getRoot();
-        // Inflate the layout for this fragment
-        //return inflater.inflate(R.layout.fragment_judge, container, false);
     }
 
     // 设置考试扣分项目展示Adapter

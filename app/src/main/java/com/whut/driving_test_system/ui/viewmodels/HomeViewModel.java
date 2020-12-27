@@ -1,6 +1,5 @@
 package com.whut.driving_test_system.ui.viewmodels;
 
-import android.os.Bundle;
 import android.view.View;
 
 import com.whut.driving_test_system.R;
