@@ -11,6 +11,7 @@ import com.whut.driving_test_system.R;
 import com.whut.driving_test_system.databinding.FragmentExamBinding;
 import com.whut.driving_test_system.models.eneities.Examinee;
 import com.whut.driving_test_system.models.eneities.Rule;
+import com.whut.driving_test_system.models.repository.ExamineeRespository;
 import com.whut.driving_test_system.models.repository.RuleRepository;
 
 import androidx.lifecycle.LifecycleOwner;
@@ -28,8 +29,9 @@ import util.AutoExam;
 public class ExamViewModel extends ViewModel {
     public MutableLiveData<List<Rule>> my_Rule;//所有的规则 拿下来
     public RuleRepository my_RuleRepository;//对规则数据库操作
+    public ExamineeRespository my_ExamineeRespository;//对考生数据库操作
     private AutoExam autoExam;//自动评分类
-    public MutableLiveData<Examinee> examinee;
+    public MutableLiveData<Examinee> examinee;//考生
     public MutableLiveData<List<Rule>> validRules;//扣分列表
     public MutableLiveData<String> roadChose;//道路选项
     public MutableLiveData<List<String>> orderList;//已考指令列表
@@ -42,6 +44,16 @@ public class ExamViewModel extends ViewModel {
         this.orderList = new MutableLiveData<List<String>>();
     }
 
+    /**
+     * 将考生犯错信息插入表
+     */
+    public void setAllRules(Context context){
+        my_ExamineeRespository = new ExamineeRespository(context);
+        List<Rule> a_rulelist = validRules.getValue();
+        for (int i=0;i<a_rulelist.size();i++) {
+            my_ExamineeRespository.insertExamnieeRuleRef(examinee.getValue(),a_rulelist.get(i));
+        }
+    }
     /**
      * 获取所有规则列表
      */
@@ -92,6 +104,21 @@ public class ExamViewModel extends ViewModel {
             validRules.setValue( a_rulelist);
         }
     }
+    /**
+     * 自动评分 判断里程
+     */
+
+    public void autoMileageFunction(Context context, String mileage, FragmentExamBinding binding) {
+        autoExam = new AutoExam(context, examinee.getValue(), my_Rule.getValue());
+        Rule a_Rule = new Rule();
+        a_Rule = autoExam.R6_autoExamJudge(mileage);//形式里程
+        if (a_Rule.ruleId!=null) {
+            List<Rule> a_rulelist = validRules.getValue();
+            a_rulelist.add(a_Rule);
+            validRules.setValue( a_rulelist);
+        }
+    }
+
 
     /**
      * 弹窗处理函数

@@ -4,11 +4,27 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="upload_text">上传考试成绩</string>
-    <string name="download_button">下载考试成绩</string>
+    <string name="download_button">下载考生信息</string>
     <string name="rule_manage">管理考试规则</string>
     <string name="examiner_manage">管理考官信息</string>
     <string name="edit_rule">保存</string>
     <string name="yes">是</string>
     <string name="no">否</string>
     <string name="none">无</string>
+    <string name="button1">自动评判检视</string>
+    <string name="button2">下个考生</string>
+    <string name="button3">打印成绩</string>
+    <string name="textviewID">准考证号：</string>
+    <string name="textviewGrade">现在成绩：</string>
+    <string name="textviewtip">请选择干预原因</string>
+    <string name="radiobutton1">特殊路况</string>
+    <string name="radiobutton2">指令错误</string>
+    <string name="radiobutton3">设备故障</string>
+    <string name="radiobutton4">其他原因</string>
+    <string name="buttonInter">干预</string>
+    <string name="buttonReturn">返回</string>
+    <string name="textviewContext">扣分内容</string>
+    <string name="textviewNumber">分值</string>
+    <string name="textViewN">textView</string>
+    <string name="textviewC">TextView</string>
 </resources>
