@@ -172,7 +172,7 @@ public class ExamFragment extends Fragment {
             public void onClick(View v) {
                 mainViewModel.isExaming.setValue(false);
                 Toast.makeText(getContext(), "考试结束", Toast.LENGTH_SHORT).show();
-                Navigation.findNavController(v).navigate(R.id.action_examFragment_to_judgeFragment);
+                Navigation.findNavController(v).navigate(R.id.action_examFragment_to_judgeFragment );
             }
         });
         return binding.getRoot();
