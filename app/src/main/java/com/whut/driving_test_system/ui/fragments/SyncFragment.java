@@ -61,10 +61,10 @@ public class SyncFragment extends Fragment {
         examnieeRespository.deleteAllExamniee();
         examnieeRespository.deleteAllExamineeRuleRef();
         examnieeRespository.insertExaminees(
-                new Examinee("202012120001", "345678200005192349", "熊大", "森林驾校", 0, "C1", Examinee.ExamStatus.WAIT.ordinal(), 0, "http://104.131.131.82:8080/ipfs/QmW2jF7RGanMHjC9CQkNVMWsmjAT9MmN9PWjMpTbZL3RpU", "e1"),
-                new Examinee("202012120004", "345678200005192349", "蹦蹦", "森林驾校", 0, "C1", Examinee.ExamStatus.WAIT.ordinal(), 0, "http://104.131.131.82:8080/ipfs/QmbWeWVS36eFjQUyhSnXLpgiYoDpTMwafL9GNm31n5PSpK", "e1"),
-                new Examinee("202012120002", "345678200005194560", "熊二", "森林驾校", 0, "C1", Examinee.ExamStatus.PASSED.ordinal(), 100, "http://104.131.131.82:8080/ipfs/QmXzy99FkwJY1CQNgLif8QNvoHe4VkkyuSkDqN3PBy8Jgv", "e1"),
-                new Examinee("202012120003", "345678198801010002", "光头强", "森林驾校", 1, "C1", Examinee.ExamStatus.FAILED.ordinal(), 80, "http://104.131.131.82:8080/ipfs/QmNVCoWkszQLaWShJB5VCw6bapkDJCir2GpkXBvFz1HnyE", "e1")
+                new Examinee("202012120001", "345678200005192349", "熊大", "森林驾校", 0, "C1", Examinee.ExamStatus.WAIT.ordinal(), 0, "https://wuzhiying-test.oss-cn-beijing.aliyuncs.com/xd.png", "e1"),
+                new Examinee("202012120004", "345678200005192349", "蹦蹦", "森林驾校", 0, "C1", Examinee.ExamStatus.WAIT.ordinal(), 0, "https://wuzhiying-test.oss-cn-beijing.aliyuncs.com/bb.png", "e1"),
+                new Examinee("202012120002", "345678200005194560", "熊二", "森林驾校", 0, "C1", Examinee.ExamStatus.PASSED.ordinal(), 100, "https://wuzhiying-test.oss-cn-beijing.aliyuncs.com/xe.png", "e1"),
+                new Examinee("202012120003", "345678198801010002", "光头强", "森林驾校", 1, "C1", Examinee.ExamStatus.FAILED.ordinal(), 80, "https://wuzhiying-test.oss-cn-beijing.aliyuncs.com/gtq.png", "e1")
         );
     }
 }
