@@ -125,11 +125,11 @@ public class ExamFragment extends Fragment {
         String roadChose = new String();
         examViewModel.roadChose.setValue(roadChose);
         List<String> a_list = new ArrayList<String>();//下拉列表
-        a_list.add("路口");
+        a_list.add("普通路段");
         a_list.add("人行横道");
         a_list.add("学校路段");
         a_list.add("公交车站");
-        a_list.add("普通路段");
+        a_list.add("路口");
         adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, a_list);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         binding.spinnerRoad.setAdapter(adapter);

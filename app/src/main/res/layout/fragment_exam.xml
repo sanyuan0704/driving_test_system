@@ -38,7 +38,7 @@
                     android:layout_marginStart="16dp"
                     android:ems="10"
                     android:inputType="textPersonName"
-                    android:text="0"
+                    android:text="50"
                     app:layout_constraintBottom_toTopOf="@+id/guideline45"
                     app:layout_constraintStart_toEndOf="@+id/textView35"
                     app:layout_constraintTop_toBottomOf="@+id/guideline44" />
@@ -50,7 +50,7 @@
                     android:layout_marginStart="16dp"
                     android:ems="10"
                     android:inputType="textPersonName"
-                    android:text="0"
+                    android:text="50"
                     app:layout_constraintBottom_toTopOf="@+id/guideline46"
                     app:layout_constraintStart_toEndOf="@+id/textView36"
                     app:layout_constraintTop_toBottomOf="@+id/guideline45" />

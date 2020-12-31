@@ -2,18 +2,6 @@ package com.whut.driving_test_system.ui.fragments;
 
 
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.databinding.DataBindingUtil;
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,12 +15,21 @@ import com.whut.driving_test_system.databinding.FragmentJudgeBinding;
 import com.whut.driving_test_system.models.eneities.Examinee;
 import com.whut.driving_test_system.models.eneities.Rule;
 import com.whut.driving_test_system.models.repository.ExamineeRespository;
-import com.whut.driving_test_system.ui.viewmodels.ExamViewModel;
 import com.whut.driving_test_system.ui.viewmodels.JudgeViewModel;
 import com.whut.driving_test_system.ui.viewmodels.MainViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.databinding.DataBindingUtil;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * 实现功能：
@@ -83,7 +80,7 @@ public class JudgeFragment extends Fragment {
                     sum -= Integer.parseInt(rules.get(i).value.toString());
                 }
                 examinee.grade = sum;
-                binding.textView53.setText(String.valueOf(examinee.grade));
+                binding.textView53.setText(String.valueOf(examinee.grade > 0 ? examinee.grade : 0));
             }
         });
         //刷新扣分信息
@@ -98,7 +95,7 @@ public class JudgeFragment extends Fragment {
                 for (int i = 0; i < rules.size(); i++) {
                     sum -= Integer.parseInt(rules.get(i).value.toString());
                 }
-                binding.textView53.setText(String.valueOf(sum));
+                binding.textView53.setText(String.valueOf(sum > 0 ? sum : 0));
             }
         });
         binding.button3.setOnClickListener(new View.OnClickListener() {

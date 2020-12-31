@@ -158,6 +158,7 @@ public class HomeFragment extends Fragment {
 
         public void setExaminees(List<Examinee> examinees) {
             this.examinees = examinees;
+            // 数据源更新，通知刷新页面
             this.notifyDataSetChanged();
         }
 
@@ -219,6 +220,5 @@ public class HomeFragment extends Fragment {
                 this.tv_status = itemView.findViewById(R.id.tv_status);
             }
         }
-
     }
 }
